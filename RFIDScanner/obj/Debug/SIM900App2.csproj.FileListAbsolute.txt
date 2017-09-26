@@ -1,0 +1,17 @@
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\bin\Debug\SIM900App2.exe
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\bin\Debug\SIM900App2.pdb
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\ResolveAssemblyReference.cache
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\SIM900App2.Form1.resources
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\SIM900App2.Properties.Resources.resources
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\SIM900App2.csproj.GenerateResource.Cache
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\SIM900App2.exe
+D:\IoTDemo\SIM900\SIM900App2\SIM900App2\obj\Debug\SIM900App2.pdb
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\bin\Debug\SIM900App2.exe
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\bin\Debug\SIM900App2.pdb
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.csprojResolveAssemblyReference.cache
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.Form1.resources
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.Properties.Resources.resources
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.csproj.GenerateResource.Cache
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.csproj.CoreCompileInputs.cache
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.exe
+D:\Google Drive HCMUT\BK\171\IoTs\SIM900App2\SIM900App2\obj\Debug\SIM900App2.pdb
