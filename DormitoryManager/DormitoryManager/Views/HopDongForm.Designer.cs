@@ -1,6 +1,6 @@
 ﻿namespace DormitoryManager
 {
-   partial class MDIChild2
+   partial class HopDongForm
    {
       /// <summary>
       /// Required designer variable.

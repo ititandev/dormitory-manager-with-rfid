@@ -57,6 +57,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,35 +71,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Global.cs" />
-    <Compile Include="MDIChild1.cs">
+    <Compile Include="Common\Global.cs" />
+    <Compile Include="Controllers\DangNhap.cs" />
+    <Compile Include="Controllers\DienNuoc.cs" />
+    <Compile Include="Controllers\HopDong.cs" />
+    <Compile Include="Controllers\NhanVien.cs" />
+    <Compile Include="Controllers\Phongcs.cs" />
+    <Compile Include="Controllers\SinhVien.cs" />
+    <Compile Include="Controllers\ThiDua.cs" />
+    <Compile Include="Views\NhanVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDIChild1.Designer.cs">
-      <DependentUpon>MDIChild1.cs</DependentUpon>
+    <Compile Include="Views\NhanVienForm.Designer.cs">
+      <DependentUpon>NhanVienForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDIChild2.cs">
+    <Compile Include="Views\PhongForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDIChild2.Designer.cs">
-      <DependentUpon>MDIChild2.cs</DependentUpon>
+    <Compile Include="Views\PhongForm.Designer.cs">
+      <DependentUpon>PhongForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDIForm.cs">
+    <Compile Include="Views\DienNuocForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDIForm.Designer.cs">
-      <DependentUpon>MDIForm.cs</DependentUpon>
+    <Compile Include="Views\DienNuocForm.Designer.cs">
+      <DependentUpon>DienNuocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SinhVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SinhVienForm.Designer.cs">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HopDongForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HopDongForm.Designer.cs">
+      <DependentUpon>HopDongForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MDIChild1.resx">
-      <DependentUpon>MDIChild1.cs</DependentUpon>
+    <Compile Include="Views\ThiDuaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ThiDuaForm.Designer.cs">
+      <DependentUpon>ThiDuaForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\SinhVienForm.resx">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDIChild2.resx">
-      <DependentUpon>MDIChild2.cs</DependentUpon>
+    <EmbeddedResource Include="Views\HopDongForm.resx">
+      <DependentUpon>HopDongForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDIForm.resx">
-      <DependentUpon>MDIForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -355,6 +387,7 @@
       <Name>System.Windows.Forms.Ribbon35</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

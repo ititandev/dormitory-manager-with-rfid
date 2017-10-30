@@ -35,13 +35,17 @@
             this.SubMenuButton2 = new System.Windows.Forms.RibbonButton();
             this.DropDownButton3 = new System.Windows.Forms.RibbonButton();
             this.DropDownButton4 = new System.Windows.Forms.RibbonButton();
-            this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
+            this.ribbon = new System.Windows.Forms.Ribbon();
+            this.hopDongTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
+            this.sinhVienTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
+            this.phongTab = new System.Windows.Forms.RibbonTab();
+            this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
+            this.ribbonTab5 = new System.Windows.Forms.RibbonTab();
+            this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
             this.SuspendLayout();
             // 
             // DropDownButton1
@@ -90,59 +94,63 @@
             this.DropDownButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("DropDownButton4.SmallImage")));
             this.DropDownButton4.Text = "Some other button";
             // 
-            // ribbon1
+            // ribbon
             // 
-            this.ribbon1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ribbon1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ribbon1.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.Minimized = false;
-            this.ribbon1.Name = "ribbon1";
-            // 
-            // 
-            // 
-            this.ribbon1.OrbDropDown.BorderRoundness = 8;
-            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.OrbDropDown.Name = "";
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 72);
-            this.ribbon1.OrbDropDown.TabIndex = 0;
-            this.ribbon1.OrbImage = null;
-            this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
+            this.ribbon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ribbon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Minimized = false;
+            this.ribbon.Name = "ribbon";
             // 
             // 
             // 
-            this.ribbon1.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton1);
-            this.ribbon1.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton2);
-            this.ribbon1.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton3);
-            this.ribbon1.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton4);
-            this.ribbon1.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon1.Size = new System.Drawing.Size(711, 136);
-            this.ribbon1.TabIndex = 0;
-            this.ribbon1.Tabs.Add(this.ribbonTab1);
-            this.ribbon1.Tabs.Add(this.ribbonTab2);
-            this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
-            this.ribbon1.Text = "ribbon1";
-            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
-            this.ribbon1.ActiveTabChanged += new System.EventHandler(this.ribbon1_ActiveTabChanged);
+            this.ribbon.OrbDropDown.BorderRoundness = 8;
+            this.ribbon.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.OrbDropDown.Name = "";
+            this.ribbon.OrbDropDown.Size = new System.Drawing.Size(527, 72);
+            this.ribbon.OrbDropDown.TabIndex = 0;
+            this.ribbon.OrbImage = null;
+            this.ribbon.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
             // 
-            // ribbonTab1
             // 
-            this.ribbonTab1.Panels.Add(this.ribbonPanel1);
-            this.ribbonTab1.Panels.Add(this.ribbonPanel2);
-            this.ribbonTab1.Text = "Sinh Viên";
+            // 
+            this.ribbon.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton1);
+            this.ribbon.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton2);
+            this.ribbon.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton3);
+            this.ribbon.QuickAcessToolbar.DropDownButtonItems.Add(this.DropDownButton4);
+            this.ribbon.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.ribbon.Size = new System.Drawing.Size(711, 136);
+            this.ribbon.TabIndex = 0;
+            this.ribbon.Tabs.Add(this.hopDongTab);
+            this.ribbon.Tabs.Add(this.sinhVienTab);
+            this.ribbon.Tabs.Add(this.phongTab);
+            this.ribbon.Tabs.Add(this.ribbonTab4);
+            this.ribbon.Tabs.Add(this.ribbonTab5);
+            this.ribbon.Tabs.Add(this.ribbonTab6);
+            this.ribbon.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
+            this.ribbon.Text = "ribbon1";
+            this.ribbon.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            this.ribbon.ActiveTabChanged += new System.EventHandler(this.ribbon1_ActiveTabChanged);
+            // 
+            // hopDongTab
+            // 
+            this.hopDongTab.Panels.Add(this.ribbonPanel1);
+            this.hopDongTab.Panels.Add(this.ribbonPanel2);
+            this.hopDongTab.Text = "Hợp Đồng";
             // 
             // ribbonPanel1
             // 
             this.ribbonPanel1.Text = "ribbonPanel1";
             // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Panels.Add(this.ribbonPanel3);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel4);
-            this.ribbonTab2.Text = "ribbonTab2";
-            // 
             // ribbonPanel2
             // 
             this.ribbonPanel2.Text = "ribbonPanel2";
+            // 
+            // sinhVienTab
+            // 
+            this.sinhVienTab.Panels.Add(this.ribbonPanel3);
+            this.sinhVienTab.Panels.Add(this.ribbonPanel4);
+            this.sinhVienTab.Text = "Sinh Viên";
             // 
             // ribbonPanel3
             // 
@@ -152,12 +160,28 @@
             // 
             this.ribbonPanel4.Text = "ribbonPanel4";
             // 
+            // phongTab
+            // 
+            this.phongTab.Text = "Phòng";
+            // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.Text = "ribbonTab4";
+            // 
+            // ribbonTab5
+            // 
+            this.ribbonTab5.Text = "ribbonTab5";
+            // 
+            // ribbonTab6
+            // 
+            this.ribbonTab6.Text = "ribbonTab6";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 402);
-            this.Controls.Add(this.ribbon1);
+            this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "MDIForm";
@@ -172,12 +196,16 @@
       private System.Windows.Forms.RibbonButton SubMenuButton2;
       private System.Windows.Forms.RibbonButton DropDownButton3;
       private System.Windows.Forms.RibbonButton DropDownButton4;
-        private System.Windows.Forms.Ribbon ribbon1;
-        private System.Windows.Forms.RibbonTab ribbonTab1;
+        private System.Windows.Forms.Ribbon ribbon;
+        private System.Windows.Forms.RibbonTab hopDongTab;
         private System.Windows.Forms.RibbonPanel ribbonPanel1;
         private System.Windows.Forms.RibbonPanel ribbonPanel2;
-        private System.Windows.Forms.RibbonTab ribbonTab2;
+        private System.Windows.Forms.RibbonTab sinhVienTab;
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
         private System.Windows.Forms.RibbonPanel ribbonPanel4;
+        private System.Windows.Forms.RibbonTab phongTab;
+        private System.Windows.Forms.RibbonTab ribbonTab4;
+        private System.Windows.Forms.RibbonTab ribbonTab5;
+        private System.Windows.Forms.RibbonTab ribbonTab6;
     }
 }
