@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 25/10/2017 4:08:05 PM ******/
+/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 30/10/2017 2:32:06 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,9 +20,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[TaiKhoan](
-	[maNhanVien] [nvarchar](10) NULL,
-	[tenDangNhap] [nvarchar](50) NULL,
-	[matKhau] [nvarchar](128) NULL
+	[MaNhanVien] [nvarchar](10) NOT NULL,
+	[TenDangNhap] [nvarchar](50) NULL,
+	[MatKhau] [nvarchar](128) NULL,
+ CONSTRAINT [PK_TaiKhoan] PRIMARY KEY CLUSTERED 
+(
+	[MaNhanVien] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 

@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[StudentInfo]    Script Date: 25/10/2017 4:05:42 PM ******/
+/****** Object:  Table [dbo].[SinhVien]    Script Date: 30/10/2017 2:31:45 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,19 +20,18 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[SinhVien](
-	[hoTen] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[MSSV] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NOT NULL,
-	[ngaySinh] [date] NULL,
-	[gioiTinh] [nvarchar](5) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[CMND] [nvarchar](12) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[soDienThoai] [nvarchar](12) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[lop] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[khoa] [nvarchar](30) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[queQuan] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[dienUuTien] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[diemRenLuyen] [int] NULL,
-	[anh] [varchar](50) NULL,
-	[email] [nvarchar](75) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
+	[HoTen] [nvarchar](50) NULL,
+	[MSSV] [nvarchar](10) NOT NULL,
+	[NgaySinh] [date] NULL,
+	[GioiTinh] [nvarchar](5) NULL,
+	[CMND] [nvarchar](12) NULL,
+	[SoDienThoai] [nvarchar](12) NULL,
+	[Lop] [nvarchar](10) NULL,
+	[Khoa] [nvarchar](30) NULL,
+	[QueQuan] [nvarchar](50) NULL,
+	[DienUuTien] [nvarchar](50) NULL,
+	[Anh] [varchar](50) NULL,
+	[Email] [nvarchar](75) NULL,
  CONSTRAINT [PK_StudentInfo] PRIMARY KEY CLUSTERED 
 (
 	[MSSV] ASC

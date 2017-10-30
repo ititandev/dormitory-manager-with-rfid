@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[Phong]    Script Date: 25/10/2017 4:02:25 PM ******/
+/****** Object:  Table [dbo].[Phong]    Script Date: 30/10/2017 2:30:34 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,13 +20,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Phong](
-	[soPhong] [nvarchar](9) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[khuNha] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[maNhanVien] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[soLuongChoPhep] [int] NULL,
-	[tinhTrang] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[idPhong] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[soLuongHienTai] [int] NULL
+	[SoPhong] [nvarchar](9) NULL,
+	[KhuNha] [nvarchar](10) NULL,
+	[MaNhanVien] [nvarchar](10) NULL,
+	[SoLuongChoPhep] [int] NULL,
+	[TinhTrang] [nvarchar](50) NULL,
+	[IDPhong] [nvarchar](10) NOT NULL,
+	[SoLuongHienTai] [int] NULL,
+ CONSTRAINT [PK_Phong] PRIMARY KEY CLUSTERED 
+(
+	[IDPhong] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 

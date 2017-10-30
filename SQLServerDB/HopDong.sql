@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[HopDong]    Script Date: 25/10/2017 1:43:02 AM ******/
+/****** Object:  Table [dbo].[HopDong]    Script Date: 30/10/2017 2:29:13 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,18 +20,22 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[HopDong](
-	[maSo] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL ,
-	[MSSV] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[maNhanVien] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[ngayLap] [date]  NULL,
-	[ngayBatDau] [date] NULL,
-	[ngayKetThuc] [date] NULL,
-	[tinhTrang] [int] NULL,
-	[rfid] [nvarchar](12) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[idPhong] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[giaTienTongCong] [int] NULL,
-	[giaTienDaNop] [int] NULL
+	[MaSo] [int] IDENTITY(1,1) NOT NULL,
+	[MSSV] [nvarchar](10) NULL,
+	[MaNhanVien] [nvarchar](10) NULL,
+	[NgayLap] [date] NULL,
+	[NgayBatDau] [date] NULL,
+	[NgayKetThuc] [date] NULL,
+	[TinhTrang] [char](1) NOT NULL,
+	[ChuThich] [nvarchar](50) NULL,
+	[RFID] [nvarchar](12) NULL,
+	[IDPhong] [nvarchar](10) NULL,
+	[GiaTienTongCong] [int] NULL,
+	[GiaTienDaNop] [int] NULL,
+ CONSTRAINT [PK_HopDong] PRIMARY KEY CLUSTERED 
+(
+	[MaSo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
 

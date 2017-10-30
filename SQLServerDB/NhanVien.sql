@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[NhanVien]    Script Date: 25/10/2017 2:48:12 PM ******/
+/****** Object:  Table [dbo].[NhanVien]    Script Date: 30/10/2017 2:30:14 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,18 +20,18 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[NhanVien](
-	[hoTen] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[maNhanVien] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AI NOT NULL,
-	[ngaySinh] [date] NULL,
-	[gioiTinh] [nvarchar](5) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[diaChi] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[queQuan] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[soDienThoai] [nvarchar](12) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[email] [nvarchar](75) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
-	[chucVu] [nvarchar](1) COLLATE SQL_Latin1_General_CP1_CI_AI NULL,
+	[HoTen] [nvarchar](50) NULL,
+	[MaNhanVien] [nvarchar](10) NOT NULL,
+	[NgaySinh] [date] NULL,
+	[GioiTinh] [nvarchar](5) NULL,
+	[DiaChi] [nvarchar](50) NULL,
+	[QueQuan] [nvarchar](50) NULL,
+	[SoDienThoai] [nvarchar](12) NULL,
+	[Email] [nvarchar](75) NULL,
+	[ChucVu] [nvarchar](1) NULL,
  CONSTRAINT [PK_NhanVien] PRIMARY KEY CLUSTERED 
 (
-	[maNhanVien] ASC
+	[MaNhanVien] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
