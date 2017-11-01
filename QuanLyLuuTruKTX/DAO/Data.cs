@@ -8,20 +8,34 @@ using System.Data;
 
 namespace DAO
 {
-    class Data
+    public static class Data
     {
-        private static string connectString = DAO.Properties.Settings.Default.connectString;
         /// <summary>
         /// Thực thi query và lấy dữ liệu trả về dạng DataTable
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static DataTable ExecuteQuery(string query)
+        public static DataTable ExecuteQuery(string query, object[] param = null)
         {
             try
             {
-                SqlConnection con = new SqlConnection(connectString);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, con);
+                SqlConnection con = new SqlConnection(ConnectString);
+                SqlCommand sqlCommand = new SqlCommand(query, con);
+                if (param != null)
+                {
+                    string[] temp = query.Split(' ');
+                    List<string> listParam = new List<string>();
+                    foreach (string item in temp)
+                    {
+                        if (item[0] == '@')
+                            listParam.Add(item);
+                    }
+                    for (int i = 0; i < param.Length; i++)
+                    {
+                        sqlCommand.Parameters.AddWithValue(listParam[i], param[i]);
+                    }
+                }
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dt = new DataTable();
                 sqlDataAdapter.Fill(dt);
                 return dt;
@@ -40,7 +54,7 @@ namespace DAO
         {
             try
             {
-                SqlConnection con = new SqlConnection(connectString);
+                SqlConnection con = new SqlConnection(ConnectString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
@@ -55,6 +69,7 @@ namespace DAO
         }
         /// <summary>
         /// Thực thi query và lấy dữ liệu trả về dạng SqlDataReader
+        /// Sử dụng phương thức Reader() khi sử dụng
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -62,7 +77,7 @@ namespace DAO
         {
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(connectString);
+                SqlConnection sqlConnection = new SqlConnection(ConnectString);
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 SqlDataReader reader = sqlCommand.ExecuteReader();

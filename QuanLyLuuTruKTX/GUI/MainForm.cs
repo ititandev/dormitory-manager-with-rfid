@@ -13,6 +13,7 @@ namespace GUI
     public partial class MainForm : Form
     {
         static HopDong hopDongForm = new HopDong();
+        static SinhVien sinhVienForm = new SinhVien();
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +24,13 @@ namespace GUI
             hopDongForm.MdiParent = this;
             hopDongForm.Show();
             hopDongForm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sinhVienForm.MdiParent = this;
+            sinhVienForm.Show();
+            sinhVienForm.WindowState = FormWindowState.Maximized;
         }
     }
 }
