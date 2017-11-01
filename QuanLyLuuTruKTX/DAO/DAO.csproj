@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DangNhapDAO.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="DiemRenLuyenDAO.cs" />
     <Compile Include="DotDienNuocDAO.cs" />
     <Compile Include="HoaDonDienNuocDAO.cs" />
