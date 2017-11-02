@@ -16,5 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void SinhVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.sinhVienForm = null;
+        }
     }
 }

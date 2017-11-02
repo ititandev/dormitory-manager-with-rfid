@@ -13,8 +13,8 @@ namespace GUI
 {
     public partial class DangNhap : Form
     {
+        public static string CurrentUser { get; set; }
         private DangNhapBUS dangNhapBUS = new DangNhapBUS();
-
         public DangNhap()
         {
             InitializeComponent();
