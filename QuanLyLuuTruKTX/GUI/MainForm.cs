@@ -14,6 +14,7 @@ namespace GUI
     {
         static HopDong hopDongForm = new HopDong();
         static SinhVien sinhVienForm = new SinhVien();
+        static Phong phongForm = new Phong();
         public MainForm()
         {
             InitializeComponent();
@@ -31,6 +32,15 @@ namespace GUI
             sinhVienForm.MdiParent = this;
             sinhVienForm.Show();
             sinhVienForm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnPhong_Click(object sender, EventArgs e)
+        {
+            if (phongForm.Visible) return;
+            phongForm = new Phong();
+            phongForm.MdiParent = this;
+            phongForm.Show();
+            phongForm.WindowState = FormWindowState.Maximized;
         }
     }
 }

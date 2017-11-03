@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnectString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=ITITAN-LAP\SQLEXPRESS01;Initial Catalog=DormitoryDB;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=PC-HUYNH;Initial Catalog=DormitoryDB;Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

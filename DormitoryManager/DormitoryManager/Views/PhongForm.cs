@@ -23,5 +23,10 @@ namespace DormitoryManager
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
         }
+
+        private void PhongForm_Load(object sender, EventArgs e)
+        {
+            Global.FillDataToGrid("SELECT * FROM Phong", dgvPhong);
+        }
     }
 }
