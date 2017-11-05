@@ -17,9 +17,10 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void SinhVien_FormClosing(object sender, FormClosingEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            MainForm.sinhVienForm = null;
+            var form = new DotDienNuoc();
+            form.Show();
         }
     }
 }

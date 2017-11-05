@@ -13,20 +13,16 @@ namespace GUI
     public partial class MainForm : Form
     {
         public static Phong phongForm = new Phong();
-        public static HopDong hopDongForm;
+        public static HopDong hopDongForm = new HopDong();;
         public static SinhVien sinhVienForm = new SinhVien();
         public static DangNhap dangNhapForm = new DangNhap();
         public MainForm()
         {
             InitializeComponent();
-            button1_Click(null, null);
-            dangNhapForm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (hopDongForm == null)
-                hopDongForm = new HopDong();
             hopDongForm.MdiParent = this;
             hopDongForm.Show();
             hopDongForm.WindowState = FormWindowState.Maximized;
@@ -34,11 +30,18 @@ namespace GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (sinhVienForm == null)
-                sinhVienForm = new SinhVien();
-            sinhVienForm.MdiParent = this;
-            sinhVienForm.Show();
-            sinhVienForm.WindowState = FormWindowState.Maximized;
+            var obj = new SinhVienView();
+            obj.MdiParent = this;
+            obj.Show();
+            obj.WindowState = FormWindowState.Maximized;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var obj = new DienNuoc();
+            obj.MdiParent = this;
+            obj.Show();
+            obj.WindowState = FormWindowState.Maximized;
         }
 
         private void btnPhong_Click(object sender, EventArgs e)

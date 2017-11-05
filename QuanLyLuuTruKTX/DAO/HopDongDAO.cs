@@ -12,6 +12,7 @@ namespace DAO
     {
         public static DataTable ViewAll()
         {
+            
             return Data.ExecuteQuery("SELECT * FROM HopDong");
         }
     }

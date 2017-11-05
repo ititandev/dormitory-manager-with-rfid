@@ -34,5 +34,16 @@ namespace DAO.Properties {
                 this["connectString"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=desktop-kf97ka4\\sqlexpress;Initial Catalog=DormitoryDB;Integrated Sec" +
+            "urity=True")]
+        public string DormitoryDBConnectionString {
+            get {
+                return ((string)(this["DormitoryDBConnectionString"]));
+            }
+        }
     }
 }
