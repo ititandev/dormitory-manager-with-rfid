@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using DAO;
+using DTO;
 
 namespace BUS
 {
@@ -23,6 +24,31 @@ namespace BUS
             dt.Columns[5].ColumnName = "Mã phòng";
             dt.Columns[6].ColumnName = "Số lượng hiện tại";
             dgv.DataSource = dt;
+        }
+
+        public void Them(PhongDTO phongDTO)
+        {
+            phongDAO.Them(phongDTO);
+        }
+
+        public void Sua(PhongDTO phongDTO)
+        {
+            phongDAO.Sua(phongDTO);
+        }
+
+        //public void Xoa(PhongDTO phongDTO)
+        //{
+        //    PhongDAO.Xoa(phongDTO);
+        //}
+
+        public void TimKiem(DataGridView dgv, string searchText)
+        {
+            dgv.DataSource = phongDAO.TimKiem(searchText);
+        }
+
+        public void TimKiem(DataGridView dgv, PhongDTO obj)
+        {
+            dgv.DataSource = phongDAO.TimKiem(obj);
         }
     }
 }
