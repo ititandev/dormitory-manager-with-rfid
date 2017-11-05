@@ -13,7 +13,7 @@ namespace GUI
     public partial class MainForm : Form
     {
         public static Phong phongForm = new Phong();
-        public static HopDong hopDongForm = new HopDong();
+        public static HopDong hopDongForm = new HopDong();;
         public static SinhVien sinhVienForm = new SinhVien();
         public static DangNhap dangNhapForm = new DangNhap();
         public MainForm()

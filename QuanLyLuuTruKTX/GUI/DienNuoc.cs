@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
-
+using static BUS.HoaDonDienNuocBUS;
 namespace GUI
 {
     public partial class DienNuoc : Form
@@ -16,8 +16,8 @@ namespace GUI
         public DienNuoc()
         {
             InitializeComponent();
-            cbFilter.Items.Add(HoaDonDienNuocBUS.MaDot);
-            cbFilter.SelectedItem=(HoaDonDienNuocBUS.MaDot);
+            cbFilter.Items.Add(MaDot);
+            cbFilter.SelectedItem=(MaDot);
         }
 
         private void DienNuoc_Load(object sender, EventArgs e)
@@ -39,12 +39,12 @@ namespace GUI
                     DataTable dt = (dataGridView1.DataSource as DataTable);
                     if (dt != null)
                     {
-                        if (filter == HoaDonDienNuocBUS.MaDot)
+                        if (filter == MaDot)
                         {
-                            dt.DefaultView.RowFilter = "[{filter}]={value}";
+                            dt.DefaultView.RowFilter = $"[{filter}]={value}";
                         }
                         else
-                            dt.DefaultView.RowFilter = "[{filter}] LIKE '%{value}%'";
+                            dt.DefaultView.RowFilter = $"[{filter}] LIKE '%{value}%'";
                     }
                     
                 }

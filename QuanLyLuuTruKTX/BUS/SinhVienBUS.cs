@@ -45,21 +45,21 @@ namespace BUS
         }
         public static void updateSinhVien(SinhVienDTO sv)
         {
-            string query="UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', MSSV = \'{sv.MSSV}\' , NgaySinh = \'{sv.NgaySinh}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\' WHERE MSSV={sv.MSSV}";
+            string query=($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', MSSV = \'{sv.MSSV}\' , NgaySinh = \'{sv.NgaySinh}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\' WHERE MSSV={sv.MSSV}");
             Data.ExecuteNonQuery(query);
         }
         public static void deleteSinhVien(string key)
         {
-            string query=("DELETE FROM SinhVien WHERE MSSV={key}");
+            string query=($"DELETE FROM SinhVien WHERE MSSV={key}");
             Data.ExecuteNonQuery(query);
-            query= ("DELETE FROM DiemRenLuyen WHERE MSSV={key}");
+            query= ($"DELETE FROM DiemRenLuyen WHERE MSSV={key}");
             Data.ExecuteNonQuery(query);
         }
         public static void addSinhVien(SinhVienDTO sv)
         {
-            string query = "INSERT INTO SinhVien(MSSV,HoTen,NgaySinh,GioiTinh,CMND,SoDienThoai,Lop,Khoa,QueQuan,DienUuTien,Anh,Email) VALUES('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh}',N'{sv.GioiTinh}','{sv.CMND}','{sv.SoDienThoai}','{sv.Lop}','{sv.Khoa}',N'{sv.QueQuan}',N'{sv.DienUuTien}','{sv.Anh}','{sv.Email}')";
+            string query = $"INSERT INTO SinhVien(MSSV,HoTen,NgaySinh,GioiTinh,CMND,SoDienThoai,Lop,Khoa,QueQuan,DienUuTien,Anh,Email) VALUES('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh}',N'{sv.GioiTinh}','{sv.CMND}','{sv.SoDienThoai}','{sv.Lop}','{sv.Khoa}',N'{sv.QueQuan}',N'{sv.DienUuTien}','{sv.Anh}','{sv.Email}')";
             Data.ExecuteNonQuery(query);
-            query = "INSERT INTO DiemRenLuyen(MSSV,YThucCaNhan,KiemTraPhong,SinhHoat,ThamGiaKhac,CTXH,DiemThuongPhat,TongDiem) VALUES({sv.MSSV},0,0,0,0,0,0,0)";
+            query = $"INSERT INTO DiemRenLuyen(MSSV,YThucCaNhan,KiemTraPhong,SinhHoat,ThamGiaKhac,CTXH,DiemThuongPhat,TongDiem) VALUES({sv.MSSV},0,0,0,0,0,0,0)";
             Data.ExecuteNonQuery(query);
         }
     }

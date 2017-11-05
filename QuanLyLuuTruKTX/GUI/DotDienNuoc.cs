@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BUS;
 using DAO;
 using DTO;
-
+using static BUS.DotDienNuocBUS;
 namespace GUI
 {
     public partial class DotDienNuoc : Form
@@ -54,7 +54,7 @@ namespace GUI
                 dn.MaDot = int.Parse(txtMaDot.Text);
                 dn.NgayBatDau = dateStart.Value;
                 dn.NgayKetThuc = dateEnd.Value;
-                DotDienNuocBUS.CapNhatDotDienNuoc(dn);
+                CapNhatDotDienNuoc(dn);
                 dataGridView1.DataSource = DotDienNuocBUS.viewDotDienNuoc();
                 dataGridView1.Refresh();
                 dataGridView1.Update();
@@ -70,9 +70,9 @@ namespace GUI
             {
                 
                 DotDienNuocDTO dn = new DotDienNuocDTO();
-                txtMaDot.Text = (dataGridView1.Rows[0].Cells[DotDienNuocBUS.MaDot].Value.ToString());
-                dateStart.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[DotDienNuocBUS.NgayBatDau].Value.ToString());
-                dateEnd.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[DotDienNuocBUS.NgayKetThuc].Value.ToString());
+                txtMaDot.Text = (dataGridView1.Rows[0].Cells[MaDot].Value.ToString());
+                dateStart.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[NgayBatDau].Value.ToString());
+                dateEnd.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[NgayKetThuc].Value.ToString());
             }
         }
 
@@ -80,7 +80,7 @@ namespace GUI
         {
             if(dataGridView1.SelectedRows.Count>0)
             {
-                int madot = int.Parse(dataGridView1.Rows[0].Cells[DotDienNuocBUS.MaDot].ToString());
+                int madot = int.Parse(dataGridView1.Rows[0].Cells[MaDot].ToString());
                 DotDienNuocBUS.XoaDotDienNuoc(madot);
             }
         }
