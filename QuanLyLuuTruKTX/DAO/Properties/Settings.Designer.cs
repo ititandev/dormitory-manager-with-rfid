@@ -25,7 +25,7 @@ namespace DAO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ITITAN-LAP\\SQLEXPRESS01;Initial Catalog=DormitoryDB;Integrated Securi" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=desktop-kf97ka4\\sqlexpress;Initial Catalog=DormitoryDB;Integrated Securi" +
             "ty=True")]
         public string connectString {
             get {
@@ -33,6 +33,17 @@ namespace DAO.Properties {
             }
             set {
                 this["connectString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=desktop-kf97ka4\\sqlexpress;Initial Catalog=DormitoryDB;Integrated Sec" +
+            "urity=True")]
+        public string DormitoryDBConnectionString {
+            get {
+                return ((string)(this["DormitoryDBConnectionString"]));
             }
         }
     }

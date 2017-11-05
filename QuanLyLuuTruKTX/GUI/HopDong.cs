@@ -21,12 +21,7 @@ namespace GUI
 
         private void HopDong_Load(object sender, EventArgs e)
         {
-            HopDongBUS.ViewAll(dgvHopDong);
-        }
-
-        private void HopDong_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            MainForm.hopDongForm = null;
+            HopDongBUS.ViewAll(dataGridView1);
         }
     }
 }

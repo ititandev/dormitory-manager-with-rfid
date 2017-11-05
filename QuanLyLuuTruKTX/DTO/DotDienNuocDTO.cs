@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DotDienNuocDTO
+    public class DotDienNuocDTO
     {
         public int MaDot { get; set; }
         public DateTime NgayBatDau { get; set; }
         public DateTime NgayKetThuc { get; set; }
+        public int DonGiaDien { get; set; }
+        public int DonGiaNuoc { get; set; }
     }
 }

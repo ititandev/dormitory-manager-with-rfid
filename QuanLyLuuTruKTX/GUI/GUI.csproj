@@ -57,11 +57,17 @@
     <Compile Include="DiemRenLuyen.Designer.cs">
       <DependentUpon>DiemRenLuyen.cs</DependentUpon>
     </Compile>
-    <Compile Include="HoaDonDienNuoc.cs">
+    <Compile Include="DienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HoaDonDienNuoc.Designer.cs">
-      <DependentUpon>HoaDonDienNuoc.cs</DependentUpon>
+    <Compile Include="DienNuoc.Designer.cs">
+      <DependentUpon>DienNuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotDienNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DotDienNuoc.Designer.cs">
+      <DependentUpon>DotDienNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="HopDong.cs">
       <SubType>Form</SubType>
@@ -95,6 +101,24 @@
     <Compile Include="SinhVien.Designer.cs">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="SinhVienView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SinhVienView.Designer.cs">
+      <DependentUpon>SinhVienView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSinhVien.Designer.cs">
+      <DependentUpon>UpdateSinhVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DienNuoc.resx">
+      <DependentUpon>DienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotDienNuoc.resx">
+      <DependentUpon>DotDienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HopDong.resx">
       <DependentUpon>HopDong.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +138,12 @@
     <EmbeddedResource Include="SinhVien.resx">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SinhVienView.resx">
+      <DependentUpon>SinhVienView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSinhVien.resx">
+      <DependentUpon>UpdateSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,6 +161,10 @@
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{e7e15da4-ca73-4dae-ad3d-2da07d58edb1}</Project>
       <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{48C447BE-91C2-4695-8ECD-C5CD814DE6F4}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{58d7268a-4946-4d5f-aed1-7339ef8b7611}</Project>

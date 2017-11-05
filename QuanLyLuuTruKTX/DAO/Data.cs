@@ -15,7 +15,7 @@ namespace DAO
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static DataTable ExecuteQuery(string query, object[] param = null)
+        public static DataTable ExecuteQuery(string query, object[] param=null)
         {
             try
             {

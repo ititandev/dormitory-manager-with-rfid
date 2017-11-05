@@ -51,6 +51,11 @@
     <Compile Include="DangNhapDAO.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="DiemRenLuyenDAO.cs" />
+    <Compile Include="DormitoryDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DormitoryDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DotDienNuocDAO.cs" />
     <Compile Include="HoaDonDienNuocDAO.cs" />
     <Compile Include="HopDongDAO.cs" />
@@ -68,6 +73,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DormitoryDBDataSet.xsc">
+      <DependentUpon>DormitoryDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DormitoryDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DormitoryDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DormitoryDBDataSet.xss">
+      <DependentUpon>DormitoryDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
