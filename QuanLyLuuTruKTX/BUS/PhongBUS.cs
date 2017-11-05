@@ -16,6 +16,11 @@ namespace BUS
         public static void ViewAll(DataGridView dgv)
         {
             DataTable dt = PhongDAO.ViewAll();
+            SetTitleColumn(dt);
+            dgv.DataSource = dt;
+        }
+
+        public static void SetTitleColumn(DataTable dt) {
             dt.Columns[0].ColumnName = "Số phòng";
             dt.Columns[1].ColumnName = "Khu nhà";
             dt.Columns[2].ColumnName = "Mã nhân viên";
@@ -23,7 +28,6 @@ namespace BUS
             dt.Columns[4].ColumnName = "Tình trạng";
             dt.Columns[5].ColumnName = "Mã phòng";
             dt.Columns[6].ColumnName = "Số lượng hiện tại";
-            dgv.DataSource = dt;
         }
 
         public void Them(PhongDTO phongDTO)
@@ -36,19 +40,18 @@ namespace BUS
             phongDAO.Sua(phongDTO);
         }
 
-        //public void Xoa(PhongDTO phongDTO)
-        //{
-        //    PhongDAO.Xoa(phongDTO);
-        //}
-
         public void TimKiem(DataGridView dgv, string searchText)
         {
-            dgv.DataSource = phongDAO.TimKiem(searchText);
+            DataTable dt = phongDAO.TimKiem(searchText);
+            SetTitleColumn(dt);
+            dgv.DataSource = dt;
         }
 
         public void TimKiem(DataGridView dgv, PhongDTO obj)
         {
-            dgv.DataSource = phongDAO.TimKiem(obj);
+            DataTable dt = phongDAO.TimKiem(obj);
+            SetTitleColumn(dt);
+            dgv.DataSource = dt;
         }
     }
 }

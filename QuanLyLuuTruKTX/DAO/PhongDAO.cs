@@ -41,12 +41,6 @@ namespace DAO
             Data.ExecuteNonQuery(str);
         }
 
-        //public void Xoa(PhongDTO phongDTO)
-        //{
-        //    string str = "Delete Phong where MaPhong = '" + phongDTO.MaPhong + "'";
-        //    Data.ExecuteNonQuery(str);
-        //}
-
         public DataTable TimKiem(string searchText)
         {
             string SoPhong = " SoPhong LIKE '%" + searchText + "%' ";
