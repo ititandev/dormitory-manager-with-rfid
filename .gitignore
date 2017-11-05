@@ -603,3 +603,7 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+QuanLyLuuTruKTX/GUI/MainForm_REMOTE_9108.cs
+QuanLyLuuTruKTX/GUI/MainForm_LOCAL_9108.cs
+QuanLyLuuTruKTX/GUI/MainForm_BASE_9108.cs
+QuanLyLuuTruKTX/GUI/MainForm_BACKUP_9108.cs
