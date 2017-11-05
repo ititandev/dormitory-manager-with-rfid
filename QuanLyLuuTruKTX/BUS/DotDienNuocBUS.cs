@@ -29,17 +29,17 @@ namespace BUS
         }
         public static void ThemDotDienNuoc(DotDienNuocDTO dn)
         {
-            string query = $"INSERT INTO DotDienNuoc( NgayBatDau, NgayKetThuc, DonGiaDien,DonGiaNuoc) VALUES('{dn.NgayBatDau.ToString()}','{dn.NgayKetThuc.ToString()}','{dn.DonGiaDien}','{dn.DonGiaNuoc}')";
+            string query = "INSERT INTO DotDienNuoc( NgayBatDau, NgayKetThuc, DonGiaDien,DonGiaNuoc) VALUES('{dn.NgayBatDau.ToString()}','{dn.NgayKetThuc.ToString()}','{dn.DonGiaDien}','{dn.DonGiaNuoc}')";
             Data.ExecuteNonQuery(query);
         }
         public static void XoaDotDienNuoc(int MaDot)
         {
-            string query = $"DELETE FROM DotDienNuoc WHERE MaDot={MaDot}";
+            string query = "DELETE FROM DotDienNuoc WHERE MaDot={MaDot}";
             Data.ExecuteNonQuery(query);
         }
         public static void CapNhatDotDienNuoc(DotDienNuocDTO dn)
         {
-            string query = $"UPDATE DotDienNuoc SET MaDot='{dn.MaDot}', NgayBatDau='{dn.NgayBatDau.ToString()}',NgayKetThuc='{dn.NgayKetThuc.ToString()}'";
+            string query = "UPDATE DotDienNuoc SET MaDot='{dn.MaDot}', NgayBatDau='{dn.NgayBatDau.ToString()}',NgayKetThuc='{dn.NgayKetThuc.ToString()}'";
             Data.ExecuteNonQuery(query);
         }
     }

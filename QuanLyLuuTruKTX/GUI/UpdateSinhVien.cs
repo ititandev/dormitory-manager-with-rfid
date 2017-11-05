@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BUS.SinhVienBUS;
 using DTO;
 using BUS;
+
 namespace GUI
 {
     public partial class UpdateSinhVien : Form
@@ -20,21 +20,21 @@ namespace GUI
         {
             
             InitializeComponent();
-            txtCMND.Text = dic[CMND];
-            txtDT.Text = dic[DienThoai];
-            txtEmail.Text = dic[Email];
-            txtKhoa.Text = dic[Khoa];
-            txtLop.Text = dic[Lop];
-            txtMaSo.Text = dic[MaSo];
-            txtQue.Text = dic[Que];
-            txtTen.Text = dic[HoTen];
-            txtDRL.Text = dic[TongDiem];
-            txtUutien.Text = dic[DienUuTien];
-            dateNgaySinh.Value = DateTime.Parse(dic[NgaySinh]);
+            txtCMND.Text = dic[SinhVienBUS.CMND];
+            txtDT.Text = dic[SinhVienBUS.DienThoai];
+            txtEmail.Text = dic[SinhVienBUS.Email];
+            txtKhoa.Text = dic[SinhVienBUS.Khoa];
+            txtLop.Text = dic[SinhVienBUS.Lop];
+            txtMaSo.Text = dic[SinhVienBUS.MaSo];
+            txtQue.Text = dic[SinhVienBUS.Que];
+            txtTen.Text = dic[SinhVienBUS.HoTen];
+            txtDRL.Text = dic[SinhVienBUS.TongDiem];
+            txtUutien.Text = dic[SinhVienBUS.DienUuTien];
+            dateNgaySinh.Value = DateTime.Parse(dic[SinhVienBUS.NgaySinh]);
             cbGioiTinh.Items.Add("Nam");
             cbGioiTinh.Items.Add("Nữ");
             Updated = false;
-            cbGioiTinh.SelectedItem = dic[GioiTinh];
+            cbGioiTinh.SelectedItem = dic[SinhVienBUS.GioiTinh];
             
         }
         public UpdateSinhVien()
