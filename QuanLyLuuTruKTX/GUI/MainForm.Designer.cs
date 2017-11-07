@@ -33,6 +33,9 @@
             this.btnSinhVien = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
             this.btnPhong = new System.Windows.Forms.Button();
+            this.btnDienNuoc = new System.Windows.Forms.Button();
+            this.btnDiemRenLuyen = new System.Windows.Forms.Button();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,7 +96,6 @@
             // 
             this.btnPhong.AutoSize = true;
             this.btnPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhong.Image = global::GUI.Properties.Resources.staff;
             this.btnPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhong.Location = new System.Drawing.Point(354, 0);
             this.btnPhong.Name = "btnPhong";
@@ -104,11 +106,57 @@
             this.btnPhong.UseVisualStyleBackColor = true;
             this.btnPhong.Click += new System.EventHandler(this.btnPhong_Click);
             // 
+            // btnDienNuoc
+            // 
+            this.btnDienNuoc.AutoSize = true;
+            this.btnDienNuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDienNuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDienNuoc.Location = new System.Drawing.Point(472, 0);
+            this.btnDienNuoc.Name = "btnDienNuoc";
+            this.btnDienNuoc.Size = new System.Drawing.Size(112, 48);
+            this.btnDienNuoc.TabIndex = 12;
+            this.btnDienNuoc.Text = "Điện nước";
+            this.btnDienNuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDienNuoc.UseVisualStyleBackColor = true;
+            this.btnDienNuoc.Click += new System.EventHandler(this.btnDienNuoc_Click);
+            // 
+            // btnDiemRenLuyen
+            // 
+            this.btnDiemRenLuyen.AutoSize = true;
+            this.btnDiemRenLuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiemRenLuyen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDiemRenLuyen.Location = new System.Drawing.Point(590, 0);
+            this.btnDiemRenLuyen.Name = "btnDiemRenLuyen";
+            this.btnDiemRenLuyen.Size = new System.Drawing.Size(120, 48);
+            this.btnDiemRenLuyen.TabIndex = 13;
+            this.btnDiemRenLuyen.Text = "Điểm rèn luyện";
+            this.btnDiemRenLuyen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDiemRenLuyen.UseVisualStyleBackColor = true;
+            this.btnDiemRenLuyen.Click += new System.EventHandler(this.btnDiemRenLuyen_Click);
+            // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDangNhap.AutoSize = true;
+            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDangNhap.Location = new System.Drawing.Point(852, 0);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(120, 48);
+            this.btnDangNhap.TabIndex = 14;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 691);
+            this.Controls.Add(this.btnDangNhap);
+            this.Controls.Add(this.btnDiemRenLuyen);
+            this.Controls.Add(this.btnDienNuoc);
             this.Controls.Add(this.btnPhong);
             this.Controls.Add(this.btnNhanVien);
             this.Controls.Add(this.btnSinhVien);
@@ -132,5 +180,8 @@
         private System.Windows.Forms.Button btnSinhVien;
         private System.Windows.Forms.Button btnNhanVien;
         private System.Windows.Forms.Button btnPhong;
+        private System.Windows.Forms.Button btnDienNuoc;
+        private System.Windows.Forms.Button btnDiemRenLuyen;
+        private System.Windows.Forms.Button btnDangNhap;
     }
 }

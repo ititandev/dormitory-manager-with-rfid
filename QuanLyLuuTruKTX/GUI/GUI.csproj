@@ -101,12 +101,6 @@
     <Compile Include="SinhVien.Designer.cs">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="SinhVienView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SinhVienView.Designer.cs">
-      <DependentUpon>SinhVienView.cs</DependentUpon>
-    </Compile>
     <Compile Include="UpdateSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,9 +129,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SinhVien.resx">
-      <DependentUpon>SinhVien.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

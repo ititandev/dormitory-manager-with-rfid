@@ -20,6 +20,7 @@ namespace DTO
         public string DienUuTien { get; set; }
         public string Anh { get; set; }
         public string Email { get; set; }
+        public string RFID { get; set; }
     }
 }
 
