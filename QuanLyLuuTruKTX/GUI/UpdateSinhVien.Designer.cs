@@ -49,12 +49,12 @@
             this.txtTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
+            this.txtDRL = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dateNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtDRL = new System.Windows.Forms.TextBox();
+            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -252,9 +252,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbGioiTinh);
             this.panel1.Controls.Add(this.txtDRL);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.cbGioiTinh);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.dateNgaySinh);
             this.panel1.Controls.Add(this.txtEmail);
@@ -283,13 +283,22 @@
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // cbGioiTinh
+            // txtDRL
             // 
-            this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Location = new System.Drawing.Point(383, 40);
-            this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(132, 21);
-            this.cbGioiTinh.TabIndex = 6;
+            this.txtDRL.Location = new System.Drawing.Point(424, 75);
+            this.txtDRL.Name = "txtDRL";
+            this.txtDRL.ReadOnly = true;
+            this.txtDRL.Size = new System.Drawing.Size(91, 20);
+            this.txtDRL.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(325, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Điểm rèn luyện:";
             // 
             // pictureBox1
             // 
@@ -318,22 +327,13 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // label12
+            // cbGioiTinh
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(325, 75);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 13);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Điểm rèn luyện:";
-            // 
-            // txtDRL
-            // 
-            this.txtDRL.Location = new System.Drawing.Point(424, 75);
-            this.txtDRL.Name = "txtDRL";
-            this.txtDRL.ReadOnly = true;
-            this.txtDRL.Size = new System.Drawing.Size(91, 20);
-            this.txtDRL.TabIndex = 8;
+            this.cbGioiTinh.FormattingEnabled = true;
+            this.cbGioiTinh.Location = new System.Drawing.Point(383, 34);
+            this.cbGioiTinh.Name = "cbGioiTinh";
+            this.cbGioiTinh.Size = new System.Drawing.Size(121, 21);
+            this.cbGioiTinh.TabIndex = 9;
             // 
             // UpdateSinhVien
             // 
@@ -375,10 +375,10 @@
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cbGioiTinh;
         private System.Windows.Forms.DateTimePicker dateNgaySinh;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtDRL;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbGioiTinh;
     }
 }

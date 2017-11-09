@@ -67,6 +67,8 @@ namespace GUI
                 txtGiaTienTongCong.Text = hopDongDTO.GiaTienTongCong.ToString();
                 txtGiaTienDaNop.Text = hopDongDTO.GiaTienDaNop.ToString();
                 txtChuThich.Text = hopDongDTO.ChuThich;
+
+
             }
         }
         private void HopDong_Resize(object sender, EventArgs e)
@@ -79,7 +81,28 @@ namespace GUI
 
         private void txtMSSV_TextChanged(object sender, EventArgs e)
         {
-
+            SinhVienDTO sinhVienDTO = SinhVienBUS.GetSinhVienDTO(txtMSSV.Text);
+            if (sinhVienDTO != null)
+            {
+                lblHoTen.Text = sinhVienDTO.HoTen;
+                lblNgaySinh.Text = sinhVienDTO.NgaySinh.ToString("dd/MM/yyyy");
+                lblCMND.Text = sinhVienDTO.CMND;
+                lblSoDienThoai.Text = sinhVienDTO.SoDienThoai;
+                lblKhoa.Text = sinhVienDTO.Khoa;
+                lblQueQuan.Text = sinhVienDTO.QueQuan;
+                lblDienUuTien.Text = sinhVienDTO.DienUuTien;
+                lblEmail.Text = sinhVienDTO.Email;
+            }
+            if (CurrentMode == Mode.THEM)
+            {
+                if (!SinhVienBUS.KiemTraSV(txtMSSV.Text))
+                    lblNotFoundMSSV.Show();
+                else
+                    lblNotFoundMSSV.Hide();
+            }
+            else
+                lblNotFoundMSSV.Hide();
+            
         }
         private void btnDebug_Click(object sender, EventArgs e)
         {
@@ -153,7 +176,14 @@ namespace GUI
                 txtGiaTienTongCong.Enabled = true;
                 dtpNgayBatDau.Enabled = true;
                 dtpNgayKetThuc.Enabled = true;
+
+
+                txtChuThich.Text = "";
+                txtGiaTienDaNop.Text = "0";
+                txtGiaTienTongCong.Text = "0";
+                lblTinhTrang.Text = "Chưa tới thời hạn";
                 lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                lblNgayLap.Text = MainForm.NhanVienHienTai;
                 btnHopDong.Text = "Thêm hợp đồng";
                 btnHopDong.Show();
             }

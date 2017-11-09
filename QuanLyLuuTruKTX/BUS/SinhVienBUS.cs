@@ -62,5 +62,18 @@ namespace BUS
             query = $"INSERT INTO DiemRenLuyen(MSSV,YThucCaNhan,KiemTraPhong,SinhHoat,ThamGiaKhac,CTXH,DiemThuongPhat,TongDiem) VALUES({sv.MSSV},0,0,0,0,0,0,0)";
             Data.ExecuteNonQuery(query);
         }
+
+        public static bool KiemTraSV(string MSSV)
+        {
+            if (SinhVienDAO.KiemTraSV(MSSV) > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static SinhVienDTO GetSinhVienDTO(string MSSV)
+        {
+            return SinhVienDAO.GetSinhVienDTO(MSSV);
+        }
     }
 }

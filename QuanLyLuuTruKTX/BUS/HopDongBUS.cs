@@ -22,7 +22,7 @@ namespace BUS
         public static HopDongDTO ViewHopDong(string MaSo, out string tenNhanVien)
         {
             HopDongDTO hopDongDTO = HopDongDAO.GetHopDongDTO(MaSo);
-            tenNhanVien = "nhanvien1";
+            tenNhanVien = NhanVienDAO.GetHoTen(hopDongDTO.MaNhanVien);
             return hopDongDTO;
         }
         public static void AddHopDong(HopDongDTO hopDongDTO)

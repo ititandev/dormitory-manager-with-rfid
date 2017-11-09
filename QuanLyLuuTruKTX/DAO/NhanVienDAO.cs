@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 using DTO;
 
 namespace DAO
@@ -72,6 +73,15 @@ namespace DAO
             }
 
             return Data.ExecuteQuery(str);
+        }
+
+        public static string GetHoTen(string MaNhanVien)
+        {
+            SqlDataReader reader = Data.ExecuteReader("SELECT HoTen FROM NhanVien WHERE MaNhanVien = '" + MaNhanVien + "'");
+            if (reader.Read())
+                return Convert.ToString(reader[0]);
+            else
+                return String.Empty;
         }
     }
 }

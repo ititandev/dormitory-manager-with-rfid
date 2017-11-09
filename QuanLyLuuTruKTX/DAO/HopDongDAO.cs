@@ -13,26 +13,18 @@ namespace DAO
     {
         public static DataTable ViewAll()
         {
-            return Data.ExecuteQuery(@"SELECT [MaSo]
-                                          ,[MSSV]
-                                          ,[MaNhanVien]
-                                          ,[NgayLap]
-                                          ,[NgayBatDau]
-                                          ,[NgayKetThuc]
-                                          , case [TinhTrang]
-	                                      WHEN 0 THEN N'Chưa tới thời hạn'
-	                                      WHEN 1 THEN N'Trong thời hạn'
-	                                      WHEN 2 THEN N'Hết thời hạn'
-	                                      END AS [ThoiHan]
-                                          ,[IDPhong]
-                                          ,[GiaTienTongCong]
-                                          ,[GiaTienDaNop]
+            return Data.ExecuteQuery(@"SELECT [MaSo] ,[MSSV] ,[MaNhanVien] ,[NgayLap] ,[NgayBatDau] ,[NgayKetThuc],
+                                    case [TinhTrang]
+	                                    WHEN 0 THEN N'Chưa tới thời hạn'
+	                                    WHEN 1 THEN N'Trong thời hạn'
+	                                    WHEN 2 THEN N'Hết thời hạn'
+	                                END AS [ThoiHan], [IDPhong], [GiaTienTongCong], [GiaTienDaNop]
                                     FROM [dbo].[HopDong]");
         }
 
         public static HopDongDTO GetHopDongDTO(string MaSo)
         {
-            SqlDataReader reader = Data.ExecuteReader("SELECT * FROM HopDong WHERE MaSo = @MaSo",new string[]{ MaSo});
+            SqlDataReader reader = Data.ExecuteReader("SELECT * FROM HopDong WHERE MaSo = @MaSo", new string[] { MaSo });
             if (reader.Read())
             {
                 HopDongDTO hopDongDTO = new HopDongDTO();
@@ -47,7 +39,10 @@ namespace DAO
                 hopDongDTO.IDPhong = Convert.ToString(reader["IDPhong"]);
                 hopDongDTO.GiaTienTongCong = Convert.ToInt32(reader["GiaTienTongCong"]);
                 hopDongDTO.GiaTienDaNop = Convert.ToInt32(reader["GiaTienDaNop"]);
-                hopDongDTO.ChuThich = Convert.ToString(reader["ChuThich"]);
+                if (reader["ChuThich"] == null)
+                    hopDongDTO.ChuThich = String.Empty;
+                else
+                    hopDongDTO.ChuThich = Convert.ToString(reader["ChuThich"]);
                 return hopDongDTO;
             }
             else
@@ -60,22 +55,12 @@ namespace DAO
             object[] value = new object[] { hopDongDTO.MSSV, hopDongDTO.MaNhanVien, hopDongDTO.NgayLap.ToString("yyyy-MM-dd"),
                 hopDongDTO.NgayBatDau.ToString("yyyy-MM-dd"), hopDongDTO.NgayKetThuc.ToString("yyyy-MM-dd"),
                 hopDongDTO.IDPhong, hopDongDTO.GiaTienTongCong, hopDongDTO.GiaTienDaNop, hopDongDTO.ChuThich };
-            //string[] value = new string[] { "32233", "54534", "2017-03-01", "2017-03-01", "2017-03-01", "0", "52318", "fofd3", "4324", "3432", "343432" };
-            //int result =  Data.ExecuteNonQuery("INSERT INTO HopDong (MSSV, MaNhanVien, NgayLap, NgayBatDau, NgayKetThuc, TinhTrang, RFID, IDPhong, GiaTienTongCong, GiaTienDaNop, ChuThich) VALUES ( N@MSSV , N@MaNhanVien , @NgayLap , @NgayBatDau , @NgayKetThuc , @TinhTrang , N@RFID , N@IDPhong , @GiaTienTongCong , @GiaTienDaNop , @ChuThich )", param, value);
-            SqlCommand sqlCommand = new SqlCommand(
-                @"INSERT INTO [dbo].[HopDong]
-                   ([MSSV]
-                   ,[MaNhanVien]
-                   ,[NgayLap]
-                   ,[NgayBatDau]
-                   ,[NgayKetThuc]
-                   ,[TinhTrang]
-                   ,[IDPhong]
-                   ,[GiaTienTongCong]
-                   ,[GiaTienDaNop]
-                   ,[ChuThich])
-                VALUES
-                    ( @MSSV , @MaNhanVien , @NgayLap , @NgayBatDau , @NgayKetThuc , @TrangThai, @IDPhong , @GiaTienTongCong , @GiaTienDaNop , @ChuThich )");
+            SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[HopDong]
+                                                   ([MSSV], [MaNhanVien], [NgayLap], [NgayBatDau], [NgayKetThuc], [TinhTrang], [IDPhong]
+                                                   , [GiaTienTongCong], [GiaTienDaNop], [ChuThich]) 
+                                                    VALUES
+                                                    ( @MSSV , @MaNhanVien , @NgayLap , @NgayBatDau , @NgayKetThuc , @TrangThai, 
+                                                    @IDPhong , @GiaTienTongCong , @GiaTienDaNop , @ChuThich )");
             sqlCommand.Parameters.Add("@MSSV", SqlDbType.NVarChar).Value = hopDongDTO.MSSV;
             sqlCommand.Parameters.Add("@MaNhanVien", SqlDbType.NVarChar).Value = hopDongDTO.MaNhanVien;
             sqlCommand.Parameters.Add("@NgayLap", SqlDbType.Date).Value = hopDongDTO.NgayLap;

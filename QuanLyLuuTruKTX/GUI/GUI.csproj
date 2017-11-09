@@ -51,12 +51,6 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiemRenLuyen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DiemRenLuyen.Designer.cs">
-      <DependentUpon>DiemRenLuyen.cs</DependentUpon>
-    </Compile>
     <Compile Include="DienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +104,9 @@
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DienNuoc.resx">
+      <DependentUpon>DienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HopDong.resx">
       <DependentUpon>HopDong.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +126,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UpdateSinhVien.resx">
+      <DependentUpon>UpdateSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -157,6 +157,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\staff.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\electric.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Room-Key-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -37,7 +37,7 @@ namespace GUI
                 if (value != "")
                 {
                     DataTable dt = (dataGridView1.DataSource as DataTable);
-                    if (dt != null)
+                    if (dt.Rows.Count>0)
                     {
                         if (filter == MaDot)
                         {
