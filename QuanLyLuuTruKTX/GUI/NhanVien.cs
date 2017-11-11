@@ -256,5 +256,10 @@ namespace GUI
             txtSearchEmail.Text = "";
             txtSearchCV.Text = "";
         }
+
+        private void NhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.nhanVienForm = null;
+        }
     }
 }

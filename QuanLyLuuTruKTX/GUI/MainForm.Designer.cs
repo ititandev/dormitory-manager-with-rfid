@@ -29,23 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnPhong = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnDienNuoc = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
             this.btnSinhVien = new System.Windows.Forms.Button();
             this.btnHopDong = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MinimumSize = new System.Drawing.Size(0, 48);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(984, 48);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // btnPhong
             // 
@@ -53,7 +44,7 @@
             this.btnPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnPhong.Image")));
             this.btnPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPhong.Location = new System.Drawing.Point(354, 0);
+            this.btnPhong.Location = new System.Drawing.Point(236, 0);
             this.btnPhong.Name = "btnPhong";
             this.btnPhong.Size = new System.Drawing.Size(96, 48);
             this.btnPhong.TabIndex = 10;
@@ -68,7 +59,7 @@
             this.btnDangNhap.AutoSize = true;
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangNhap.Location = new System.Drawing.Point(852, 0);
+            this.btnDangNhap.Location = new System.Drawing.Point(818, 0);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(120, 48);
             this.btnDangNhap.TabIndex = 14;
@@ -83,7 +74,7 @@
             this.btnDienNuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDienNuoc.Image = global::GUI.Properties.Resources.electric1;
             this.btnDienNuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDienNuoc.Location = new System.Drawing.Point(456, 0);
+            this.btnDienNuoc.Location = new System.Drawing.Point(338, 0);
             this.btnDienNuoc.Name = "btnDienNuoc";
             this.btnDienNuoc.Size = new System.Drawing.Size(123, 48);
             this.btnDienNuoc.TabIndex = 12;
@@ -94,11 +85,12 @@
             // 
             // btnNhanVien
             // 
+            this.btnNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNhanVien.AutoSize = true;
             this.btnNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhanVien.Image = global::GUI.Properties.Resources.staff;
             this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNhanVien.Location = new System.Drawing.Point(236, 0);
+            this.btnNhanVien.Location = new System.Drawing.Point(700, 0);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(112, 48);
             this.btnNhanVien.TabIndex = 8;
@@ -137,6 +129,15 @@
             this.btnHopDong.UseVisualStyleBackColor = true;
             this.btnHopDong.Click += new System.EventHandler(this.btnHopDong_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.AutoSize = false;
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(984, 48);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,13 +162,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnSinhVien;
         private System.Windows.Forms.Button btnNhanVien;
         private System.Windows.Forms.Button btnPhong;
         private System.Windows.Forms.Button btnDienNuoc;
         private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

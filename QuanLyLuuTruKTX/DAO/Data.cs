@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 namespace DAO
 {
     public static class Data
@@ -147,6 +149,18 @@ namespace DAO
             }
 
         }
+        /// <summary>
+        /// Chuyển tiếng việt có dấu thành tiếng việt không dấu để tìm kiếm nâng cao ngay cả khi nhập không dấu
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        static public string ToTiengVietKhongDau(string str)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = str.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
         /// <summary>
         /// Get, Set ConnectString
         /// </summary>

@@ -95,6 +95,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "DienNuoc";
             this.Text = "DienNuoc";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DienNuoc_FormClosing);
             this.Load += new System.EventHandler(this.DienNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

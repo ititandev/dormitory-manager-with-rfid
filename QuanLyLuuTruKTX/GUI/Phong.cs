@@ -139,5 +139,10 @@ namespace GUI
             this.tbSearch.Text = "";
             PhongBUS.ViewAll(dgvPhong);
         }
+
+        private void Phong_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.phongForm = null;
+        }
     }
 }

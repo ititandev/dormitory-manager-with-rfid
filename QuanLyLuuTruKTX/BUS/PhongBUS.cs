@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using DAO;
 using DTO;
+using System.Data.SqlClient;
 
 namespace BUS
 {
@@ -53,6 +54,38 @@ namespace BUS
             DataTable dt = phongDAO.TimKiem(obj);
             SetTitleColumn(dt);
             dgv.DataSource = dt;
+        }
+
+        public static bool KiemTraPhong(string IDPhong)
+        {
+            if (PhongDAO.KiemTraPhong(IDPhong) == 1)
+                return true;
+            else
+                return false;
+        }
+
+        public static PhongDTO GetPhongDTO(string IDPhong)
+        {
+            SqlDataReader reader = PhongDAO.GetPhongDTO(IDPhong);
+            if (reader == null)
+                return null;
+            else
+            {
+                PhongDTO phongDTO = new PhongDTO();
+                phongDTO.SoPhong = Convert.ToString(reader["SoPhong"]);
+                phongDTO.KhuNha = Convert.ToString(reader["KhuNha"]);
+                phongDTO.MaNhanVien = Convert.ToString(reader["MaNhanVien"]);
+                phongDTO.SoLuongChoPhep = Convert.ToInt32(reader["SoLuongChoPhep"]);
+                phongDTO.TinhTrang = Convert.ToString(reader["TinhTrang"]);
+                phongDTO.IDPhong = Convert.ToString(reader["IDPhong"]);
+                phongDTO.SoLuongHienTai = Convert.ToInt32(reader["SoLuongHienTai"]);
+                return phongDTO;
+            }
+        }
+
+        public static void TimKiem()
+        {
+            throw new NotImplementedException();
         }
     }
 }

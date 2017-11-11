@@ -795,6 +795,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lý phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Phong_FormClosing);
             this.Load += new System.EventHandler(this.Phong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

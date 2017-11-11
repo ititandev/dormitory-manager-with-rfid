@@ -13,13 +13,41 @@ namespace DAO
     {
         public static DataTable ViewAll()
         {
-            return Data.ExecuteQuery(@"SELECT [MaSo] ,[MSSV] ,[MaNhanVien] ,[NgayLap] ,[NgayBatDau] ,[NgayKetThuc],
-                                    case [TinhTrang]
+            return Data.ExecuteQuery(@"SELECT MaSo ,MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
+                                    case TinhTrang
 	                                    WHEN 0 THEN N'Chưa tới thời hạn'
 	                                    WHEN 1 THEN N'Trong thời hạn'
 	                                    WHEN 2 THEN N'Hết thời hạn'
-	                                END AS [ThoiHan], [IDPhong], [GiaTienTongCong], [GiaTienDaNop]
-                                    FROM [dbo].[HopDong]");
+	                                END AS ThoiHan, IDPhong, GiaTienTongCong, GiaTienDaNop
+                                    FROM dbo.HopDong LEFT JOIN NhanVien ON 
+                                    HopDong.MaNhanVien = NhanVien.MaNhanVien");
+        }
+
+        public static DataTable TimKiem(DateTime NgayBatDau, DateTime NgayKetThuc, DateTime NgayLap)
+        {
+            
+            String filter = @"SELECT MaSo ,MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
+                                    case TinhTrang
+	                                    WHEN 0 THEN N'Chưa tới thời hạn'
+	                                    WHEN 1 THEN N'Trong thời hạn'
+	                                    WHEN 2 THEN N'Hết thời hạn'
+	                                END AS ThoiHan, IDPhong, GiaTienTongCong, GiaTienDaNop
+                                    FROM dbo.HopDong LEFT JOIN NhanVien ON 
+                                    HopDong.MaNhanVien = NhanVien.MaNhanVien";
+
+            if (NgayBatDau != null)
+            {
+                filter += " WHERE NgayBatDau >= @NgayBatDau AND NgayKetThuc <= @NgayKetThuc";
+                return Data.ExecuteQuery(filter, new object[] { NgayBatDau, NgayKetThuc });
+            }
+
+            else if (NgayLap != null)
+            {
+                filter += " WHERE NgayLap = @NgayLap";
+                return Data.ExecuteQuery(filter, new object[] { NgayLap });
+            }
+            else
+                return Data.ExecuteQuery(filter);
         }
 
         public static HopDongDTO GetHopDongDTO(string MaSo)

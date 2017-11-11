@@ -33,5 +33,10 @@ namespace GUI
                     MessageBox.Show("Bạn đăng nhập không thành công!", "Dang nhap");
             }
         }
+
+        private void DangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.dangNhapForm = null;
+        }
     }
 }

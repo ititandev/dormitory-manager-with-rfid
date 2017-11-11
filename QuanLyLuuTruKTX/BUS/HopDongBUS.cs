@@ -19,10 +19,9 @@ namespace BUS
             return HopDongDAO.ViewAll();
         }
 
-        public static HopDongDTO ViewHopDong(string MaSo, out string tenNhanVien)
+        public static HopDongDTO GetHopDongDTO(string MaSo)
         {
             HopDongDTO hopDongDTO = HopDongDAO.GetHopDongDTO(MaSo);
-            tenNhanVien = NhanVienDAO.GetHoTen(hopDongDTO.MaNhanVien);
             return hopDongDTO;
         }
         public static void AddHopDong(HopDongDTO hopDongDTO)
@@ -43,5 +42,46 @@ namespace BUS
             else
                 MessageBox.Show("Thêm thất bại", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        public static string TimKiem(ComboBox cboThoiHan)
+        {
+            if (cboThoiHan.Text == "Tất cả")
+                return "";
+            else
+                return $"[Thời hạn] LIKE '%{cboThoiHan.Text}%' ";
+        }
+
+        public static string TimKiem(RadioButton chxTheoTinhTrang, ComboBox cboTinhTrang, RadioButton chxTheoThoiHan,
+                                    DateTimePicker dtpNgayBatDauTimKiem, DateTimePicker dtpNgayKetThucTimKiem, RadioButton chxChuaDuTien, ComboBox cboTimKiemTheo, TextBox txtTimKiem, DateTimePicker dtpNgayLap)
+        {
+            string filter = String.Empty;
+            if (chxTheoTinhTrang.Checked)
+            {
+                if (cboTinhTrang.Text == "Tất cả")
+                    filter = "";
+                else
+                    filter = $"[Thời hạn] LIKE '%{cboTinhTrang.Text}%' ";
+            }
+            else if (chxTheoThoiHan.Checked)
+                filter = "[Ngày bắt đầu] >= '"
+                        + dtpNgayBatDauTimKiem.Value.ToString("d/M/yyyy")
+                        + "' AND [Ngày kết thúc] <= '"
+                        + dtpNgayKetThucTimKiem.Value.ToString("d/M/yyyy")
+                        + "' ";
+            else if (chxChuaDuTien.Checked)
+                filter = "[Đã nộp] < [Tổng cộng] ";
+
+
+            if (cboTimKiemTheo.Text != String.Empty && cboTimKiemTheo.Text != "Tất cả")
+            {
+                if (filter != String.Empty)
+                    filter += "AND ";
+                if (cboTimKiemTheo.Text == "Ngày lập")
+                    filter += $"[Ngày lập] = #{dtpNgayLap.Value.ToString("yyyy-M-d")}# ";
+                else
+                    filter += $" [{cboTimKiemTheo.Text}] LIKE '%{txtTimKiem.Text}%' ";
+            }
+            return filter;
+        }
     }
 }
+    

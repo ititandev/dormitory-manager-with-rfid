@@ -19,6 +19,7 @@ namespace GUI
             XEM, SUA, THEM
         }
         private static Mode CurrentMode { get; set; }
+        private DataTable dataTable;
         public HopDong()
         {
             InitializeComponent();
@@ -27,19 +28,21 @@ namespace GUI
         private void HopDong_Load(object sender, EventArgs e)
         {
             SetState(Mode.XEM);
-            DataTable dataTable = HopDongBUS.ViewAll(dgvHopDong);
+            dataTable = HopDongBUS.ViewAll(dgvHopDong);
 
             dataTable.Columns[0].ColumnName = "Mã số";
             dataTable.Columns[1].ColumnName = "MSSV";
-            dataTable.Columns[2].ColumnName = "Mã nhân viên";
+            dataTable.Columns[2].ColumnName = "Người lập";
             dataTable.Columns[3].ColumnName = "Ngày lập";
             dataTable.Columns[4].ColumnName = "Ngày bắt đầu";
             dataTable.Columns[5].ColumnName = "Ngày kết thúc";
-            dataTable.Columns[6].ColumnName = "Tình trạng";
-            dataTable.Columns[7].ColumnName = "Đã nộp";
-            dataTable.Columns[8].ColumnName = "Tổng cộng";
+            dataTable.Columns[6].ColumnName = "Thời hạn";
+            dataTable.Columns[7].ColumnName = "ID Phòng";
+            dataTable.Columns[8].ColumnName = "Đã nộp";
+            dataTable.Columns[9].ColumnName = "Tổng cộng";
             dgvHopDong.DataSource = dataTable;
             suaMode.Hide();
+            cboTinhTrang.SelectedIndex = 0;
             cboTimKiemTheo.SelectedIndex = 0;
         }
 
@@ -49,16 +52,14 @@ namespace GUI
         }
         private void dgvHopDong_SelectionChanged(object sender, EventArgs e)
         {
-            string tenNhanVien;
-            
             foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
             {
-                HopDongDTO hopDongDTO = HopDongBUS.ViewHopDong(row.Cells[0].Value.ToString(), out tenNhanVien);
+                HopDongDTO hopDongDTO = HopDongBUS.GetHopDongDTO(row.Cells[0].Value.ToString());
                 if (hopDongDTO == null)
                     return;
                 lblMaSo.Text = hopDongDTO.MaSo.ToString();
                 txtMSSV.Text = hopDongDTO.MSSV;
-                lblNguoiLap.Text = tenNhanVien;
+                lblNguoiLap.Text = row.Cells[2].Value.ToString();
                 lblNgayLap.Text = hopDongDTO.NgayLap.ToString("dd/MM/yyyy");
                 dtpNgayBatDau.Value = hopDongDTO.NgayBatDau;
                 dtpNgayKetThuc.Value = hopDongDTO.NgayKetThuc;
@@ -67,8 +68,6 @@ namespace GUI
                 txtGiaTienTongCong.Text = hopDongDTO.GiaTienTongCong.ToString();
                 txtGiaTienDaNop.Text = hopDongDTO.GiaTienDaNop.ToString();
                 txtChuThich.Text = hopDongDTO.ChuThich;
-
-
             }
         }
         private void HopDong_Resize(object sender, EventArgs e)
@@ -87,11 +86,24 @@ namespace GUI
                 lblHoTen.Text = sinhVienDTO.HoTen;
                 lblNgaySinh.Text = sinhVienDTO.NgaySinh.ToString("dd/MM/yyyy");
                 lblCMND.Text = sinhVienDTO.CMND;
+                lblGioiTinh.Text = sinhVienDTO.GioiTinh;
                 lblSoDienThoai.Text = sinhVienDTO.SoDienThoai;
                 lblKhoa.Text = sinhVienDTO.Khoa;
                 lblQueQuan.Text = sinhVienDTO.QueQuan;
                 lblDienUuTien.Text = sinhVienDTO.DienUuTien;
                 lblEmail.Text = sinhVienDTO.Email;
+            }
+            else
+            {
+                lblHoTen.Text = "";
+                lblNgaySinh.Text = "";
+                lblCMND.Text = "";
+                lblGioiTinh.Text = "";
+                lblSoDienThoai.Text = "";
+                lblKhoa.Text = "";
+                lblQueQuan.Text = "";
+                lblDienUuTien.Text = "";
+                lblEmail.Text = "";
             }
             if (CurrentMode == Mode.THEM)
             {
@@ -102,7 +114,7 @@ namespace GUI
             }
             else
                 lblNotFoundMSSV.Hide();
-            
+
         }
         private void btnDebug_Click(object sender, EventArgs e)
         {
@@ -115,7 +127,7 @@ namespace GUI
 
             hopDongDTO.MSSV = txtMSSV.Text;
             hopDongDTO.MaNhanVien = MainForm.NhanVienHienTai;
-            hopDongDTO.NgayLap= Convert.ToDateTime(lblNgayLap.Text);
+            hopDongDTO.NgayLap = Convert.ToDateTime(lblNgayLap.Text);
             hopDongDTO.NgayBatDau = dtpNgayBatDau.Value;
             hopDongDTO.NgayKetThuc = dtpNgayKetThuc.Value;
             hopDongDTO.TinhTrang = HopDongDTO.TinhTrangHopDongString[(int)TinhTrangHopDong.CHUA_TOI_THOI_HAN];
@@ -136,7 +148,6 @@ namespace GUI
                 suaMode.BackColor = Color.LightGray;
                 themMode.BackColor = Color.LightGray;
                 txtMSSV.Enabled = false;
-                chkGioiTinhNu.Enabled = false;
                 txtChuThich.Enabled = false;
                 txtIDPhong.Enabled = false;
                 txtGiaTienDaNop.Enabled = false;
@@ -153,7 +164,6 @@ namespace GUI
                 themMode.BackColor = Color.LightGray;
 
                 txtMSSV.Enabled = false;
-                chkGioiTinhNu.Enabled = false;
                 txtChuThich.Enabled = false;
                 txtIDPhong.Enabled = false;
                 txtGiaTienDaNop.Enabled = false;
@@ -169,7 +179,6 @@ namespace GUI
                 themMode.BackColor = Color.LightSlateGray;
 
                 txtMSSV.Enabled = true;
-                chkGioiTinhNu.Enabled = true;
                 txtChuThich.Enabled = true;
                 txtIDPhong.Enabled = true;
                 txtGiaTienDaNop.Enabled = true;
@@ -177,8 +186,10 @@ namespace GUI
                 dtpNgayBatDau.Enabled = true;
                 dtpNgayKetThuc.Enabled = true;
 
-
+                lblMaSo.Text = "";
+                txtMSSV.Text = "";
                 txtChuThich.Text = "";
+                txtIDPhong.Text = "";
                 txtGiaTienDaNop.Text = "0";
                 txtGiaTienTongCong.Text = "0";
                 lblTinhTrang.Text = "Chưa tới thời hạn";
@@ -206,17 +217,96 @@ namespace GUI
 
         private void cboTimKiemTheo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cboTimKiemTheo.Text == "Ngày lập")
+            {
+                dtpNgayLap.Show();
+                txtTimKiem.Hide();
+            }
+            else
+            {
+                dtpNgayLap.Hide();
+                txtTimKiem.Show();
+            }
+            Search();
         }
 
-        private void Search()
+        private void TimKiem()
         {
-            //HopDongBUS.Search(cboThoiHan, cboTimKiemTheo, )
+            //PhongBUS.TimKiem()
         }
-
         private void cboThoiHan_SelectedIndexChanged(object sender, EventArgs e)
         {
+            chxTheoTinhTrang.Checked = true;
+            Search();
+        }
 
+        private void txtIDPhong_TextChanged(object sender, EventArgs e)
+        {
+            PhongDTO phongDTO = PhongBUS.GetPhongDTO(txtIDPhong.Text);
+            if (phongDTO == null)
+            {
+                lblKhuNha.Text = "";
+                lblSoPhong.Text = "";
+            }
+            else
+            {
+                lblKhuNha.Text = phongDTO.KhuNha;
+                lblSoPhong.Text = phongDTO.SoPhong;
+            }
+            if (CurrentMode == Mode.THEM)
+            {
+                if (!PhongBUS.KiemTraPhong(txtIDPhong.Text))
+                    lblNotSuitableRoom.Show();
+                else
+                    lblNotSuitableRoom.Hide();
+            }
+            else
+            {
+                lblNotSuitableRoom.Hide();
+            }
+                
+        }
+
+        private void chxChuaDuTien_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void chxTheoTinhTrang_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void chxTheoThoiHan_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void dtpNgayBatDauTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            chxTheoThoiHan.Checked = true;
+            Search();
+        }
+
+        private void dtpNgayKetThucTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            chxTheoThoiHan.Checked = true;
+            Search();
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+        private void Search()
+        {
+            dataTable.DefaultView.RowFilter = HopDongBUS.TimKiem(chxTheoTinhTrang, cboTinhTrang, chxTheoThoiHan,
+                dtpNgayBatDauTimKiem, dtpNgayKetThucTimKiem, chxChuaDuTien, cboTimKiemTheo, txtTimKiem, dtpNgayLap);
+        }
+
+        private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }

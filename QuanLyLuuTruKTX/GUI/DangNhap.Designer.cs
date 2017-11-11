@@ -58,7 +58,7 @@
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Location = new System.Drawing.Point(97, 28);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(168, 20);
             this.txtTaiKhoan.TabIndex = 2;
@@ -67,7 +67,7 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(97, 63);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(168, 20);
@@ -77,7 +77,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Location = new System.Drawing.Point(104, 113);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(86, 26);
             this.btnDangNhap.TabIndex = 4;
@@ -95,9 +95,10 @@
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DangNhap";
             this.Text = "Đăng nhập";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DangNhap_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

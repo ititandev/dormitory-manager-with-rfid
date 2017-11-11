@@ -46,5 +46,30 @@ namespace RFIDScanner.Properties {
                 this["AutoConnect"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ITITAN-LAP\\SQLEXPRESS01;Initial Catalog=DormitoryDB;Integrated Securi" +
+            "ty=True")]
+        public string ConnectString {
+            get {
+                return ((string)(this["ConnectString"]));
+            }
+            set {
+                this["ConnectString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ImageSource {
+            get {
+                return ((string)(this["ImageSource"]));
+            }
+            set {
+                this["ImageSource"] = value;
+            }
+        }
     }
 }

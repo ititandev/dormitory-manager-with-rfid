@@ -24,10 +24,10 @@ namespace BUS
         public static string DienUuTien = "Diện ưu tiên";
         public static string Anh = "Ảnh";
         public static string Email = "Email";
-        public static string TongDiem = "Tổng điểm";
+        public static string RFID = "RFID";
         public static DataTable viewAllStudent()
         {
-            DataTable dt = Data.ExecuteQuery("SELECT SinhVien.*, DiemRenLuyen.TongDiem FROM SinhVien INNER JOIN DiemRenLuyen ON SinhVien.MSSV=DiemRenLuyen.MSSV");
+            DataTable dt = Data.ExecuteQuery("SELECT * FROM SinhVien");
             dt.Columns[0].ColumnName = HoTen;
             dt.Columns[1].ColumnName = MaSo;
             dt.Columns[2].ColumnName = NgaySinh;
@@ -40,7 +40,7 @@ namespace BUS
             dt.Columns[9].ColumnName = DienUuTien;
             dt.Columns[10].ColumnName = Anh;
             dt.Columns[11].ColumnName = Email;
-            dt.Columns[12].ColumnName = TongDiem;
+            dt.Columns[12].ColumnName = RFID;
             return dt;
         }
         public static void updateSinhVien(SinhVienDTO sv)
@@ -52,14 +52,10 @@ namespace BUS
         {
             string query = ($"DELETE FROM SinhVien WHERE MSSV={key}");
             Data.ExecuteNonQuery(query);
-            query = ($"DELETE FROM DiemRenLuyen WHERE MSSV={key}");
-            Data.ExecuteNonQuery(query);
         }
         public static void addSinhVien(SinhVienDTO sv)
         {
             string query = $"INSERT INTO SinhVien(MSSV,HoTen,NgaySinh,GioiTinh,CMND,SoDienThoai,Lop,Khoa,QueQuan,DienUuTien,Anh,Email) VALUES('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh}',N'{sv.GioiTinh}','{sv.CMND}','{sv.SoDienThoai}','{sv.Lop}','{sv.Khoa}',N'{sv.QueQuan}',N'{sv.DienUuTien}','{sv.Anh}','{sv.Email}')";
-            Data.ExecuteNonQuery(query);
-            query = $"INSERT INTO DiemRenLuyen(MSSV,YThucCaNhan,KiemTraPhong,SinhHoat,ThamGiaKhac,CTXH,DiemThuongPhat,TongDiem) VALUES({sv.MSSV},0,0,0,0,0,0,0)";
             Data.ExecuteNonQuery(query);
         }
 

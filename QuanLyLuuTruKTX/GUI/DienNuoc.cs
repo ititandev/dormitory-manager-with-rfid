@@ -58,5 +58,10 @@ namespace GUI
 
             }
         }
+
+        private void DienNuoc_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.dienNuocForm = null;
+        }
     }
 }

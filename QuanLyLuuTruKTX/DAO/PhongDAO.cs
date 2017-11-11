@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using System.Data.SqlClient;
 
 namespace DAO
 {
@@ -59,6 +60,15 @@ namespace DAO
             return Data.ExecuteQuery(str);
         }
 
+        public static SqlDataReader GetPhongDTO(string IDPhong)
+        {
+            SqlDataReader reader = Data.ExecuteReader($"SELECT * FROM Phong WHERE IDPhong = '{IDPhong}'");
+            if (reader.Read())
+                return reader;
+            else
+                return null;
+        }
+
         public DataTable TimKiem(PhongDTO obj)
         {
             string SoPhong = obj.SoPhong != "" ? " SoPhong LIKE '%" + obj.SoPhong + "%' AND" : "";
@@ -72,6 +82,15 @@ namespace DAO
                 SoPhong + KhuNha + MaNhanVien + SoLuongChoPhep + TinhTrang + SoLuongHienTai;
 
             return Data.ExecuteQuery(str);
+        }
+
+        public static int KiemTraPhong(string IDPhong)
+        {
+            SqlDataReader reader = Data.ExecuteReader("SELECT COUNT(*) FROM Phong WHERE SoLuongHienTai < SoLuongChoPhep AND IDPhong = '" + IDPhong + "'");
+            if (reader.Read())
+                return Convert.ToInt32(reader[0]);
+            else
+                return 0;
         }
     }
 }
