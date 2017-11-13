@@ -25,16 +25,21 @@ namespace BUS
         public static string Anh = "Ảnh";
         public static string Email = "Email";
         public static string RFID = "RFID";
-        public static DataTable viewAllStudent()
+
+        /// <summary>
+        /// Xem tất cả Sinh viên từ cơ sở dữ liệu
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable XemTatCa()
         {
             DataTable dt = Data.ExecuteQuery("SELECT * FROM SinhVien");
-            dt.Columns[0].ColumnName = HoTen;
-            dt.Columns[1].ColumnName = MaSo;
+            dt.Columns[0].ColumnName = MaSo;
+            dt.Columns[1].ColumnName = HoTen;
             dt.Columns[2].ColumnName = NgaySinh;
             dt.Columns[3].ColumnName = GioiTinh;
             dt.Columns[4].ColumnName = CMND;
-            dt.Columns[5].ColumnName = DienThoai;
-            dt.Columns[6].ColumnName = Lop;
+            dt.Columns[5].ColumnName = Lop;
+            dt.Columns[6].ColumnName = DienThoai;
             dt.Columns[7].ColumnName = Khoa;
             dt.Columns[8].ColumnName = Que;
             dt.Columns[9].ColumnName = DienUuTien;
@@ -43,23 +48,35 @@ namespace BUS
             dt.Columns[12].ColumnName = RFID;
             return dt;
         }
-        public static void updateSinhVien(SinhVienDTO sv)
+        public static void CapNhatSinhVien(SinhVienDTO sv)
         {
             string query = ($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', MSSV = \'{sv.MSSV}\' , NgaySinh = \'{sv.NgaySinh}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\' WHERE MSSV={sv.MSSV}");
             Data.ExecuteNonQuery(query);
         }
-        public static void deleteSinhVien(string key)
+        public static void XoaSinhVien(string key)
         {
             string query = ($"DELETE FROM SinhVien WHERE MSSV={key}");
             Data.ExecuteNonQuery(query);
         }
-        public static void addSinhVien(SinhVienDTO sv)
+
+        /// <summary>
+        /// Thêm sinh viên theo SinhVienDTO truyền vào
+        /// </summary>
+        /// <param name="sv"></param>
+        public static void ThemSinhVien(SinhVienDTO sv)
         {
-            string query = $"INSERT INTO SinhVien(MSSV,HoTen,NgaySinh,GioiTinh,CMND,SoDienThoai,Lop,Khoa,QueQuan,DienUuTien,Anh,Email) VALUES('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh}',N'{sv.GioiTinh}','{sv.CMND}','{sv.SoDienThoai}','{sv.Lop}','{sv.Khoa}',N'{sv.QueQuan}',N'{sv.DienUuTien}','{sv.Anh}','{sv.Email}')";
-            Data.ExecuteNonQuery(query);
+            if (SinhVienDAO.ThemSinhVien(sv) == 0)
+                MessageBox.Show("Thêm sinh viên '" + sv.HoTen + "' (" + sv.MSSV + ") thành công");
+            else
+                MessageBox.Show("Thêm sinh viên thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static bool KiemTraSV(string MSSV)
+        /// <summary>
+        /// Kiểm tra hợp đồng sinh viên theo MSSV có hợp lệ hay không
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <returns></returns>
+        public static bool KiemTraHopDongSV(string MSSV)
         {
             if (SinhVienDAO.KiemTraSV(MSSV) > 0)
                 return true;
@@ -67,6 +84,11 @@ namespace BUS
                 return false;
         }
 
+        /// <summary>
+        /// Lấy SinhVienDTO theo MSSV
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <returns></returns>
         public static SinhVienDTO GetSinhVienDTO(string MSSV)
         {
             return SinhVienDAO.GetSinhVienDTO(MSSV);

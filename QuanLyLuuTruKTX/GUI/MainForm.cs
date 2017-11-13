@@ -84,5 +84,18 @@ namespace GUI
         {
 
         }
+
+        public static string ImageDirectory
+        {
+            get
+            {
+                return GUI.Properties.Settings.Default.ImageDirectory;
+            }
+            set
+            {
+                GUI.Properties.Settings.Default.ImageDirectory = value;
+                GUI.Properties.Settings.Default.Save();
+            }
+        }
     }
 }

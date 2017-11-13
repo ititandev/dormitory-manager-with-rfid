@@ -15,126 +15,168 @@ namespace GUI
 {
     public partial class SinhVien : Form
     {
+        enum Mode
+        {
+            XEM, SUA, THEM
+        }
+        private static Mode CurrentMode { get; set; }
         public SinhVien()
         {
             InitializeComponent();
-            cbFilter.Items.Add(HoTen);
-            cbFilter.Items.Add(MaSo);
-            cbFilter.Items.Add(CMND);
-            cbFilter.Items.Add(DienThoai);
-            cbFilter.Items.Add(Email);
-            cbFilter.SelectedItem = HoTen;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-
+            cboTimKiemTheo.Items.Add(HoTen);
+            cboTimKiemTheo.Items.Add(MaSo);
+            cboTimKiemTheo.Items.Add(CMND);
+            cboTimKiemTheo.Items.Add(DienThoai);
+            cboTimKiemTheo.Items.Add(Email);
+            cboTimKiemTheo.SelectedItem = HoTen;
+            SetState(Mode.XEM);
         }
 
         private void SinhVienView_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = SinhVienBUS.viewAllStudent();
-            dataGridView1.Show();
+            dgv.DataSource = SinhVienBUS.XemTatCa();
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.CMND = txtCMND.Text;
+            sv.SoDienThoai = txtDT.Text;
+            sv.Email = txtEmail.Text;
+            sv.Khoa = txtKhoa.Text;
+            sv.Lop = txtLop.Text;
+            sv.MSSV = txtMSSV.Text;
+            sv.QueQuan = txtQueQuan.Text;
+            sv.HoTen = txtTen.Text;
+            sv.DienUuTien = txtDienUutien.Text;
+            sv.NgaySinh = dtpNgaySinh.Value;
+            sv.GioiTinh = cbGioiTinh.Text;
+            SinhVienBUS.CapNhatSinhVien(sv);
+            dgv.DataSource = SinhVienBUS.XemTatCa();
+            dgv.Refresh();
+            dgv.Update();
         }
 
 
-        private void txtValue_TextChanged(object sender, EventArgs e)
+        private void SinhVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string value = txtValue.Text;
-            string filter = cbFilter.Text;
-            DataTable dt = (dataGridView1.DataSource as DataTable);
+            MainForm.sinhVienForm = null;
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtTimKiem.Text;
+            string filter = cboTimKiemTheo.Text;
+            DataTable dt = (dgv.DataSource as DataTable);
             if (dt != null)
             {
                 dt.DefaultView.RowFilter = $"[{filter}] LIKE %{value}%";
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var row = dataGridView1.SelectedRows;
-            if (row.Count > 0)
-            {
-                string key = row[0].Cells[MaSo].Value.ToString();
-                SinhVienBUS.deleteSinhVien(key);
-                dataGridView1.DataSource = SinhVienBUS.viewAllStudent();
-                dataGridView1.Refresh();
-                dataGridView1.Update();
-            }
-        }
-
-
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click_1(object sender, EventArgs e)
-        {
-            SinhVienDTO sv = new SinhVienDTO();
-            sv.CMND = txtCMND.Text;
-            sv.SoDienThoai = txtDT.Text;
-            sv.Email = txtEmail.Text;
-            sv.Khoa = txtKhoa.Text;
-            sv.Lop = txtLop.Text;
-            sv.MSSV = txtMaSo.Text;
-            sv.QueQuan = txtQue.Text;
-            sv.HoTen = txtTen.Text;
-            sv.DienUuTien = txtUutien.Text;
-            sv.NgaySinh = dateNgaySinh.Value;
-            sv.GioiTinh = cbGioiTinh.Text;
-            SinhVienBUS.updateSinhVien(sv);
-            dataGridView1.DataSource = SinhVienBUS.viewAllStudent();
-            dataGridView1.Refresh();
-            dataGridView1.Update();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var obj = (DataGridView)sender;
-            if (obj.Rows.Count > 0&&e.RowIndex>=0)
+            if (obj.Rows.Count > 0 && e.RowIndex >= 0)
             {
                 txtCMND.Text = obj.Rows[e.RowIndex].Cells[CMND].Value.ToString();
                 txtDT.Text = obj.Rows[e.RowIndex].Cells[DienThoai].Value.ToString();
                 txtEmail.Text = obj.Rows[e.RowIndex].Cells[Email].Value.ToString();
                 txtKhoa.Text = obj.Rows[e.RowIndex].Cells[Khoa].Value.ToString();
                 txtLop.Text = obj.Rows[e.RowIndex].Cells[Lop].Value.ToString();
-                txtMaSo.Text = obj.Rows[e.RowIndex].Cells[MaSo].Value.ToString();
-                txtQue.Text = obj.Rows[e.RowIndex].Cells[Que].Value.ToString();
+                txtMSSV.Text = obj.Rows[e.RowIndex].Cells[MaSo].Value.ToString();
+                txtQueQuan.Text = obj.Rows[e.RowIndex].Cells[Que].Value.ToString();
                 txtTen.Text = obj.Rows[e.RowIndex].Cells[HoTen].Value.ToString();
-                txtUutien.Text = obj.Rows[e.RowIndex].Cells[DienUuTien].Value.ToString();
-                dateNgaySinh.Value = DateTime.Parse(obj.Rows[e.RowIndex].Cells[NgaySinh].Value.ToString());
+                txtDienUutien.Text = obj.Rows[e.RowIndex].Cells[DienUuTien].Value.ToString();
+                dtpNgaySinh.Value = DateTime.Parse(obj.Rows[e.RowIndex].Cells[NgaySinh].Value.ToString());
                 cbGioiTinh.Text = obj.Rows[e.RowIndex].Cells[GioiTinh].Value.ToString();
-                txtDRL.Text= obj.Rows[e.RowIndex].Cells[RFID].Value.ToString();
+                txtRFID.Text = obj.Rows[e.RowIndex].Cells[RFID].Value.ToString();
             }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            SinhVienDTO sv = new SinhVienDTO();
-            sv.CMND = txtCMND.Text;
-            sv.SoDienThoai = txtDT.Text;
-            sv.Email = txtEmail.Text;
-            sv.Khoa = txtKhoa.Text;
-            sv.Lop = txtLop.Text;
-            sv.MSSV = txtMaSo.Text;
-            sv.QueQuan = txtQue.Text;
-            sv.HoTen = txtTen.Text;
-            sv.DienUuTien = txtUutien.Text;
-            sv.NgaySinh = dateNgaySinh.Value;
-            sv.GioiTinh = cbGioiTinh.Text;
-            SinhVienBUS.addSinhVien(sv);
-            dataGridView1.DataSource = SinhVienBUS.viewAllStudent();
-            dataGridView1.Refresh();
-            dataGridView1.Update();
+            var row = dgv.SelectedRows;
+            if (row.Count > 0)
+            {
+                string key = row[0].Cells[MaSo].Value.ToString();
+                SinhVienBUS.XoaSinhVien(key);
+                dgv.DataSource = SinhVienBUS.XemTatCa();
+                dgv.Refresh();
+                dgv.Update();
+            }
         }
 
-        private void SinhVien_FormClosing(object sender, FormClosingEventArgs e)
+        private void xemMode_Click(object sender, EventArgs e)
         {
-            MainForm.sinhVienForm = null;
+            SetState(Mode.XEM);
+        }
+
+        private void suaMode_Click(object sender, EventArgs e)
+        {
+            SetState(Mode.SUA);
+        }
+
+        private void themMode_Click(object sender, EventArgs e)
+        {
+            SetState(Mode.THEM);
+        }
+
+        private void SetState(Mode state)
+        {
+            CurrentMode = state;
+            if (state == Mode.XEM)
+            {
+                xemMode.BackColor = Color.LightSlateGray;
+                suaMode.BackColor = Color.LightGray;
+                themMode.BackColor = Color.LightGray;
+                SetReadOnly(true, txtTen, txtLop, txtCMND, txtDT, txtKhoa, txtQueQuan, txtDienUutien, txtEmail, txtMSSV, txtRFID);
+                dtpNgaySinh.Enabled = false;
+            }
+            else if (state == Mode.SUA)
+            {
+                xemMode.BackColor = Color.LightGray;
+                suaMode.BackColor = Color.LightSlateGray;
+                themMode.BackColor = Color.LightGray;
+                SetReadOnly(false, txtTen, txtLop, txtCMND, txtDT, txtKhoa, txtQueQuan, txtDienUutien, txtEmail, txtMSSV, txtRFID);
+                dtpNgaySinh.Enabled = true;
+            }
+            else if (state == Mode.THEM)
+            {
+                xemMode.BackColor = Color.LightGray;
+                suaMode.BackColor = Color.LightGray;
+                themMode.BackColor = Color.LightSlateGray;
+                dtpNgaySinh.Enabled = true;
+                SetReadOnly(false, txtTen, txtLop, txtCMND, txtDT, txtKhoa, txtQueQuan, txtDienUutien, txtEmail, txtMSSV, txtRFID);
+                Clear(txtTen, txtLop, txtCMND, txtDT, txtKhoa, txtQueQuan, txtDienUutien, txtEmail, txtMSSV, txtRFID);
+            }
+        }
+
+        private void btnHanhDong_Click(object sender, EventArgs e)
+        {
+            if (CurrentMode == Mode.THEM)
+            {
+                SinhVienDTO sv = new SinhVienDTO();
+                sv.CMND = txtCMND.Text;
+                sv.SoDienThoai = txtDT.Text;
+                sv.Email = txtEmail.Text;
+                sv.Khoa = txtKhoa.Text;
+                sv.Lop = txtLop.Text;
+                sv.MSSV = txtMSSV.Text;
+                sv.QueQuan = txtQueQuan.Text;
+                sv.HoTen = txtTen.Text;
+                sv.DienUuTien = txtDienUutien.Text;
+                sv.NgaySinh = dtpNgaySinh.Value;
+                sv.GioiTinh = cbGioiTinh.Text;
+                sv.Anh = "a.jpg";
+                sv.RFID = "2332";
+
+                SinhVienBUS.ThemSinhVien(sv);
+                dgv.DataSource = SinhVienBUS.XemTatCa();
+                dgv.Refresh();
+                dgv.Update();
+            }
         }
     }
 }

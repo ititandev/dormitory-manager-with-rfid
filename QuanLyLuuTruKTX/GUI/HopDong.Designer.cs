@@ -1,4 +1,7 @@
-﻿namespace GUI
+﻿using System.Windows.Forms;
+using System.Drawing;
+using System;
+namespace GUI
 {
     partial class HopDong
     {
@@ -651,11 +654,11 @@
             // btnHopDong
             // 
             this.btnHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHopDong.Location = new System.Drawing.Point(1110, 633);
+            this.btnHopDong.Location = new System.Drawing.Point(1087, 633);
             this.btnHopDong.Name = "btnHopDong";
             this.btnHopDong.Size = new System.Drawing.Size(75, 23);
             this.btnHopDong.TabIndex = 24;
-            this.btnHopDong.Text = "Thêm mới";
+            this.btnHopDong.Text = "Thêm hợp đồng mới";
             this.btnHopDong.UseVisualStyleBackColor = true;
             this.btnHopDong.Click += new System.EventHandler(this.btnHopDong_Click);
             // 
@@ -782,6 +785,7 @@
             this.btnXemTatCa.TabIndex = 42;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
+            this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
             // chxTheoTinhTrang
             // 
@@ -925,5 +929,76 @@
         private System.Windows.Forms.RadioButton chxTheoTinhTrang;
         private System.Windows.Forms.RadioButton chxChuaDuTien;
         private System.Windows.Forms.DateTimePicker dtpNgayLap;
+
+
+        private void SetState(Mode state)
+        {
+            CurrentMode = state;
+            if (state == Mode.XEM)
+            {
+                xemMode.BackColor = Color.LightSlateGray;
+                suaMode.BackColor = Color.LightGray;
+                themMode.BackColor = Color.LightGray;
+                txtMSSV.Enabled = false;
+                txtChuThich.Enabled = false;
+                txtIDPhong.Enabled = false;
+                txtGiaTienDaNop.Enabled = false;
+                txtGiaTienTongCong.Enabled = false;
+                dtpNgayBatDau.Enabled = false;
+                dtpNgayKetThuc.Enabled = false;
+
+                btnHopDong.Hide();
+            }
+            else if (state == Mode.SUA)
+            {
+                xemMode.BackColor = Color.LightGray;
+                suaMode.BackColor = Color.LightSlateGray;
+                themMode.BackColor = Color.LightGray;
+
+                txtMSSV.Enabled = false;
+                txtChuThich.Enabled = false;
+                txtIDPhong.Enabled = false;
+                txtGiaTienDaNop.Enabled = false;
+                txtGiaTienTongCong.Enabled = false;
+                dtpNgayBatDau.Enabled = false;
+                dtpNgayKetThuc.Enabled = false;
+                btnHopDong.Show();
+            }
+            else if (state == Mode.THEM)
+            {
+                xemMode.BackColor = Color.LightGray;
+                suaMode.BackColor = Color.LightGray;
+                themMode.BackColor = Color.LightSlateGray;
+
+                txtMSSV.Enabled = true;
+                txtChuThich.Enabled = true;
+                txtIDPhong.Enabled = true;
+                txtGiaTienDaNop.Enabled = true;
+                txtGiaTienTongCong.Enabled = true;
+                dtpNgayBatDau.Enabled = true;
+                dtpNgayKetThuc.Enabled = true;
+
+                lblHoTen.Text = "";
+                lblNgaySinh.Text = "";
+                lblCMND.Text = "";
+                lblSoDienThoai.Text = "";
+                lblKhoa.Text = "";
+                lblQueQuan.Text = "";
+                lblDienUuTien.Text = "";
+                lblEmail.Text = "";
+
+                lblMaSo.Text = "";
+                txtMSSV.Text = "";
+                txtChuThich.Text = "";
+                txtIDPhong.Text = "";
+                txtGiaTienDaNop.Text = "0";
+                txtGiaTienTongCong.Text = "0";
+                lblTinhTrang.Text = "Chưa tới thời hạn";
+                lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                lblNgayLap.Text = MainForm.NhanVienHienTai;
+                btnHopDong.Text = "Thêm hợp đồng";
+                btnHopDong.Show();
+            }
+        }
     }
 }

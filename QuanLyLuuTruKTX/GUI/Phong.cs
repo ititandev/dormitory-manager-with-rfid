@@ -81,6 +81,7 @@ namespace GUI
             catch (Exception err)
             {
                 MessageBox.Show("Lỗi: " + "Vui lòng điền số lượng hợp lệ");
+                MessageBox.Show(err.Message);
             }
             phongDTO.TinhTrang = this.cbChangeStatus.Text;
             phongDTO.IDPhong = phongDTO.KhuNha + "-" + phongDTO.SoPhong;

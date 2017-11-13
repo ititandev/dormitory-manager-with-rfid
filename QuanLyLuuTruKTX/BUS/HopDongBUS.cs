@@ -14,9 +14,20 @@ namespace BUS
     public class HopDongBUS
     {
         HopDongDAO hopDongDAO = new HopDongDAO();
-        public static DataTable ViewAll(DataGridView dgv)
+        public static DataTable XemTatCa()
         {
-            return HopDongDAO.ViewAll();
+            DataTable dataTable = HopDongDAO.ViewAll();
+            dataTable.Columns[0].ColumnName = "Mã số";
+            dataTable.Columns[1].ColumnName = "MSSV";
+            dataTable.Columns[2].ColumnName = "Người lập";
+            dataTable.Columns[3].ColumnName = "Ngày lập";
+            dataTable.Columns[4].ColumnName = "Ngày bắt đầu";
+            dataTable.Columns[5].ColumnName = "Ngày kết thúc";
+            dataTable.Columns[6].ColumnName = "Thời hạn";
+            dataTable.Columns[7].ColumnName = "ID Phòng";
+            dataTable.Columns[8].ColumnName = "Đã nộp";
+            dataTable.Columns[9].ColumnName = "Tổng cộng";
+            return dataTable;
         }
 
         public static HopDongDTO GetHopDongDTO(string MaSo)
@@ -42,13 +53,6 @@ namespace BUS
             else
                 MessageBox.Show("Thêm thất bại", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        public static string TimKiem(ComboBox cboThoiHan)
-        {
-            if (cboThoiHan.Text == "Tất cả")
-                return "";
-            else
-                return $"[Thời hạn] LIKE '%{cboThoiHan.Text}%' ";
-        }
 
         public static string TimKiem(RadioButton chxTheoTinhTrang, ComboBox cboTinhTrang, RadioButton chxTheoThoiHan,
                                     DateTimePicker dtpNgayBatDauTimKiem, DateTimePicker dtpNgayKetThucTimKiem, RadioButton chxChuaDuTien, ComboBox cboTimKiemTheo, TextBox txtTimKiem, DateTimePicker dtpNgayLap)
@@ -70,18 +74,33 @@ namespace BUS
             else if (chxChuaDuTien.Checked)
                 filter = "[Đã nộp] < [Tổng cộng] ";
 
+            if (filter != String.Empty)
+                filter += "AND ";
 
             if (cboTimKiemTheo.Text != String.Empty && cboTimKiemTheo.Text != "Tất cả")
             {
-                if (filter != String.Empty)
-                    filter += "AND ";
                 if (cboTimKiemTheo.Text == "Ngày lập")
                     filter += $"[Ngày lập] = #{dtpNgayLap.Value.ToString("yyyy-M-d")}# ";
+                else if (cboTimKiemTheo.Text == "Mã số")
+                {
+                    if (txtTimKiem.Text != String.Empty)
+                        filter += $"[Mã số] = {txtTimKiem.Text} ";
+                }
                 else
                     filter += $" [{cboTimKiemTheo.Text}] LIKE '%{txtTimKiem.Text}%' ";
             }
+            else
+            {
+                filter += $"[MSSV] LIKE '%{txtTimKiem.Text}%' " +
+                        $"OR [Người lập] LIKE '%{txtTimKiem.Text}%' " +
+                        $"OR [ID Phòng] LIKE '%{txtTimKiem.Text}%' ";
+                if (txtTimKiem.Text != String.Empty)
+                    filter += $"OR [Mã số] = {txtTimKiem.Text} ";
+            }
             return filter;
         }
+
+
     }
 }
-    
+

@@ -49,5 +49,15 @@ namespace DAO
             }
             
         }
+
+        public static int ThemSinhVien(SinhVienDTO sv)
+        {
+            string query = "INSERT INTO SinhVien(MSSV, HoTen,NgaySinh, GioiTinh, CMND, SoDienThoai, " +
+                            "Lop, Khoa, QueQuan, DienUuTien, Anh, Email, RFID) VALUES " +
+                            $"('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh.ToString("yyyy-MM-dd")}', N'{sv.GioiTinh}', " +
+                            $"'{sv.CMND}', '{sv.SoDienThoai}', '{sv.Lop}', '{sv.Khoa}', N'{sv.QueQuan}', " +
+                            $"N'{sv.DienUuTien}', '{sv.Anh}', '{sv.Email}', '{sv.RFID}')";
+            return Data.ExecuteNonQuery(query);
+        }
     }
 }

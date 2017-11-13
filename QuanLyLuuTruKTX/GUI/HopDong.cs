@@ -28,20 +28,10 @@ namespace GUI
         private void HopDong_Load(object sender, EventArgs e)
         {
             SetState(Mode.XEM);
-            dataTable = HopDongBUS.ViewAll(dgvHopDong);
-
-            dataTable.Columns[0].ColumnName = "Mã số";
-            dataTable.Columns[1].ColumnName = "MSSV";
-            dataTable.Columns[2].ColumnName = "Người lập";
-            dataTable.Columns[3].ColumnName = "Ngày lập";
-            dataTable.Columns[4].ColumnName = "Ngày bắt đầu";
-            dataTable.Columns[5].ColumnName = "Ngày kết thúc";
-            dataTable.Columns[6].ColumnName = "Thời hạn";
-            dataTable.Columns[7].ColumnName = "ID Phòng";
-            dataTable.Columns[8].ColumnName = "Đã nộp";
-            dataTable.Columns[9].ColumnName = "Tổng cộng";
+            dataTable = HopDongBUS.XemTatCa();
             dgvHopDong.DataSource = dataTable;
             suaMode.Hide();
+            chxTheoTinhTrang.Checked = true;
             cboTinhTrang.SelectedIndex = 0;
             cboTimKiemTheo.SelectedIndex = 0;
         }
@@ -107,17 +97,13 @@ namespace GUI
             }
             if (CurrentMode == Mode.THEM)
             {
-                if (!SinhVienBUS.KiemTraSV(txtMSSV.Text))
+                if (!SinhVienBUS.KiemTraHopDongSV(txtMSSV.Text))
                     lblNotFoundMSSV.Show();
                 else
                     lblNotFoundMSSV.Hide();
             }
             else
                 lblNotFoundMSSV.Hide();
-
-        }
-        private void btnDebug_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -137,67 +123,6 @@ namespace GUI
             hopDongDTO.ChuThich = txtChuThich.Text;
 
             HopDongBUS.AddHopDong(hopDongDTO);
-        }
-
-        private void SetState(Mode state)
-        {
-            CurrentMode = state;
-            if (state == Mode.XEM)
-            {
-                xemMode.BackColor = Color.LightSlateGray;
-                suaMode.BackColor = Color.LightGray;
-                themMode.BackColor = Color.LightGray;
-                txtMSSV.Enabled = false;
-                txtChuThich.Enabled = false;
-                txtIDPhong.Enabled = false;
-                txtGiaTienDaNop.Enabled = false;
-                txtGiaTienTongCong.Enabled = false;
-                dtpNgayBatDau.Enabled = false;
-                dtpNgayKetThuc.Enabled = false;
-
-                btnHopDong.Hide();
-            }
-            else if (state == Mode.SUA)
-            {
-                xemMode.BackColor = Color.LightGray;
-                suaMode.BackColor = Color.LightSlateGray;
-                themMode.BackColor = Color.LightGray;
-
-                txtMSSV.Enabled = false;
-                txtChuThich.Enabled = false;
-                txtIDPhong.Enabled = false;
-                txtGiaTienDaNop.Enabled = false;
-                txtGiaTienTongCong.Enabled = false;
-                dtpNgayBatDau.Enabled = false;
-                dtpNgayKetThuc.Enabled = false;
-                btnHopDong.Show();
-            }
-            else if (state == Mode.THEM)
-            {
-                xemMode.BackColor = Color.LightGray;
-                suaMode.BackColor = Color.LightGray;
-                themMode.BackColor = Color.LightSlateGray;
-
-                txtMSSV.Enabled = true;
-                txtChuThich.Enabled = true;
-                txtIDPhong.Enabled = true;
-                txtGiaTienDaNop.Enabled = true;
-                txtGiaTienTongCong.Enabled = true;
-                dtpNgayBatDau.Enabled = true;
-                dtpNgayKetThuc.Enabled = true;
-
-                lblMaSo.Text = "";
-                txtMSSV.Text = "";
-                txtChuThich.Text = "";
-                txtIDPhong.Text = "";
-                txtGiaTienDaNop.Text = "0";
-                txtGiaTienTongCong.Text = "0";
-                lblTinhTrang.Text = "Chưa tới thời hạn";
-                lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                lblNgayLap.Text = MainForm.NhanVienHienTai;
-                btnHopDong.Text = "Thêm hợp đồng";
-                btnHopDong.Show();
-            }
         }
 
         private void xemMode_Click(object sender, EventArgs e)
@@ -300,13 +225,31 @@ namespace GUI
         }
         private void Search()
         {
-            dataTable.DefaultView.RowFilter = HopDongBUS.TimKiem(chxTheoTinhTrang, cboTinhTrang, chxTheoThoiHan,
+            try
+            {
+                dataTable.DefaultView.RowFilter = HopDongBUS.TimKiem(chxTheoTinhTrang, cboTinhTrang, chxTheoThoiHan,
                 dtpNgayBatDauTimKiem, dtpNgayKetThucTimKiem, chxChuaDuTien, cboTimKiemTheo, txtTimKiem, dtpNgayLap);
+            }
+            catch (Exception e)
+            {
+            }
+            
         }
 
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void btnXemTatCa_Click(object sender, EventArgs e)
+        {
+            SetState(Mode.XEM);
+            dataTable = HopDongBUS.XemTatCa();
+            dgvHopDong.DataSource = dataTable;
+            chxTheoTinhTrang.Checked = true;
+            cboTimKiemTheo.SelectedIndex = 0;
+            cboTinhTrang.SelectedIndex = 0;
+            txtTimKiem.Text = "";
         }
     }
 }

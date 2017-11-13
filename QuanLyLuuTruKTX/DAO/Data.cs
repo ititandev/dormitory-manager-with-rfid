@@ -44,7 +44,7 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ExecuteQuery Error");
                 return null;
             }
 
@@ -82,7 +82,7 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ExecuteNonQuery Error");
                 return -1;
             }
 
@@ -108,14 +108,14 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ExecuteNonQueryParam");
                 return -1;
             }
 
         }
         /// <summary>
         /// Thực thi query và lấy dữ liệu trả về dạng SqlDataReader
-        /// Sử dụng phương thức Read() khi sử dụng
+        /// Dùng phương thức Read() khi sử dụng
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -143,9 +143,10 @@ namespace DAO
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 return reader;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message, "ExecuteReader Error");
+                return null;
             }
 
         }
