@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 30/10/2017 2:32:06 PM ******/
+/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 11/11/2017 8:36:58 PM ******/
 SET ANSI_NULLS ON
 GO
 

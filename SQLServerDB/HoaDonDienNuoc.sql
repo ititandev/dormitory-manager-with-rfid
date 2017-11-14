@@ -12,7 +12,7 @@
 USE [DormitoryDB]
 GO
 
-/****** Object:  Table [dbo].[HoaDonDienNuoc]    Script Date: 30/10/2017 2:28:23 PM ******/
+/****** Object:  Table [dbo].[HoaDonDienNuoc]    Script Date: 11/11/2017 8:36:17 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -27,9 +27,13 @@ CREATE TABLE [dbo].[HoaDonDienNuoc](
 	[ChiSoNuocDau] [int] NOT NULL,
 	[ChiSoNuocCuoi] [int] NOT NULL,
 	[DaThanhToan] [bit] NOT NULL,
-	[MaDot] [int] NULL,
+	[MaDot] [int] NOT NULL,
 	[GiaTien] [bigint] NOT NULL,
-	[ChuThich] [nvarchar](50) NULL
+	[ChuThich] [nvarchar](50) NULL,
+ CONSTRAINT [PK_HoaDonDienNuoc] PRIMARY KEY CLUSTERED 
+(
+	[MaSo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
