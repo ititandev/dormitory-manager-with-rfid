@@ -11,7 +11,7 @@ using BUS;
 using static BUS.HoaDonDienNuocBUS;
 namespace GUI
 {
-    public partial class DienNuoc : Form
+    public partial class DienNuoc : KTXForm
     {
         public DienNuoc()
         {

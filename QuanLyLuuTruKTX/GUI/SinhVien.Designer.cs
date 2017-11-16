@@ -42,7 +42,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnXoa = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,10 +49,13 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.btnHanhDong = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.btnChupAnh = new System.Windows.Forms.Button();
+            this.lblHopDongHopLe = new System.Windows.Forms.Label();
             this.txtRFID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cbGioiTinh = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic = new System.Windows.Forms.PictureBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -78,22 +80,12 @@
             this.themMode = new System.Windows.Forms.Button();
             this.suaMode = new System.Windows.Forms.Button();
             this.xemMode = new System.Windows.Forms.Button();
-            this.lblHopDongHopLe = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnXemTatCa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnXoa.Location = new System.Drawing.Point(766, 31);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 15;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // label3
             // 
@@ -138,14 +130,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(15, 41);
+            this.dgv.Location = new System.Drawing.Point(12, 41);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(639, 717);
             this.dgv.TabIndex = 9;
-            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
             // 
             // btnHanhDong
             // 
@@ -161,12 +153,14 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.btnChonFile);
+            this.panel2.Controls.Add(this.btnChupAnh);
             this.panel2.Controls.Add(this.lblHopDongHopLe);
             this.panel2.Controls.Add(this.btnHanhDong);
             this.panel2.Controls.Add(this.txtRFID);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.cbGioiTinh);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pic);
             this.panel2.Controls.Add(this.dtpNgaySinh);
             this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.label11);
@@ -193,11 +187,42 @@
             this.panel2.Size = new System.Drawing.Size(415, 519);
             this.panel2.TabIndex = 9;
             // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChonFile.Location = new System.Drawing.Point(304, 185);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChonFile.TabIndex = 17;
+            this.btnChonFile.Text = "Chọn từ file";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
+            // btnChupAnh
+            // 
+            this.btnChupAnh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChupAnh.Location = new System.Drawing.Point(304, 214);
+            this.btnChupAnh.Name = "btnChupAnh";
+            this.btnChupAnh.Size = new System.Drawing.Size(75, 23);
+            this.btnChupAnh.TabIndex = 16;
+            this.btnChupAnh.Text = "Chụp ảnh";
+            this.btnChupAnh.UseVisualStyleBackColor = true;
+            this.btnChupAnh.Click += new System.EventHandler(this.btnChupAnh_Click);
+            // 
+            // lblHopDongHopLe
+            // 
+            this.lblHopDongHopLe.AutoSize = true;
+            this.lblHopDongHopLe.ForeColor = System.Drawing.Color.Red;
+            this.lblHopDongHopLe.Location = new System.Drawing.Point(259, 442);
+            this.lblHopDongHopLe.Name = "lblHopDongHopLe";
+            this.lblHopDongHopLe.Size = new System.Drawing.Size(120, 13);
+            this.lblHopDongHopLe.TabIndex = 15;
+            this.lblHopDongHopLe.Text = "Hợp đồng không hợp lệ";
+            // 
             // txtRFID
             // 
             this.txtRFID.Location = new System.Drawing.Point(81, 439);
             this.txtRFID.Name = "txtRFID";
-            this.txtRFID.ReadOnly = true;
             this.txtRFID.Size = new System.Drawing.Size(73, 20);
             this.txtRFID.TabIndex = 8;
             // 
@@ -221,13 +246,15 @@
             this.cbGioiTinh.Size = new System.Drawing.Size(100, 21);
             this.cbGioiTinh.TabIndex = 6;
             // 
-            // pictureBox1
+            // pic
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(109, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(183, 218);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic.Location = new System.Drawing.Point(109, 19);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(183, 218);
+            this.pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic.TabIndex = 0;
+            this.pic.TabStop = false;
             // 
             // dtpNgaySinh
             // 
@@ -432,26 +459,31 @@
             this.xemMode.UseVisualStyleBackColor = true;
             this.xemMode.Click += new System.EventHandler(this.xemMode_Click);
             // 
-            // lblHopDongHopLe
+            // openFileDialog
             // 
-            this.lblHopDongHopLe.AutoSize = true;
-            this.lblHopDongHopLe.ForeColor = System.Drawing.Color.Red;
-            this.lblHopDongHopLe.Location = new System.Drawing.Point(259, 442);
-            this.lblHopDongHopLe.Name = "lblHopDongHopLe";
-            this.lblHopDongHopLe.Size = new System.Drawing.Size(120, 13);
-            this.lblHopDongHopLe.TabIndex = 15;
-            this.lblHopDongHopLe.Text = "Hợp đồng không hợp lệ";
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "Ảnh (*.jpg;*.jpeg;*.png)|*.jpg;*.png;*.jpeg|Tất cả (*.*)|*.*";
+            // 
+            // btnXemTatCa
+            // 
+            this.btnXemTatCa.Location = new System.Drawing.Point(529, 12);
+            this.btnXemTatCa.Name = "btnXemTatCa";
+            this.btnXemTatCa.Size = new System.Drawing.Size(75, 23);
+            this.btnXemTatCa.TabIndex = 31;
+            this.btnXemTatCa.Text = "Xem tất cả";
+            this.btnXemTatCa.UseVisualStyleBackColor = true;
+            this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
             // SinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 770);
+            this.Controls.Add(this.btnXemTatCa);
             this.Controls.Add(this.themMode);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.suaMode);
             this.Controls.Add(this.xemMode);
-            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.label3);
@@ -464,7 +496,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +504,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnHanhDong;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label label2;
@@ -481,7 +512,7 @@
         private System.Windows.Forms.TextBox txtRFID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbGioiTinh;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label11;
@@ -508,6 +539,10 @@
         private System.Windows.Forms.Button suaMode;
         private System.Windows.Forms.Button xemMode;
         private System.Windows.Forms.Label lblHopDongHopLe;
+        private System.Windows.Forms.Button btnChonFile;
+        private System.Windows.Forms.Button btnChupAnh;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btnXemTatCa;
     }
 
     

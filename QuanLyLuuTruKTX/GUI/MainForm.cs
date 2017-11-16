@@ -12,7 +12,7 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
-        public static string NhanVienHienTai { get; set; }
+        public static string MaNhanVienHienTai { get; set; }
         public static string ChucVuHienTai { get; set; }
         public static bool Logined { get; set; }
 
@@ -22,18 +22,18 @@ namespace GUI
         public static NhanVien nhanVienForm;
         public static Phong phongForm;
         public static DienNuoc dienNuocForm;
+        public static CaiDat caiDatForm;
 
+        public static KTXForm FormHienTai;
         public MainForm()
         {
             InitializeComponent();
-
-            if (dangNhapForm == null)
-                dangNhapForm = new DangNhap();
-            dangNhapForm.MdiParent = this;
-            dangNhapForm.Show();
             //btnHopDong_Click(null, null);
         }
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            btnDangNhap_Click(dangNhapForm, null);
+        }
         private void btnHopDong_Click(object sender, EventArgs e)
         {
             if (hopDongForm == null)
@@ -41,6 +41,7 @@ namespace GUI
             hopDongForm.MdiParent = this;
             hopDongForm.Show();
             hopDongForm.WindowState = FormWindowState.Maximized;
+            FormHienTai = hopDongForm;
         }
 
         private void btnSinhVien_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace GUI
             sinhVienForm.MdiParent = this;
             sinhVienForm.Show();
             sinhVienForm.WindowState = FormWindowState.Maximized;
+            FormHienTai = sinhVienForm;
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)
@@ -68,6 +70,7 @@ namespace GUI
             phongForm.MdiParent = this;
             phongForm.Show();
             phongForm.WindowState = FormWindowState.Maximized;
+            FormHienTai = phongForm;
         }
 
         private void btnDienNuoc_Click(object sender, EventArgs e)
@@ -77,25 +80,39 @@ namespace GUI
             dienNuocForm.MdiParent = this;
             dienNuocForm.Show();
             dienNuocForm.WindowState = FormWindowState.Maximized;
+            FormHienTai = dienNuocForm;
         }
 
-    
+
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-
+            if (dangNhapForm == null)
+                dangNhapForm = new DangNhap();
+            dangNhapForm.Show();
+            dangNhapForm.Activate();
         }
 
-        public static string ImageDirectory
+        public static string ThuMucAnh
         {
             get
             {
-                return GUI.Properties.Settings.Default.ImageDirectory;
+                return GUI.Properties.Settings.Default.ThuMucAnh;
             }
             set
             {
-                GUI.Properties.Settings.Default.ImageDirectory = value;
+                GUI.Properties.Settings.Default.ThuMucAnh = value;
                 GUI.Properties.Settings.Default.Save();
             }
+        }
+        
+        private void btnCaiDat_Click_1(object sender, EventArgs e)
+        {
+            if(caiDatForm == null)
+                caiDatForm = new CaiDat();
+            caiDatForm.CapNhatDuLieu();
+            caiDatForm.Show();
+            caiDatForm.Activate();
+            caiDatForm.WindowState = FormWindowState.Normal;
         }
     }
 }

@@ -100,6 +100,17 @@ namespace BUS
             return filter;
         }
 
+        public static string ConnectString
+        {
+            get
+            {
+                return Data.ConnectString;
+            }
+            set
+            {
+                Data.ConnectString = value;
+            }
+        }
 
     }
 }

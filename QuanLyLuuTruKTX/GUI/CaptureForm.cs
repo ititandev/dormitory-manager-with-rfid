@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,19 +44,29 @@ namespace GUI
 
             try
             {
-                bitmap.Save("temp.png", System.Drawing.Imaging.ImageFormat.Png);
+                MainForm.sinhVienForm.DuongDanAnh = Directory.GetCurrentDirectory() + @"\temp.png";
+                bitmap.Save("image.png", System.Drawing.Imaging.ImageFormat.Png);
+                SinhVien.DaChonAnh = true;
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Lưu hình ảnh thất bại");
+                MessageBox.Show("Lưu hình ảnh thất bại\n" + ex.Message);
             }
 
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            _camera.Dispose();
-            base.OnClosed(e);
+            try
+            {
+                _camera.Dispose();
+                base.OnClosed(e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

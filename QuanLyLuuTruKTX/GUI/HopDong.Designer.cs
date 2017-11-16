@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 using System;
+using BUS;
 namespace GUI
 {
     partial class HopDong
@@ -108,8 +109,8 @@ namespace GUI
             // 
             this.dgvHopDong.AllowUserToAddRows = false;
             this.dgvHopDong.AllowUserToDeleteRows = false;
-            this.dgvHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvHopDong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHopDong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -697,7 +698,7 @@ namespace GUI
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimKiem.Location = new System.Drawing.Point(131, 55);
             this.txtTimKiem.Name = "txtTimKiem";
@@ -737,7 +738,7 @@ namespace GUI
             // 
             // label24
             // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(491, 31);
@@ -748,7 +749,7 @@ namespace GUI
             // 
             // chxTheoThoiHan
             // 
-            this.chxTheoThoiHan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chxTheoThoiHan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chxTheoThoiHan.AutoSize = true;
             this.chxTheoThoiHan.Location = new System.Drawing.Point(286, 28);
@@ -802,7 +803,7 @@ namespace GUI
             // 
             // chxChuaDuTien
             // 
-            this.chxChuaDuTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chxChuaDuTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chxChuaDuTien.AutoSize = true;
             this.chxChuaDuTien.Location = new System.Drawing.Point(629, 27);
@@ -995,7 +996,7 @@ namespace GUI
                 txtGiaTienTongCong.Text = "0";
                 lblTinhTrang.Text = "Chưa tới thời hạn";
                 lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                lblNgayLap.Text = MainForm.NhanVienHienTai;
+                lblNguoiLap.Text = NhanVienBUS.GetHoTen(MainForm.MaNhanVienHienTai);
                 btnHopDong.Text = "Thêm hợp đồng";
                 btnHopDong.Show();
             }

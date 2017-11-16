@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using DTO;
 
+using System.Windows.Forms;
 namespace DAO
 {
     public static class SinhVienDAO
@@ -57,6 +58,12 @@ namespace DAO
                             $"('{sv.MSSV}',N'{sv.HoTen}','{sv.NgaySinh.ToString("yyyy-MM-dd")}', N'{sv.GioiTinh}', " +
                             $"'{sv.CMND}', '{sv.SoDienThoai}', '{sv.Lop}', '{sv.Khoa}', N'{sv.QueQuan}', " +
                             $"N'{sv.DienUuTien}', '{sv.Anh}', '{sv.Email}', '{sv.RFID}')";
+            return Data.ExecuteNonQuery(query);
+        }
+        public static int CapNhatSinhVien(SinhVienDTO sv)
+        {
+            MessageBox.Show($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', NgaySinh = \'{sv.NgaySinh.ToString("yyyy-MM-dd")}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\', RFID = \'{sv.RFID}\' WHERE MSSV={sv.MSSV}");
+            string query = ($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', NgaySinh = \'{sv.NgaySinh.ToString("yyyy-MM-dd")}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = N\'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\', RFID = \'{sv.RFID}\' WHERE MSSV=\'{sv.MSSV}\'");
             return Data.ExecuteNonQuery(query);
         }
     }

@@ -48,10 +48,18 @@ namespace BUS
             dt.Columns[12].ColumnName = RFID;
             return dt;
         }
-        public static void CapNhatSinhVien(SinhVienDTO sv)
+        public static bool CapNhatSinhVien(SinhVienDTO sv)
         {
-            string query = ($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', MSSV = \'{sv.MSSV}\' , NgaySinh = \'{sv.NgaySinh}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\' WHERE MSSV={sv.MSSV}");
-            Data.ExecuteNonQuery(query);
+            if (SinhVienDAO.CapNhatSinhVien(sv) == 1)
+            {
+                MessageBox.Show("Cập nhật sinh viên '" + sv.HoTen + "' (" + sv.MSSV + ") thành công");
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật sinh viên thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
         public static void XoaSinhVien(string key)
         {
@@ -63,12 +71,18 @@ namespace BUS
         /// Thêm sinh viên theo SinhVienDTO truyền vào
         /// </summary>
         /// <param name="sv"></param>
-        public static void ThemSinhVien(SinhVienDTO sv)
+        public static bool ThemSinhVien(SinhVienDTO sv)
         {
-            if (SinhVienDAO.ThemSinhVien(sv) == 0)
+            if (SinhVienDAO.ThemSinhVien(sv) == 1)
+            {
                 MessageBox.Show("Thêm sinh viên '" + sv.HoTen + "' (" + sv.MSSV + ") thành công");
+                return true;
+            }
             else
+            {
                 MessageBox.Show("Thêm sinh viên thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         /// <summary>
@@ -93,5 +107,6 @@ namespace BUS
         {
             return SinhVienDAO.GetSinhVienDTO(MSSV);
         }
+
     }
 }

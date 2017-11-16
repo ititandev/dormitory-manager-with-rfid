@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
+using System.Data.SqlClient;
 using DAO;
 using DTO;
 
@@ -14,7 +15,7 @@ namespace BUS
     {
         private TaiKhoanDAO tkdao = new TaiKhoanDAO();
 
-        public bool KiemTra(TextBox user, TextBox pass)
+        public static bool KiemTra(TextBox user, TextBox pass)
         {
             if (user.Text != "")
             {
@@ -49,13 +50,22 @@ namespace BUS
             }
             return true;
         }
+        
+        public static string GetMaNhanVien(TextBox txtTaiKhoan)
+        {
+            SqlDataReader reader = TaiKhoanDAO.GetMaNhanVien(txtTaiKhoan.Text);
+            if (reader.Read())
+                return Convert.ToString(reader["MaNhanVien"]);
+            else
+                return null;
+        }
 
-        public bool DangNhap(TextBox user, TextBox pass)
+        public static bool DangNhap(TextBox user, TextBox pass)
         {
             TaiKhoanDTO tkdto = new TaiKhoanDTO();
             tkdto.TenDangNhap = user.Text;
             tkdto.MatKhau = pass.Text;
-            DataTable table = tkdao.DangNhap(tkdto);
+            DataTable table = TaiKhoanDAO.DangNhap(tkdto);
             if (table.Rows.Count == 1)
             {
                 string str = table.Rows[0]["MatKhau"].ToString();

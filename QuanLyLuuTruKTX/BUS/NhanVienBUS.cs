@@ -39,5 +39,9 @@ namespace BUS
         {
             dgv.DataSource = nhanVienDAO.TimKiem(nvDTO);
         }
+        public static string GetHoTen(string maNhanVien)
+        {
+            return NhanVienDAO.GetHoTen(maNhanVien);
+        }
     }
 }

@@ -12,7 +12,7 @@ using DTO;
 
 namespace GUI
 {
-    public partial class HopDong : Form
+    public partial class HopDong : KTXForm
     {
         enum Mode
         {
@@ -42,6 +42,8 @@ namespace GUI
         }
         private void dgvHopDong_SelectionChanged(object sender, EventArgs e)
         {
+            if (CurrentMode == Mode.THEM)
+                return;
             foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
             {
                 HopDongDTO hopDongDTO = HopDongBUS.GetHopDongDTO(row.Cells[0].Value.ToString());
@@ -58,6 +60,7 @@ namespace GUI
                 txtGiaTienTongCong.Text = hopDongDTO.GiaTienTongCong.ToString();
                 txtGiaTienDaNop.Text = hopDongDTO.GiaTienDaNop.ToString();
                 txtChuThich.Text = hopDongDTO.ChuThich;
+                return;
             }
         }
         private void HopDong_Resize(object sender, EventArgs e)
@@ -112,7 +115,7 @@ namespace GUI
             HopDongDTO hopDongDTO = new HopDongDTO();
 
             hopDongDTO.MSSV = txtMSSV.Text;
-            hopDongDTO.MaNhanVien = MainForm.NhanVienHienTai;
+            hopDongDTO.MaNhanVien = MainForm.MaNhanVienHienTai;
             hopDongDTO.NgayLap = Convert.ToDateTime(lblNgayLap.Text);
             hopDongDTO.NgayBatDau = dtpNgayBatDau.Value;
             hopDongDTO.NgayKetThuc = dtpNgayKetThuc.Value;

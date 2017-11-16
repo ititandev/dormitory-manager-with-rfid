@@ -12,7 +12,7 @@ using DTO;
 
 namespace GUI
 {
-    public partial class Phong : Form
+    public partial class Phong : KTXForm
     {
         private PhongBUS phongBUS = new PhongBUS();
         public Phong()
@@ -95,7 +95,6 @@ namespace GUI
                 MessageBox.Show("Lỗi: " + err.ToString());
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchText = this.tbSearch.Text;

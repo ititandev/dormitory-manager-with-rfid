@@ -21,6 +21,14 @@ namespace DTO
         public int GiaTienTongCong { get; set; }
         public int GiaTienDaNop { get; set; }
 
+        public NhanVienDTO NhanVienDTO
+        {
+            get => default(NhanVienDTO);
+            set
+            {
+            }
+        }
+
         public static string[] TinhTrangHopDongString = new string[] { "Chưa tới thời hạn", "Trong thời hạn", "Hết thời hạn" };
     }
 

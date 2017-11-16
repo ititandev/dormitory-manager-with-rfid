@@ -22,12 +22,14 @@ namespace GUI
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if (dangNhapBUS.KiemTra(txtTaiKhoan, txtMatKhau))
+            if (DangNhapBUS.KiemTra(txtTaiKhoan, txtMatKhau))
             {
-                if (dangNhapBUS.DangNhap(txtTaiKhoan, txtMatKhau))
+                if (DangNhapBUS.DangNhap(txtTaiKhoan, txtMatKhau))
                 {
                     MessageBox.Show("Bạn đăng nhập thành công!", "Dang nhap");
+                    MainForm.MaNhanVienHienTai = DangNhapBUS.GetMaNhanVien(txtTaiKhoan);
                     txtTaiKhoan.Text = txtMatKhau.Text = "";
+                    Hide();
                 }
                 else
                     MessageBox.Show("Bạn đăng nhập không thành công!", "Dang nhap");

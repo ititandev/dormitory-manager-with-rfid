@@ -5,16 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using DTO;
 
 namespace DAO
 {
     public class TaiKhoanDAO
     {
-        public DataTable DangNhap(TaiKhoanDTO tk)
+        public static DataTable DangNhap(TaiKhoanDTO tk)
         {
             string qry = "SELECT * from TaiKhoan where TenDangNhap = '" + tk.TenDangNhap + "'";
             return Data.ExecuteQuery(qry);
+        }
+
+        public static SqlDataReader GetMaNhanVien(string text)
+        {
+            return Data.ExecuteReader("SELECT MaNhanVien FROM TaiKhoan WHERE TenDangNhap = '" + text + "'");
         }
     }
 }

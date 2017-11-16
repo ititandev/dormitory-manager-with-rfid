@@ -46,6 +46,8 @@ namespace DAO
             Data.ExecuteNonQuery(str);
         }
 
+        
+
         public void Xoa(NhanVienDTO nvDTO)
         {
             string str = "Delete NhanVien where MaNhanVien = '" + nvDTO.MaNhanVien + "'";
