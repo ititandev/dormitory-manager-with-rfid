@@ -932,10 +932,10 @@ namespace GUI
         private System.Windows.Forms.DateTimePicker dtpNgayLap;
 
 
-        private void SetState(Mode state)
+        private void SetState(CheDo state)
         {
-            CurrentMode = state;
-            if (state == Mode.XEM)
+            CheDoHienTai = state;
+            if (state == CheDo.XEM)
             {
                 xemMode.BackColor = Color.LightSlateGray;
                 suaMode.BackColor = Color.LightGray;
@@ -950,7 +950,7 @@ namespace GUI
 
                 btnHopDong.Hide();
             }
-            else if (state == Mode.SUA)
+            else if (state == CheDo.SUA)
             {
                 xemMode.BackColor = Color.LightGray;
                 suaMode.BackColor = Color.LightSlateGray;
@@ -965,7 +965,7 @@ namespace GUI
                 dtpNgayKetThuc.Enabled = false;
                 btnHopDong.Show();
             }
-            else if (state == Mode.THEM)
+            else if (state == CheDo.THEM)
             {
                 xemMode.BackColor = Color.LightGray;
                 suaMode.BackColor = Color.LightGray;

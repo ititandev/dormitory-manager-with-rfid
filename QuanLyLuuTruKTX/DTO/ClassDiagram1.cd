@@ -6,15 +6,8 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAGAAoAQAAACAEAAAAAAAABAAFAQCAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAGAAoAQAAACAEAAAAAAAABAAFAQCAAAQAA=</HashCode>
       <FileName>HopDongDTO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DTO.DiemRenLuyenDTO">
-    <Position X="2.25" Y="1" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAgQBAAAAAIAGA=</HashCode>
-      <FileName>DiemRenLuyenDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.DotDienNuocDTO">
@@ -34,7 +27,7 @@
   <Class Name="DTO.NhanVienDTO">
     <Position X="5.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAACAAAAAQAAABAAAEAAAAAAAAEAAQAAAAIAI=</HashCode>
+      <HashCode>ABAAAAAAACAAAAAUAAABAAAEAAAAAAAAEAAQAAAAIAI=</HashCode>
       <FileName>NhanVienDTO.cs</FileName>
     </TypeIdentifier>
   </Class>

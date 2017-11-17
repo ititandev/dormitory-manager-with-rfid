@@ -25,8 +25,8 @@ namespace DAO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ITITAN-LAP\\SQLEXPRESS01;Initial Catalog=DormitoryDB;Integrated Securi" +
-            "ty=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-EJJGDJQ\\SQLEXPRESS;Initial Catalog=DormitoryDB;Integrated Sec" +
+            "urity=True")]
         public string connectString {
             get {
                 return ((string)(this["connectString"]));

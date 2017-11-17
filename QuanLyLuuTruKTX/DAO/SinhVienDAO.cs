@@ -62,7 +62,6 @@ namespace DAO
         }
         public static int CapNhatSinhVien(SinhVienDTO sv)
         {
-            MessageBox.Show($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', NgaySinh = \'{sv.NgaySinh.ToString("yyyy-MM-dd")}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = \'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\', RFID = \'{sv.RFID}\' WHERE MSSV={sv.MSSV}");
             string query = ($"UPDATE SinhVien SET HoTen = N\'{sv.HoTen}\' , GioiTinh=N\'{sv.GioiTinh}\', NgaySinh = \'{sv.NgaySinh.ToString("yyyy-MM-dd")}\' , CMND = \'{sv.CMND}\' , SoDienThoai = \'{sv.SoDienThoai}\' , Lop = \'{sv.Lop}\' , Khoa = N\'{sv.Khoa}\' , QueQuan = N\'{sv.QueQuan}\' , DienUuTien = N\'{sv.DienUuTien}\' , Anh = \'{sv.Anh}\' , Email = \'{sv.Email}\', RFID = \'{sv.RFID}\' WHERE MSSV=\'{sv.MSSV}\'");
             return Data.ExecuteNonQuery(query);
         }

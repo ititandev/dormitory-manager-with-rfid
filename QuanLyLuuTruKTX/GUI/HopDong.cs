@@ -14,11 +14,11 @@ namespace GUI
 {
     public partial class HopDong : KTXForm
     {
-        enum Mode
+        enum CheDo
         {
             XEM, SUA, THEM
         }
-        private static Mode CurrentMode { get; set; }
+        private static CheDo CheDoHienTai { get; set; }
         private DataTable dataTable;
         public HopDong()
         {
@@ -27,13 +27,8 @@ namespace GUI
 
         private void HopDong_Load(object sender, EventArgs e)
         {
-            SetState(Mode.XEM);
-            dataTable = HopDongBUS.XemTatCa();
-            dgvHopDong.DataSource = dataTable;
+            btnXemTatCa_Click(null, null);
             suaMode.Hide();
-            chxTheoTinhTrang.Checked = true;
-            cboTinhTrang.SelectedIndex = 0;
-            cboTimKiemTheo.SelectedIndex = 0;
         }
 
         private void HopDong_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,7 +37,7 @@ namespace GUI
         }
         private void dgvHopDong_SelectionChanged(object sender, EventArgs e)
         {
-            if (CurrentMode == Mode.THEM)
+            if (CheDoHienTai == CheDo.THEM)
                 return;
             foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
             {
@@ -98,7 +93,7 @@ namespace GUI
                 lblDienUuTien.Text = "";
                 lblEmail.Text = "";
             }
-            if (CurrentMode == Mode.THEM)
+            if (CheDoHienTai == CheDo.THEM)
             {
                 if (!SinhVienBUS.KiemTraHopDongSV(txtMSSV.Text))
                     lblNotFoundMSSV.Show();
@@ -130,17 +125,17 @@ namespace GUI
 
         private void xemMode_Click(object sender, EventArgs e)
         {
-            SetState(Mode.XEM);
+            SetState(CheDo.XEM);
         }
 
         private void suaMode_Click(object sender, EventArgs e)
         {
-            SetState(Mode.SUA);
+            SetState(CheDo.SUA);
         }
 
         private void themMode_Click(object sender, EventArgs e)
         {
-            SetState(Mode.THEM);
+            SetState(CheDo.THEM);
         }
 
         private void cboTimKiemTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,7 +176,7 @@ namespace GUI
                 lblKhuNha.Text = phongDTO.KhuNha;
                 lblSoPhong.Text = phongDTO.SoPhong;
             }
-            if (CurrentMode == Mode.THEM)
+            if (CheDoHienTai == CheDo.THEM)
             {
                 if (!PhongBUS.KiemTraPhong(txtIDPhong.Text))
                     lblNotSuitableRoom.Show();
@@ -192,7 +187,7 @@ namespace GUI
             {
                 lblNotSuitableRoom.Hide();
             }
-                
+
         }
 
         private void chxChuaDuTien_CheckedChanged(object sender, EventArgs e)
@@ -236,7 +231,7 @@ namespace GUI
             catch (Exception e)
             {
             }
-            
+
         }
 
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
@@ -246,13 +241,20 @@ namespace GUI
 
         private void btnXemTatCa_Click(object sender, EventArgs e)
         {
-            SetState(Mode.XEM);
+            SetState(CheDo.XEM);
             dataTable = HopDongBUS.XemTatCa();
             dgvHopDong.DataSource = dataTable;
+            dgvHopDong.Columns["RFID"].Visible = false;
             chxTheoTinhTrang.Checked = true;
             cboTimKiemTheo.SelectedIndex = 0;
             cboTinhTrang.SelectedIndex = 0;
             txtTimKiem.Text = "";
+        }
+
+        public override void SendRFID(string RFID)
+        {
+            dataTable.DefaultView.RowFilter = "[RFID] = '" + RFID + "'";
+
         }
     }
 }

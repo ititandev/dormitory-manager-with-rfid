@@ -16,7 +16,7 @@ namespace DAO
             return Data.ExecuteQuery("SELECT * FROM Phong");
         }
 
-        public void Them(PhongDTO phongDTO)
+        public int Them(PhongDTO phongDTO)
         {
             string str = "INSERT into Phong values('"
                         + phongDTO.SoPhong + "','"
@@ -27,7 +27,7 @@ namespace DAO
                         + phongDTO.IDPhong + "','"
                         + phongDTO.SoLuongHienTai + "')";
 
-            Data.ExecuteNonQuery(str);
+            return Data.ExecuteNonQuery(str);
         }
 
         public void Sua(PhongDTO phongDTO)

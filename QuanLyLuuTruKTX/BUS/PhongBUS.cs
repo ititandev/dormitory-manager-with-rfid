@@ -32,9 +32,12 @@ namespace BUS
             dt.Columns[6].ColumnName = "Số lượng hiện tại";
         }
 
-        public void Them(PhongDTO phongDTO)
+        public bool Them(PhongDTO phongDTO)
         {
-            phongDAO.Them(phongDTO);
+            if (phongDAO.Them(phongDTO) == 1)
+                return true;
+            else
+                return false;
         }
 
         public void Sua(PhongDTO phongDTO)

@@ -13,14 +13,15 @@ namespace DAO
     {
         public static DataTable ViewAll()
         {
-            return Data.ExecuteQuery(@"SELECT MaSo ,MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
+            return Data.ExecuteQuery(@"SELECT MaSo ,HopDong.MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
                                     case TinhTrang
 	                                    WHEN 0 THEN N'Chưa tới thời hạn'
 	                                    WHEN 1 THEN N'Trong thời hạn'
 	                                    WHEN 2 THEN N'Hết thời hạn'
-	                                END AS ThoiHan, IDPhong, GiaTienTongCong, GiaTienDaNop
+	                                END AS ThoiHan, IDPhong, GiaTienTongCong, GiaTienDaNop, RFID
                                     FROM dbo.HopDong LEFT JOIN NhanVien ON 
-                                    HopDong.MaNhanVien = NhanVien.MaNhanVien");
+                                    HopDong.MaNhanVien = NhanVien.MaNhanVien
+                                    LEFT JOIN SinhVien ON HopDong.MSSV = SinhVien.MSSV");
         }
 
         public static DataTable TimKiem(DateTime NgayBatDau, DateTime NgayKetThuc, DateTime NgayLap)

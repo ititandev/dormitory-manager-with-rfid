@@ -82,6 +82,7 @@
             this.xemMode = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnXemTatCa = new System.Windows.Forms.Button();
+            this.lblThongBao = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
@@ -330,9 +331,9 @@
             // 
             // txtLop
             // 
-            this.txtLop.Location = new System.Drawing.Point(81, 313);
+            this.txtLop.Location = new System.Drawing.Point(313, 338);
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(171, 20);
+            this.txtLop.Size = new System.Drawing.Size(99, 20);
             this.txtLop.TabIndex = 2;
             // 
             // label6
@@ -396,9 +397,9 @@
             // 
             // txtCMND
             // 
-            this.txtCMND.Location = new System.Drawing.Point(312, 341);
+            this.txtCMND.Location = new System.Drawing.Point(82, 313);
             this.txtCMND.Name = "txtCMND";
-            this.txtCMND.Size = new System.Drawing.Size(99, 20);
+            this.txtCMND.Size = new System.Drawing.Size(171, 20);
             this.txtCMND.TabIndex = 2;
             // 
             // label14
@@ -474,11 +475,25 @@
             this.btnXemTatCa.UseVisualStyleBackColor = true;
             this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
+            // lblThongBao
+            // 
+            this.lblThongBao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblThongBao.AutoSize = true;
+            this.lblThongBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThongBao.ForeColor = System.Drawing.Color.Red;
+            this.lblThongBao.Location = new System.Drawing.Point(769, 621);
+            this.lblThongBao.Name = "lblThongBao";
+            this.lblThongBao.Size = new System.Drawing.Size(192, 25);
+            this.lblThongBao.TabIndex = 32;
+            this.lblThongBao.Text = "Nhấn F8 để chụp";
+            this.lblThongBao.Visible = false;
+            // 
             // SinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 770);
+            this.Controls.Add(this.lblThongBao);
             this.Controls.Add(this.btnXemTatCa);
             this.Controls.Add(this.themMode);
             this.Controls.Add(this.dgv);
@@ -543,6 +558,7 @@
         private System.Windows.Forms.Button btnChupAnh;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnXemTatCa;
+        private System.Windows.Forms.Label lblThongBao;
     }
 
     

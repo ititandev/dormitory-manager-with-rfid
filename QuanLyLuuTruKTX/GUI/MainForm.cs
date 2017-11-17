@@ -22,7 +22,7 @@ namespace GUI
         public static NhanVien nhanVienForm;
         public static Phong phongForm;
         public static DienNuoc dienNuocForm;
-        public static CaiDat caiDatForm;
+        public static CaiDat caiDatForm = new CaiDat();
 
         public static KTXForm FormHienTai;
         public MainForm()
@@ -104,11 +104,10 @@ namespace GUI
                 GUI.Properties.Settings.Default.Save();
             }
         }
-        
+
         private void btnCaiDat_Click_1(object sender, EventArgs e)
         {
-            if(caiDatForm == null)
-                caiDatForm = new CaiDat();
+
             caiDatForm.CapNhatDuLieu();
             caiDatForm.Show();
             caiDatForm.Activate();

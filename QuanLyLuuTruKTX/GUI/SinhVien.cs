@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using BUS;
 using DTO;
@@ -36,7 +37,7 @@ namespace GUI
                 {
                     pic.Image = Image.FromFile(DuongDanAnh);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     pic.Image = null;
                 }
@@ -252,8 +253,34 @@ namespace GUI
 
         private void btnChupAnh_Click(object sender, EventArgs e)
         {
-            var form = new CaptureForm();
-            form.Show();
+            Random rand = new Random();
+            string fileName = "temp" + rand.Next() + ".jpg";
+            new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory())).ForEach(file => {
+                if (file.IndexOf("temp", StringComparison.OrdinalIgnoreCase) >= 0)
+                    File.Delete(file);
+            });
+            MessageBox.Show("Nhấn F8 để chụp");
+            Process process = new System.Diagnostics.Process();
+            ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "WebCamImageSave.exe";
+            startInfo.Arguments = "/Filename " + fileName;
+            process.StartInfo = startInfo;
+            process.Start();
+            do
+            {
+                System.Threading.Thread.Sleep(200);
+                Process[] pname = Process.GetProcessesByName("WebCamImageSave");
+                if (pname.Length == 0)
+                {
+                    break;
+                }
+            } while (true);
+            if (File.Exists(fileName))
+            {
+                DuongDanAnh = Directory.GetCurrentDirectory() + @"\" + fileName;
+                DaChonAnh = true;
+            }
         }
 
         private void dgv_SelectionChanged(object sender, EventArgs e)
@@ -291,8 +318,6 @@ namespace GUI
         }
         public override void SendRFID(string RFID)
         {
-            RFID = RFID.Remove(0, 1);
-            RFID = RFID.Remove(RFID.Length - 1);
             if (CheDoHienTai == CheDo.XEM)
             {
                 for (int i = 0; i < dgv.Rows.Count; i++)

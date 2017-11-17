@@ -53,6 +53,8 @@ namespace GUI
             EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
         }
 
+        
+
         #region CaiDat
         private void CaiDat_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -69,6 +71,8 @@ namespace GUI
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 txtDuongDan.Text = folderBrowserDialog.SelectedPath;
+                if (txtDuongDan.Text.LastIndexOf("\\") != txtDuongDan.Text.Length - 1)
+                    txtDuongDan.Text += "\\";
             }
         }
         public void CapNhatDuLieu()
@@ -81,6 +85,11 @@ namespace GUI
             HopDongBUS.ConnectString = txtConnectString.Text;
             Properties.Settings.Default.ThuMucAnh = txtDuongDan.Text;
             Properties.Settings.Default.Save();
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
         #endregion
 
@@ -99,7 +108,8 @@ namespace GUI
             match = regexFindLast.Match(allIDCard);
             if (match.Success && (match.Value != currentIDCard || allIDCard.LastIndexOf(currentIDCard) != currentIndex))
             {
-                currentIDCard = match.Value;
+                currentIDCard = match.Value.Remove(0, 1);
+                currentIDCard = currentIDCard.Remove(currentIDCard.Length - 1);
                 lblRFID.Text = currentIDCard;
                 if (allIDCard.Length > 100)
                     allIDCard.Remove(0, allIDCard.Length - 99);
@@ -211,9 +221,6 @@ namespace GUI
 
         #endregion
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+        
     }
 }
