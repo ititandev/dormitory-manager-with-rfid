@@ -32,11 +32,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>D:\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DirectShowLib-2005">
       <HintPath>.\DirectShowLib-2005.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,13 +66,13 @@
     <Compile Include="CaiDat.Designer.cs">
       <DependentUpon>CaiDat.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\HopDongDS.cs">
-      <DependentUpon>HopDongDS.xsd</DependentUpon>
+    <Compile Include="DataSet\ReportDataSet.cs">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\HopDongDS.Designer.cs">
+    <Compile Include="DataSet\ReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HopDongDS.xsd</DependentUpon>
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="KTXForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +121,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewer.cs" />
+    <Compile Include="RPT\rptDienNuoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDienNuoc.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\rptHopDong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHopDong.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DienNuoc.resx">
       <DependentUpon>DienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotDienNuoc.resx">
+      <DependentUpon>DotDienNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HopDong.resx">
       <DependentUpon>HopDong.cs</DependentUpon>
@@ -146,19 +180,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\rptDienNuoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDienNuoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\rptHopDong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHopDong.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SinhVien.resx">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataSet\HopDongDS.xsc">
-      <DependentUpon>HopDongDS.xsd</DependentUpon>
+    <None Include="DataSet\ReportDataSet.xsc">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DataSet\HopDongDS.xsd">
+    <None Include="DataSet\ReportDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HopDongDS.Designer.cs</LastGenOutput>
+      <LastGenOutput>ReportDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet\HopDongDS.xss">
-      <DependentUpon>HopDongDS.xsd</DependentUpon>
+    <None Include="DataSet\ReportDataSet.xss">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -204,8 +249,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RPT\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

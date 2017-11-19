@@ -41,10 +41,10 @@
             this.dateEnd = new System.Windows.Forms.DateTimePicker();
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtDonGiaDien = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtDonGiaNuoc = new System.Windows.Forms.TextBox();
+            this.txtDonGiaDien = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -176,15 +176,6 @@
             this.panel1.TabIndex = 9;
             this.panel1.Visible = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Đơn giá điện";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -194,13 +185,14 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Đơn giá nước";
             // 
-            // txtDonGiaDien
+            // label5
             // 
-            this.txtDonGiaDien.Location = new System.Drawing.Point(125, 120);
-            this.txtDonGiaDien.Name = "txtDonGiaDien";
-            this.txtDonGiaDien.ReadOnly = true;
-            this.txtDonGiaDien.Size = new System.Drawing.Size(152, 20);
-            this.txtDonGiaDien.TabIndex = 6;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Đơn giá điện";
             // 
             // txtDonGiaNuoc
             // 
@@ -209,6 +201,14 @@
             this.txtDonGiaNuoc.ReadOnly = true;
             this.txtDonGiaNuoc.Size = new System.Drawing.Size(152, 20);
             this.txtDonGiaNuoc.TabIndex = 6;
+            // 
+            // txtDonGiaDien
+            // 
+            this.txtDonGiaDien.Location = new System.Drawing.Point(125, 120);
+            this.txtDonGiaDien.Name = "txtDonGiaDien";
+            this.txtDonGiaDien.ReadOnly = true;
+            this.txtDonGiaDien.Size = new System.Drawing.Size(152, 20);
+            this.txtDonGiaDien.TabIndex = 6;
             // 
             // DotDienNuoc
             // 
@@ -223,6 +223,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DotDienNuoc";
             this.Text = "DotDienNuoc";
+            this.Activated += new System.EventHandler(this.DotDienNuoc_Activated);
             this.Load += new System.EventHandler(this.DotDienNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -35,7 +35,7 @@ namespace GUI
                 duongDanAnh = value;
                 try
                 {
-                    pic.Image = Image.FromFile(DuongDanAnh);
+                    pic.Image = Image.FromFile(duongDanAnh);
                 }
                 catch (Exception ex)
                 {
@@ -73,7 +73,7 @@ namespace GUI
             DataTable dt = (dgv.DataSource as DataTable);
             if (dt != null)
             {
-                dt.DefaultView.RowFilter = $"[{filter}] LIKE %{value}%";
+                dt.DefaultView.RowFilter = $"[{filter}] LIKE '%{value}%'";
             }
         }
         private void btnXoa_Click(object sender, EventArgs e)
@@ -150,6 +150,20 @@ namespace GUI
 
         private void btnHanhDong_Click(object sender, EventArgs e)
         {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.CMND = txtCMND.Text;
+            sv.SoDienThoai = txtDT.Text;
+            sv.Email = txtEmail.Text;
+            sv.Khoa = txtKhoa.Text;
+            sv.Lop = txtLop.Text;
+            sv.MSSV = txtMSSV.Text;
+            sv.QueQuan = txtQueQuan.Text;
+            sv.HoTen = txtTen.Text;
+            sv.DienUuTien = txtDienUutien.Text;
+            sv.NgaySinh = dtpNgaySinh.Value;
+            sv.GioiTinh = cbGioiTinh.Text;
+            sv.RFID = txtRFID.Text;
+
             if (CheDoHienTai == CheDo.THEM)
             {
                 if (!DaChonAnh || txtRFID.Text == String.Empty)
@@ -157,20 +171,6 @@ namespace GUI
                     MessageBox.Show("Vui lòng chọn ảnh/RFID cho sinh viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                SinhVienDTO sv = new SinhVienDTO();
-                sv.CMND = txtCMND.Text;
-                sv.SoDienThoai = txtDT.Text;
-                sv.Email = txtEmail.Text;
-                sv.Khoa = txtKhoa.Text;
-                sv.Lop = txtLop.Text;
-                sv.MSSV = txtMSSV.Text;
-                sv.QueQuan = txtQueQuan.Text;
-                sv.HoTen = txtTen.Text;
-                sv.DienUuTien = txtDienUutien.Text;
-                sv.NgaySinh = dtpNgaySinh.Value;
-                sv.GioiTinh = cbGioiTinh.Text;
-                sv.RFID = txtRFID.Text;
-
                 int index = DuongDanAnh.LastIndexOf('.');
                 sv.Anh = sv.MSSV + DuongDanAnh.Remove(0, index);
                 string destPath = MainForm.ThuMucAnh + sv.MSSV + DuongDanAnh.Remove(0, index);
@@ -193,21 +193,6 @@ namespace GUI
             }
             else if (CheDoHienTai == CheDo.SUA)
             {
-                SinhVienDTO sv = new SinhVienDTO();
-                sv.CMND = txtCMND.Text;
-                sv.SoDienThoai = txtDT.Text;
-                sv.Email = txtEmail.Text;
-                sv.Khoa = txtKhoa.Text;
-                sv.Lop = txtLop.Text;
-                sv.MSSV = txtMSSV.Text;
-                sv.QueQuan = txtQueQuan.Text;
-                sv.HoTen = txtTen.Text;
-                sv.DienUuTien = txtDienUutien.Text;
-                sv.NgaySinh = dtpNgaySinh.Value;
-                sv.GioiTinh = cbGioiTinh.Text;
-                sv.RFID = txtRFID.Text;
-
-
                 if (DaChonAnh == true)
                 {
                     int index = DuongDanAnh.LastIndexOf('.');
@@ -306,14 +291,10 @@ namespace GUI
                 txtRFID.Text = row.Cells[RFID].Value.ToString();
                 DuongDanAnh = MainForm.ThuMucAnh + row.Cells[Anh].Value.ToString();
 
-
-
-
                 if (SinhVienBUS.KiemTraHopDongSV(txtMSSV.Text))
                     lblHopDongHopLe.Hide();
                 else
                     lblHopDongHopLe.Show();
-
             }
         }
         public override void SendRFID(string RFID)
@@ -339,6 +320,11 @@ namespace GUI
             dgv.Columns[Anh].Visible = false;
             dgv.Refresh();
             dgv.Update();
+        }
+
+        private void SinhVien_Activated(object sender, EventArgs e)
+        {
+            MainForm.FormHienTai = MainForm.sinhVienForm;
         }
     }
 }

@@ -14,49 +14,25 @@ namespace BUS
     public class PhongBUS
     {
         PhongDAO phongDAO = new PhongDAO();
-        public static void ViewAll(DataGridView dgv)
+        public static DataTable LoadPhong()
         {
-            DataTable dt = PhongDAO.ViewAll();
-            SetTitleColumn(dt);
-            dgv.DataSource = dt;
+            return PhongDAO.LoadPhong();
         }
 
-        public static void SetTitleColumn(DataTable dt)
+        public static bool ThemPhongDTO(PhongDTO phongDTO)
         {
-            dt.Columns[0].ColumnName = "Số phòng";
-            dt.Columns[1].ColumnName = "Khu nhà";
-            dt.Columns[2].ColumnName = "Mã nhân viên";
-            dt.Columns[3].ColumnName = "Số lượng cho phép";
-            dt.Columns[4].ColumnName = "Tình trạng";
-            dt.Columns[5].ColumnName = "Mã phòng";
-            dt.Columns[6].ColumnName = "Số lượng hiện tại";
-        }
-
-        public bool Them(PhongDTO phongDTO)
-        {
-            if (phongDAO.Them(phongDTO) == 1)
+            if (PhongDAO.ThemPhong(phongDTO) == 1)
                 return true;
             else
                 return false;
         }
 
-        public void Sua(PhongDTO phongDTO)
+        public static bool SuaPhongDTO(PhongDTO phongDTO)
         {
-            phongDAO.Sua(phongDTO);
-        }
-
-        public void TimKiem(DataGridView dgv, string searchText)
-        {
-            DataTable dt = phongDAO.TimKiem(searchText);
-            SetTitleColumn(dt);
-            dgv.DataSource = dt;
-        }
-
-        public void TimKiem(DataGridView dgv, PhongDTO obj)
-        {
-            DataTable dt = phongDAO.TimKiem(obj);
-            SetTitleColumn(dt);
-            dgv.DataSource = dt;
+            if (PhongDAO.SuaPhongDTO(phongDTO) == 1)
+                return true;
+            else
+                return false;
         }
 
         public static bool KiemTraPhong(string IDPhong)
@@ -77,8 +53,7 @@ namespace BUS
                 PhongDTO phongDTO = new PhongDTO();
                 phongDTO.SoPhong = Convert.ToString(reader["SoPhong"]);
                 phongDTO.KhuNha = Convert.ToString(reader["KhuNha"]);
-                phongDTO.MaNhanVien = Convert.ToString(reader["MaNhanVien"]);
-                phongDTO.SoLuongChoPhep = Convert.ToInt32(reader["SoLuongChoPhep"]);
+                phongDTO.SoLuongToiDa = Convert.ToInt32(reader["SoLuongToiDa"]);
                 phongDTO.TinhTrang = Convert.ToString(reader["TinhTrang"]);
                 phongDTO.IDPhong = Convert.ToString(reader["IDPhong"]);
                 phongDTO.SoLuongHienTai = Convert.ToInt32(reader["SoLuongHienTai"]);
@@ -89,6 +64,20 @@ namespace BUS
         public static void TimKiem()
         {
             throw new NotImplementedException();
+        }
+
+        public static DataTable LoadSinhVien()
+        {
+            return PhongDAO.LoadSinhVien();
+        }
+
+        public static string GetIDPhongFromRFID(string RFID)
+        {
+            SqlDataReader reader = PhongDAO.GetIDPhongFromRFID(RFID);
+            if (reader.Read())
+                return Convert.ToString(reader["IDPhong"]);
+            else
+                return String.Empty;
         }
     }
 }

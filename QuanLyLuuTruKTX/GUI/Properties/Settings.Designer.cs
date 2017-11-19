@@ -58,5 +58,16 @@ namespace GUI.Properties {
                 this["AutoConnect"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ITITANLAP\\SQLEXPRESS01;Initial Catalog=DormitoryDB;Integrated Securit" +
+            "y=True")]
+        public string DormitoryDBConnectionString {
+            get {
+                return ((string)(this["DormitoryDBConnectionString"]));
+            }
+        }
     }
 }

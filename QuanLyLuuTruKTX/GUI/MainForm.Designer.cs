@@ -37,6 +37,7 @@
             this.btnHopDong = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnCaiDat = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPhong
@@ -153,11 +154,22 @@
             this.btnCaiDat.UseVisualStyleBackColor = true;
             this.btnCaiDat.Click += new System.EventHandler(this.btnCaiDat_Click_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(360, 152);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 691);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCaiDat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnDienNuoc);
@@ -186,5 +198,6 @@
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnCaiDat;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -83,5 +83,10 @@ namespace GUI
                 DotDienNuocBUS.XoaDotDienNuoc(madot);
             }
         }
+
+        private void DotDienNuoc_Activated(object sender, EventArgs e)
+        {
+            MainForm.FormHienTai = MainForm.dienNuocForm;
+        }
     }
 }

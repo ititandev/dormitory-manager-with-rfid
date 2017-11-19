@@ -47,7 +47,7 @@ namespace BUS
                 MessageBox.Show("Ngày kết thúc hợp đồng phải sau ngày bắt đầu hợp đồng", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool result = HopDongDAO.AddHopDongDTO(hopDongDTO);
+            bool result = HopDongDAO.ThemHopDongDTO(hopDongDTO);
             if (result)
                 MessageBox.Show("Thêm thành công Hợp đồng");
             else
@@ -55,7 +55,7 @@ namespace BUS
         }
 
         public static string TimKiem(RadioButton chxTheoTinhTrang, ComboBox cboTinhTrang, RadioButton chxTheoThoiHan,
-                                    DateTimePicker dtpNgayBatDauTimKiem, DateTimePicker dtpNgayKetThucTimKiem, RadioButton chxChuaDuTien, ComboBox cboTimKiemTheo, TextBox txtTimKiem, DateTimePicker dtpNgayLap)
+                                    DateTimePicker dtpNgayBatDauTimKiem, DateTimePicker dtpNgayKetThucTimKiem, ComboBox cboTimKiemTheo, TextBox txtTimKiem)
         {
             string filter = String.Empty;
             if (chxTheoTinhTrang.Checked)
@@ -66,22 +66,18 @@ namespace BUS
                     filter = $"[Thời hạn] LIKE '%{cboTinhTrang.Text}%' ";
             }
             else if (chxTheoThoiHan.Checked)
-                filter = "[Ngày bắt đầu] >= '"
+                filter = "([Ngày bắt đầu] >= '"
                         + dtpNgayBatDauTimKiem.Value.ToString("d/M/yyyy")
                         + "' AND [Ngày kết thúc] <= '"
                         + dtpNgayKetThucTimKiem.Value.ToString("d/M/yyyy")
-                        + "' ";
-            else if (chxChuaDuTien.Checked)
-                filter = "[Đã nộp] < [Tổng cộng] ";
+                        + "' )";
 
             if (filter != String.Empty)
                 filter += "AND ";
-
+            filter += " ( ";
             if (cboTimKiemTheo.Text != String.Empty && cboTimKiemTheo.Text != "Tất cả")
             {
-                if (cboTimKiemTheo.Text == "Ngày lập")
-                    filter += $"[Ngày lập] = #{dtpNgayLap.Value.ToString("yyyy-M-d")}# ";
-                else if (cboTimKiemTheo.Text == "Mã số")
+                if (cboTimKiemTheo.Text == "Mã số")
                 {
                     if (txtTimKiem.Text != String.Empty)
                         filter += $"[Mã số] = {txtTimKiem.Text} ";
@@ -97,6 +93,7 @@ namespace BUS
                 if (txtTimKiem.Text != String.Empty)
                     filter += $"OR [Mã số] = {txtTimKiem.Text} ";
             }
+            filter += " )";
             return filter;
         }
 
@@ -110,6 +107,14 @@ namespace BUS
             {
                 Data.ConnectString = value;
             }
+        }
+        public static SqlDataReader getHopDongDS()
+        {
+            string query = "SELECT MaSo, HopDong.MSSV, NgayBatDau, NgayKetThuc, HoTen, NgaySinh, Khoa, CMND, SoDienThoai, Email, QueQuan FROM HopDong, SinhVien WHERE HopDong.MSSV=SinhVien.MSSV";
+            
+
+            var dr = Data.ExecuteReader(query);
+            return dr;
         }
 
     }

@@ -23,9 +23,7 @@ namespace GUI
             btnRefresh_Click(0, null);
             hMenu = GetSystemMenu(this.Handle, false);
         }
-
-        private const uint SC_CLOSE = 0xf060;
-        private const uint MF_GRAYED = 0x01;
+        
         private IntPtr hMenu;
 
         [DllImport("user32.dll")]
@@ -35,25 +33,21 @@ namespace GUI
         private static extern int EnableMenuItem(IntPtr hMenu, uint wIDEnableItem, uint wEnable);
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
+            EnableMenuItem(hMenu, 0xf060, 0x01);
         }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
-        }
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
+            EnableMenuItem(hMenu, 0xf060, 0x01);
         }
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
+            EnableMenuItem(hMenu, 0xf060, 0x01);
         }
 
-        
+
 
         #region CaiDat
         private void CaiDat_FormClosing(object sender, FormClosingEventArgs e)
@@ -63,7 +57,6 @@ namespace GUI
             {
                 serialPort.Close();
             }
-            SaveSetting();
         }
 
         private void btnChonDuongDan_Click(object sender, EventArgs e)
@@ -86,6 +79,7 @@ namespace GUI
             Properties.Settings.Default.ThuMucAnh = txtDuongDan.Text;
             Properties.Settings.Default.Save();
             this.WindowState = FormWindowState.Minimized;
+            SaveRFIDSettings();
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -102,7 +96,7 @@ namespace GUI
         int currentIndex = 0;
         Regex regexFindLast = new Regex("\\[\\d{8}(\\d?)(\\d?)\\]\\z");
         Match match;
-        
+
         private void SetTextCom(string text)
         {
             match = regexFindLast.Match(allIDCard);
@@ -113,16 +107,16 @@ namespace GUI
                 lblRFID.Text = currentIDCard;
                 if (allIDCard.Length > 100)
                     allIDCard.Remove(0, allIDCard.Length - 99);
-                HanhDong();
-                SystemSounds.Beep.Play();
                 Console.Beep(4000, 200);
+                HanhDong();
                 currentIndex = allIDCard.LastIndexOf(currentIDCard);
             }
         }
 
         private void HanhDong()
         {
-            MainForm.FormHienTai.SendRFID(currentIDCard);
+            if (MainForm.FormHienTai != null)
+                MainForm.FormHienTai.SendRFID(currentIDCard);
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -162,9 +156,9 @@ namespace GUI
                     btnConnect_Click(null, null);
             }
         }
-        
 
-        private void SaveSetting()
+
+        private void SaveRFIDSettings()
         {
             Properties.Settings.Default.PortName = cbxComList.Text;
             Properties.Settings.Default.AutoConnect = chkAutoConnect.Checked;
@@ -218,9 +212,13 @@ namespace GUI
                 }
             }
         }
+        private void chkAutoConnect_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveRFIDSettings();
+        }
 
         #endregion
 
-        
+
     }
 }

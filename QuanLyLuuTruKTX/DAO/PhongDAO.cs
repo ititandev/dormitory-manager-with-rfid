@@ -11,58 +11,75 @@ namespace DAO
 {
     public class PhongDAO
     {
-        public static DataTable ViewAll()
+        public static DataTable LoadPhong()
         {
-            return Data.ExecuteQuery("SELECT * FROM Phong");
+            return Data.ExecuteQuery(@"SELECT IDPhong, KhuNha, SoPhong, 
+                                        (SELECT COUNT(*) FROM HopDong
+                                        WHERE Phong.IDPhong = HopDong.IDPhong COLLATE DATABASE_DEFAULT
+                                        AND dbo.KiemTraThoiHan(HopDong.MSSV) = 1)
+                                        AS SoLuongHienTai, SoLuongToiDa, TinhTrang FROM Phong");
         }
 
-        public int Them(PhongDTO phongDTO)
+        public static int ThemPhong(PhongDTO phongDTO)
         {
-            string str = "INSERT into Phong values('"
-                        + phongDTO.SoPhong + "','"
-                        + phongDTO.KhuNha + "','"
-                        + phongDTO.MaNhanVien + "','"
-                        + phongDTO.SoLuongChoPhep + "','"
-                        + phongDTO.TinhTrang + "','"
+            string str = "INSERT into Phong VALUES('"
                         + phongDTO.IDPhong + "','"
-                        + phongDTO.SoLuongHienTai + "')";
+                        + phongDTO.KhuNha + "','"
+                        + phongDTO.SoPhong + "','"
+                        + phongDTO.SoLuongToiDa + "',N'"
+                        + phongDTO.TinhTrang + "')";
 
             return Data.ExecuteNonQuery(str);
         }
 
-        public void Sua(PhongDTO phongDTO)
+        public static int SuaPhongDTO(PhongDTO phongDTO)
         {
-            string str = "Update Phong set SoPhong = '" + phongDTO.SoPhong
-                                           + "',KhuNha = '" + phongDTO.KhuNha
-                                           + "',MaNhanVien = '" + phongDTO.MaNhanVien
-                                           + "',SoLuongChoPhep = '" + phongDTO.SoLuongChoPhep
-                                           + "',TinhTrang = '" + phongDTO.TinhTrang
-                                           + "',SoLuongHienTai = '" + phongDTO.SoLuongHienTai
-                                + "' where IDPhong = '" + phongDTO.IDPhong + "'";
-            Data.ExecuteNonQuery(str);
+            string str = "UPDATE Phong SET SoPhong = '" + phongDTO.SoPhong +
+                        "',KhuNha = '" + phongDTO.KhuNha +
+                        "',SoLuongToiDa = '" + phongDTO.SoLuongToiDa +
+                        "',TinhTrang = N'" + phongDTO.TinhTrang +
+                        "' WHERE IDPhong = '" + phongDTO.IDPhong + "'";
+            return Data.ExecuteNonQuery(str);
         }
 
         public DataTable TimKiem(string searchText)
         {
             string SoPhong = " SoPhong LIKE '%" + searchText + "%' ";
             string KhuNha = " KhuNha LIKE '%" + searchText + "%' ";
-            string MaNhanVien = " MaNhanVien LIKE '%" + searchText + "%' ";
             string SoLuongChoPhep = " SoLuongChoPhep LIKE '%" + searchText + "%' ";
             string TinhTrang = " TinhTrang LIKE '%" + searchText + "%' ";
             string SoLuongHienTai = " SoLuongHienTai LIKE '%" + searchText + "%' ";
             string IDPhong = " IDPhong LIKE '%" + searchText + "%' ";
 
             string str = "SELECT * from Phong where " +
-                SoPhong + "OR" + KhuNha + "OR" +
-                MaNhanVien + "OR" + SoLuongChoPhep + "OR" +
+                SoPhong + "OR" + KhuNha + "OR" + SoLuongChoPhep + "OR" +
                 TinhTrang + "OR" + SoLuongHienTai + "OR" + IDPhong;
 
             return Data.ExecuteQuery(str);
         }
 
+        public static SqlDataReader GetIDPhongFromRFID(string RFID)
+        {
+            return Data.ExecuteReader(@"SELECT HopDong.IDPhong, RFID FROM HopDong 
+                                        LEFT JOIN SinhVien ON HopDong.MSSV = SinhVien.MSSV 
+                                        WHERE dbo.KiemTraThoiHan(HopDong.MSSV) = 1 AND RFID ='" + RFID +"'");
+        }
+
+        public static DataTable LoadSinhVien()
+        {
+            return Data.ExecuteQuery(@"SELECT HopDong.IDPhong, HopDong.MSSV, HoTen, RFID FROM HopDong 
+                                        LEFT JOIN  SinhVien ON HopDong.MSSV = SinhVien.MSSV 
+                                        WHERE dbo.KiemTraThoiHan(HopDong.MSSV) = 1 ");
+        }
+
         public static SqlDataReader GetPhongDTO(string IDPhong)
         {
-            SqlDataReader reader = Data.ExecuteReader($"SELECT * FROM Phong WHERE IDPhong = '{IDPhong}'");
+            SqlDataReader reader = Data.ExecuteReader(@"SELECT Phong.IDPhong, KhuNha, SoPhong, 
+                                                    (SELECT COUNT(*) FROM HopDong
+                                                    WHERE Phong.IDPhong = HopDong.IDPhong COLLATE DATABASE_DEFAULT
+                                                    AND dbo.KiemTraThoiHan(HopDong.MSSV) = 1)
+                                                    AS SoLuongHienTai,
+                                                    SoLuongToiDa, TinhTrang FROM Phong WHERE IDPhong = '"+IDPhong+"'");
             if (reader.Read())
                 return reader;
             else
@@ -73,13 +90,12 @@ namespace DAO
         {
             string SoPhong = obj.SoPhong != "" ? " SoPhong LIKE '%" + obj.SoPhong + "%' AND" : "";
             string KhuNha = obj.KhuNha != "" ? " KhuNha LIKE '%" + obj.KhuNha + "%' AND" : "";
-            string MaNhanVien = obj.MaNhanVien != "" ? " MaNhanVien LIKE '%" + obj.MaNhanVien + "%' AND" : "";
-            string SoLuongChoPhep = obj.SoLuongChoPhep != -1 ? " SoLuongChoPhep LIKE '%" + obj.SoLuongChoPhep + "%' AND" : "";
+            string SoLuongChoPhep = obj.SoLuongToiDa != -1 ? " SoLuongChoPhep LIKE '%" + obj.SoLuongToiDa + "%' AND" : "";
             string TinhTrang = obj.TinhTrang != "" ? " TinhTrang LIKE '%" + obj.TinhTrang + "%' AND" : "";
             string SoLuongHienTai = obj.SoLuongHienTai != -1 ? " SoLuongHienTai LIKE '%" + obj.SoLuongHienTai + "%' " : "";
 
             string str = "SELECT * from Phong where " +
-                SoPhong + KhuNha + MaNhanVien + SoLuongChoPhep + TinhTrang + SoLuongHienTai;
+                SoPhong + KhuNha + SoLuongChoPhep + TinhTrang + SoLuongHienTai;
 
             return Data.ExecuteQuery(str);
         }

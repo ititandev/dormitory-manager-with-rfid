@@ -113,5 +113,11 @@ namespace GUI
             caiDatForm.Activate();
             caiDatForm.WindowState = FormWindowState.Normal;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ob = new Report(ReportViewer.HopDongReport(2));
+            ob.ShowDialog();
+        }
     }
 }

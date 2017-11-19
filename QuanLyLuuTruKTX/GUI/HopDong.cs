@@ -50,7 +50,7 @@ namespace GUI
                 lblNgayLap.Text = hopDongDTO.NgayLap.ToString("dd/MM/yyyy");
                 dtpNgayBatDau.Value = hopDongDTO.NgayBatDau;
                 dtpNgayKetThuc.Value = hopDongDTO.NgayKetThuc;
-                lblTinhTrang.Text = hopDongDTO.TinhTrang;
+                lblTinhTrang.Text = row.Cells[6].Value.ToString();
                 txtIDPhong.Text = hopDongDTO.IDPhong;
                 txtGiaTienTongCong.Text = hopDongDTO.GiaTienTongCong.ToString();
                 txtGiaTienDaNop.Text = hopDongDTO.GiaTienDaNop.ToString();
@@ -80,6 +80,15 @@ namespace GUI
                 lblQueQuan.Text = sinhVienDTO.QueQuan;
                 lblDienUuTien.Text = sinhVienDTO.DienUuTien;
                 lblEmail.Text = sinhVienDTO.Email;
+                try
+                {
+                    picAnh.Image = Image.FromFile(MainForm.ThuMucAnh + sinhVienDTO.Anh);
+                }
+                catch (Exception)
+                {
+                    picAnh.Image = null;
+                }
+                
             }
             else
             {
@@ -114,7 +123,6 @@ namespace GUI
             hopDongDTO.NgayLap = Convert.ToDateTime(lblNgayLap.Text);
             hopDongDTO.NgayBatDau = dtpNgayBatDau.Value;
             hopDongDTO.NgayKetThuc = dtpNgayKetThuc.Value;
-            hopDongDTO.TinhTrang = HopDongDTO.TinhTrangHopDongString[(int)TinhTrangHopDong.CHUA_TOI_THOI_HAN];
             hopDongDTO.IDPhong = txtIDPhong.Text;
             hopDongDTO.GiaTienTongCong = Convert.ToInt32(txtGiaTienTongCong.Text);
             hopDongDTO.GiaTienDaNop = Convert.ToInt32(txtGiaTienDaNop.Text);
@@ -140,27 +148,13 @@ namespace GUI
 
         private void cboTimKiemTheo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTimKiemTheo.Text == "Ngày lập")
-            {
-                dtpNgayLap.Show();
-                txtTimKiem.Hide();
-            }
-            else
-            {
-                dtpNgayLap.Hide();
-                txtTimKiem.Show();
-            }
-            Search();
+            TimKiem();
         }
-
-        private void TimKiem()
-        {
-            //PhongBUS.TimKiem()
-        }
+        
         private void cboThoiHan_SelectedIndexChanged(object sender, EventArgs e)
         {
             chxTheoTinhTrang.Checked = true;
-            Search();
+            TimKiem();
         }
 
         private void txtIDPhong_TextChanged(object sender, EventArgs e)
@@ -192,41 +186,41 @@ namespace GUI
 
         private void chxChuaDuTien_CheckedChanged(object sender, EventArgs e)
         {
-            Search();
+            TimKiem();
         }
 
         private void chxTheoTinhTrang_CheckedChanged(object sender, EventArgs e)
         {
-            Search();
+            TimKiem();
         }
 
         private void chxTheoThoiHan_CheckedChanged(object sender, EventArgs e)
         {
-            Search();
+            TimKiem();
         }
 
         private void dtpNgayBatDauTimKiem_ValueChanged(object sender, EventArgs e)
         {
             chxTheoThoiHan.Checked = true;
-            Search();
+            TimKiem();
         }
 
         private void dtpNgayKetThucTimKiem_ValueChanged(object sender, EventArgs e)
         {
             chxTheoThoiHan.Checked = true;
-            Search();
+            TimKiem();
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            Search();
+            TimKiem();
         }
-        private void Search()
+        private void TimKiem()
         {
             try
             {
                 dataTable.DefaultView.RowFilter = HopDongBUS.TimKiem(chxTheoTinhTrang, cboTinhTrang, chxTheoThoiHan,
-                dtpNgayBatDauTimKiem, dtpNgayKetThucTimKiem, chxChuaDuTien, cboTimKiemTheo, txtTimKiem, dtpNgayLap);
+                dtpNgayBatDauTimKiem, dtpNgayKetThucTimKiem, cboTimKiemTheo, txtTimKiem);
             }
             catch (Exception e)
             {
@@ -236,7 +230,7 @@ namespace GUI
 
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
-            Search();
+            TimKiem();
         }
 
         private void btnXemTatCa_Click(object sender, EventArgs e)
@@ -254,6 +248,16 @@ namespace GUI
         public override void SendRFID(string RFID)
         {
             dataTable.DefaultView.RowFilter = "[RFID] = '" + RFID + "'";
+
+        }
+
+        private void HopDong_Activated(object sender, EventArgs e)
+        {
+            MainForm.FormHienTai = MainForm.hopDongForm;
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
 
         }
     }

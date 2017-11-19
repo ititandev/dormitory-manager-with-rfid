@@ -45,12 +45,16 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.lblRFID = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 16);
+            this.label1.Location = new System.Drawing.Point(17, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 0;
@@ -58,14 +62,14 @@
             // 
             // txtConnectString
             // 
-            this.txtConnectString.Location = new System.Drawing.Point(118, 13);
+            this.txtConnectString.Location = new System.Drawing.Point(113, 28);
             this.txtConnectString.Name = "txtConnectString";
             this.txtConnectString.Size = new System.Drawing.Size(656, 20);
             this.txtConnectString.TabIndex = 1;
             // 
             // txtDuongDan
             // 
-            this.txtDuongDan.Location = new System.Drawing.Point(118, 52);
+            this.txtDuongDan.Location = new System.Drawing.Point(113, 67);
             this.txtDuongDan.Name = "txtDuongDan";
             this.txtDuongDan.Size = new System.Drawing.Size(656, 20);
             this.txtDuongDan.TabIndex = 3;
@@ -73,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 55);
+            this.label2.Location = new System.Drawing.Point(17, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 2;
@@ -81,7 +85,7 @@
             // 
             // btnChonDuongDan
             // 
-            this.btnChonDuongDan.Location = new System.Drawing.Point(780, 50);
+            this.btnChonDuongDan.Location = new System.Drawing.Point(775, 65);
             this.btnChonDuongDan.Name = "btnChonDuongDan";
             this.btnChonDuongDan.Size = new System.Drawing.Size(107, 23);
             this.btnChonDuongDan.TabIndex = 4;
@@ -91,7 +95,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(359, 200);
+            this.btnLuu.Location = new System.Drawing.Point(345, 257);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 5;
@@ -105,7 +109,7 @@
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblState.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblState.Location = new System.Drawing.Point(507, 101);
+            this.lblState.Location = new System.Drawing.Point(495, 37);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(0, 15);
             this.lblState.TabIndex = 25;
@@ -114,7 +118,7 @@
             // 
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(207, 97);
+            this.btnConnect.Location = new System.Drawing.Point(195, 33);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 24;
@@ -127,7 +131,7 @@
             this.cbxComList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxComList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxComList.FormattingEnabled = true;
-            this.cbxComList.Location = new System.Drawing.Point(118, 98);
+            this.cbxComList.Location = new System.Drawing.Point(106, 34);
             this.cbxComList.Name = "cbxComList";
             this.cbxComList.Size = new System.Drawing.Size(83, 23);
             this.cbxComList.TabIndex = 23;
@@ -137,18 +141,19 @@
             this.chkAutoConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAutoConnect.AutoSize = true;
             this.chkAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutoConnect.Location = new System.Drawing.Point(369, 100);
+            this.chkAutoConnect.Location = new System.Drawing.Point(357, 36);
             this.chkAutoConnect.Name = "chkAutoConnect";
             this.chkAutoConnect.Size = new System.Drawing.Size(110, 19);
             this.chkAutoConnect.TabIndex = 22;
             this.chkAutoConnect.Text = "Tự động kết nối";
             this.chkAutoConnect.UseVisualStyleBackColor = true;
+            this.chkAutoConnect.CheckedChanged += new System.EventHandler(this.chkAutoConnect_CheckedChanged);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(288, 97);
+            this.btnRefresh.Location = new System.Drawing.Point(276, 33);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 21;
@@ -161,7 +166,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(76, 101);
+            this.label3.Location = new System.Drawing.Point(55, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 15);
             this.label3.TabIndex = 20;
@@ -175,7 +180,7 @@
             // 
             this.lblRFID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRFID.AutoSize = true;
-            this.lblRFID.Location = new System.Drawing.Point(655, 103);
+            this.lblRFID.Location = new System.Drawing.Point(765, 39);
             this.lblRFID.Name = "lblRFID";
             this.lblRFID.Size = new System.Drawing.Size(32, 13);
             this.lblRFID.TabIndex = 26;
@@ -183,7 +188,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(470, 200);
+            this.btnThoat.Location = new System.Drawing.Point(568, 257);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 27;
@@ -191,30 +196,55 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblRFID);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnRefresh);
+            this.groupBox1.Controls.Add(this.lblState);
+            this.groupBox1.Controls.Add(this.chkAutoConnect);
+            this.groupBox1.Controls.Add(this.btnConnect);
+            this.groupBox1.Controls.Add(this.cbxComList);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(917, 83);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cài đặt RFID";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnChonDuongDan);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtConnectString);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtDuongDan);
+            this.groupBox2.Location = new System.Drawing.Point(12, 113);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(917, 128);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cài đặt hệ thống";
+            // 
             // CaiDat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 235);
+            this.ClientSize = new System.Drawing.Size(942, 297);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThoat);
-            this.Controls.Add(this.lblRFID);
-            this.Controls.Add(this.lblState);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.cbxComList);
-            this.Controls.Add(this.chkAutoConnect);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.btnChonDuongDan);
-            this.Controls.Add(this.txtDuongDan);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtConnectString);
-            this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(958, 336);
+            this.MinimumSize = new System.Drawing.Size(958, 336);
             this.Name = "CaiDat";
             this.Text = "CaiDat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CaiDat_FormClosing);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -236,5 +266,7 @@
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.Label lblRFID;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

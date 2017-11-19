@@ -60,5 +60,12 @@ namespace BUS
             }
             return dt;
         }
+        public static SqlDataReader getHoaDonDS()
+        {
+            string query = "SELECT MaSo, DotDienNuoc.MaDot, Phong.IDPhong, KhuNha, ChiSoDienDau, ChiSoDienCuoi, ChiSoNuocDau, ChiSoNuocCuoi, DonGiaDien, DonGiaNuoc, NgayBatDau, NgayKetThuc FROM DotDienNuoc, HoaDonDienNuoc, Phong WHERE DotDienNuoc.MaDot=HoaDonDienNuoc.MaDot AND HoaDonDienNuoc.IDPhong=Phong.IDPhong";
+            SqlDataReader dr = Data.ExecuteReader(query);
+            return dr;
+        }
+        
     }
 }

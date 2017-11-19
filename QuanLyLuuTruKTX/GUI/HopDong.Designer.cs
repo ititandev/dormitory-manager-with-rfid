@@ -97,8 +97,6 @@ namespace GUI
             this.dtpNgayKetThucTimKiem = new System.Windows.Forms.DateTimePicker();
             this.btnXemTatCa = new System.Windows.Forms.Button();
             this.chxTheoTinhTrang = new System.Windows.Forms.RadioButton();
-            this.chxChuaDuTien = new System.Windows.Forms.RadioButton();
-            this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHopDong)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -109,8 +107,8 @@ namespace GUI
             // 
             this.dgvHopDong.AllowUserToAddRows = false;
             this.dgvHopDong.AllowUserToDeleteRows = false;
-            this.dgvHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvHopDong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHopDong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -698,7 +696,7 @@ namespace GUI
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimKiem.Location = new System.Drawing.Point(131, 55);
             this.txtTimKiem.Name = "txtTimKiem";
@@ -738,21 +736,22 @@ namespace GUI
             // 
             // label24
             // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(491, 31);
+            this.label24.Location = new System.Drawing.Point(490, 33);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(26, 13);
             this.label24.TabIndex = 36;
             this.label24.Text = "đến";
+            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // chxTheoThoiHan
             // 
-            this.chxTheoThoiHan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.chxTheoThoiHan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chxTheoThoiHan.AutoSize = true;
-            this.chxTheoThoiHan.Location = new System.Drawing.Point(286, 28);
+            this.chxTheoThoiHan.Location = new System.Drawing.Point(285, 30);
             this.chxTheoThoiHan.Name = "chxTheoThoiHan";
             this.chxTheoThoiHan.Size = new System.Drawing.Size(110, 17);
             this.chxTheoThoiHan.TabIndex = 37;
@@ -763,7 +762,7 @@ namespace GUI
             // dtpNgayBatDauTimKiem
             // 
             this.dtpNgayBatDauTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayBatDauTimKiem.Location = new System.Drawing.Point(403, 27);
+            this.dtpNgayBatDauTimKiem.Location = new System.Drawing.Point(402, 29);
             this.dtpNgayBatDauTimKiem.Name = "dtpNgayBatDauTimKiem";
             this.dtpNgayBatDauTimKiem.Size = new System.Drawing.Size(82, 20);
             this.dtpNgayBatDauTimKiem.TabIndex = 39;
@@ -772,7 +771,7 @@ namespace GUI
             // dtpNgayKetThucTimKiem
             // 
             this.dtpNgayKetThucTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayKetThucTimKiem.Location = new System.Drawing.Point(523, 27);
+            this.dtpNgayKetThucTimKiem.Location = new System.Drawing.Point(522, 29);
             this.dtpNgayKetThucTimKiem.Name = "dtpNgayKetThucTimKiem";
             this.dtpNgayKetThucTimKiem.Size = new System.Drawing.Size(82, 20);
             this.dtpNgayKetThucTimKiem.TabIndex = 40;
@@ -801,36 +800,11 @@ namespace GUI
             this.chxTheoTinhTrang.UseVisualStyleBackColor = true;
             this.chxTheoTinhTrang.CheckedChanged += new System.EventHandler(this.chxTheoTinhTrang_CheckedChanged);
             // 
-            // chxChuaDuTien
-            // 
-            this.chxChuaDuTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chxChuaDuTien.AutoSize = true;
-            this.chxChuaDuTien.Location = new System.Drawing.Point(629, 27);
-            this.chxChuaDuTien.Name = "chxChuaDuTien";
-            this.chxChuaDuTien.Size = new System.Drawing.Size(86, 17);
-            this.chxChuaDuTien.TabIndex = 44;
-            this.chxChuaDuTien.Text = "Chưa đủ tiền";
-            this.chxChuaDuTien.UseVisualStyleBackColor = true;
-            this.chxChuaDuTien.CheckedChanged += new System.EventHandler(this.chxChuaDuTien_CheckedChanged);
-            // 
-            // dtpNgayLap
-            // 
-            this.dtpNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayLap.Location = new System.Drawing.Point(131, 56);
-            this.dtpNgayLap.Name = "dtpNgayLap";
-            this.dtpNgayLap.Size = new System.Drawing.Size(126, 20);
-            this.dtpNgayLap.TabIndex = 45;
-            this.dtpNgayLap.Visible = false;
-            this.dtpNgayLap.ValueChanged += new System.EventHandler(this.dtpNgayLap_ValueChanged);
-            // 
             // HopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1307, 687);
-            this.Controls.Add(this.dtpNgayLap);
-            this.Controls.Add(this.chxChuaDuTien);
             this.Controls.Add(this.chxTheoTinhTrang);
             this.Controls.Add(this.btnXemTatCa);
             this.Controls.Add(this.dtpNgayKetThucTimKiem);
@@ -849,6 +823,7 @@ namespace GUI
             this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "HopDong";
             this.Text = "Hợp đồng";
+            this.Activated += new System.EventHandler(this.HopDong_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HopDong_FormClosing);
             this.Load += new System.EventHandler(this.HopDong_Load);
             this.Resize += new System.EventHandler(this.HopDong_Resize);
@@ -928,8 +903,6 @@ namespace GUI
         private System.Windows.Forms.DateTimePicker dtpNgayKetThucTimKiem;
         private System.Windows.Forms.Button btnXemTatCa;
         private System.Windows.Forms.RadioButton chxTheoTinhTrang;
-        private System.Windows.Forms.RadioButton chxChuaDuTien;
-        private System.Windows.Forms.DateTimePicker dtpNgayLap;
 
 
         private void SetState(CheDo state)
