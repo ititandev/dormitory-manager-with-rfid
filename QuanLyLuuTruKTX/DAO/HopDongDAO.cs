@@ -11,7 +11,7 @@ namespace DAO
 {
     public class HopDongDAO
     {
-        public static DataTable ViewAll()
+        public static DataTable LoadTatCa()
         {
             return Data.ExecuteQuery(@"SELECT MaSo ,HopDong.MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
                                     case dbo.KiemTraThoiHan(HopDong.MSSV)
@@ -103,6 +103,11 @@ namespace DAO
                 return true;
             else
                 return false;
+        }
+
+        public static int XoaHopDong(string maSo)
+        {
+            return Data.ExecuteNonQuery("DELETE FROM HopDong WHERE MaSo = '" + maSo + "'");
         }
     }
 }

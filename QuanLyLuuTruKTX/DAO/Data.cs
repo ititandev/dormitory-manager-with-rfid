@@ -161,7 +161,20 @@ namespace DAO
             string temp = str.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
-
+        /// <summary>
+        /// Hàm kiểm tra 1 dãy các string có ít nhất một phần tử rỗng hay không
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        static public bool KiemTraRong(params string[] str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == string.Empty || str[i] == null || str[i] == "")
+                    return true;
+            }
+            return false;
+        }
         /// <summary>
         /// Get, Set ConnectString
         /// </summary>

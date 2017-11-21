@@ -34,7 +34,7 @@ namespace GUI
         {
             btnDangNhap_Click(dangNhapForm, null);
         }
-        private void btnHopDong_Click(object sender, EventArgs e)
+        public void btnHopDong_Click(object sender, EventArgs e)
         {
             if (hopDongForm == null)
                 hopDongForm = new HopDong();
@@ -44,7 +44,7 @@ namespace GUI
             FormHienTai = hopDongForm;
         }
 
-        private void btnSinhVien_Click(object sender, EventArgs e)
+        public void btnSinhVien_Click(object sender, EventArgs e)
         {
             if (sinhVienForm == null)
                 sinhVienForm = new SinhVien();
@@ -63,7 +63,7 @@ namespace GUI
             nhanVienForm.WindowState = FormWindowState.Maximized;
         }
 
-        private void btnPhong_Click(object sender, EventArgs e)
+        public void btnPhong_Click(object sender, EventArgs e)
         {
             if (phongForm == null)
                 phongForm = new Phong();
@@ -112,12 +112,6 @@ namespace GUI
             caiDatForm.Show();
             caiDatForm.Activate();
             caiDatForm.WindowState = FormWindowState.Normal;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var ob = new Report(ReportViewer.HopDongReport(2));
-            ob.ShowDialog();
         }
     }
 }

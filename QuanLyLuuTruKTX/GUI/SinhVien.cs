@@ -291,7 +291,7 @@ namespace GUI
                 txtRFID.Text = row.Cells[RFID].Value.ToString();
                 DuongDanAnh = MainForm.ThuMucAnh + row.Cells[Anh].Value.ToString();
 
-                if (SinhVienBUS.KiemTraHopDongSV(txtMSSV.Text))
+                if (SinhVienBUS.KiemTraSinhVien(txtMSSV.Text))
                     lblHopDongHopLe.Hide();
                 else
                     lblHopDongHopLe.Show();
@@ -325,6 +325,11 @@ namespace GUI
         private void SinhVien_Activated(object sender, EventArgs e)
         {
             MainForm.FormHienTai = MainForm.sinhVienForm;
+        }
+        public void XemSinhVien(string MSSV)
+        {
+            cboTimKiemTheo.SelectedIndex = 1;
+            txtTimKiem.Text = MSSV;
         }
     }
 }

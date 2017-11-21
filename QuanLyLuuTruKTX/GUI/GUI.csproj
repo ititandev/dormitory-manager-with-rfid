@@ -127,7 +127,6 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewer.cs" />
     <Compile Include="RPT\rptDienNuoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

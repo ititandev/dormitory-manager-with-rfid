@@ -11,7 +11,7 @@ namespace DAO
 {
     public static class SinhVienDAO
     {
-        public static int KiemTraSV(string MSSV)
+        public static int KiemTraSinhVien(string MSSV)
         {
             SqlDataReader reader = Data.ExecuteReader("SELECT COUNT(*) FROM SinhVien WHERE MSSV = '" + MSSV + "'");
             reader.Read();

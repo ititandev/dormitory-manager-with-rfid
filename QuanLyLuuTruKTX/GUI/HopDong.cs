@@ -84,11 +84,11 @@ namespace GUI
                 {
                     picAnh.Image = Image.FromFile(MainForm.ThuMucAnh + sinhVienDTO.Anh);
                 }
-                catch (Exception)
+                catch
                 {
                     picAnh.Image = null;
                 }
-                
+
             }
             else
             {
@@ -101,10 +101,11 @@ namespace GUI
                 lblQueQuan.Text = "";
                 lblDienUuTien.Text = "";
                 lblEmail.Text = "";
+                picAnh.Image = null;
             }
             if (CheDoHienTai == CheDo.THEM)
             {
-                if (!SinhVienBUS.KiemTraHopDongSV(txtMSSV.Text))
+                if (!SinhVienBUS.KiemTraSinhVien(txtMSSV.Text))
                     lblNotFoundMSSV.Show();
                 else
                     lblNotFoundMSSV.Hide();
@@ -128,29 +129,29 @@ namespace GUI
             hopDongDTO.GiaTienDaNop = Convert.ToInt32(txtGiaTienDaNop.Text);
             hopDongDTO.ChuThich = txtChuThich.Text;
 
-            HopDongBUS.AddHopDong(hopDongDTO);
+            HopDongBUS.ThemHopDongDTO(hopDongDTO);
         }
 
         private void xemMode_Click(object sender, EventArgs e)
         {
-            SetState(CheDo.XEM);
+            SetCheDo(CheDo.XEM);
         }
 
         private void suaMode_Click(object sender, EventArgs e)
         {
-            SetState(CheDo.SUA);
+            SetCheDo(CheDo.SUA);
         }
 
         private void themMode_Click(object sender, EventArgs e)
         {
-            SetState(CheDo.THEM);
+            SetCheDo(CheDo.THEM);
         }
 
         private void cboTimKiemTheo_SelectedIndexChanged(object sender, EventArgs e)
         {
             TimKiem();
         }
-        
+
         private void cboThoiHan_SelectedIndexChanged(object sender, EventArgs e)
         {
             chxTheoTinhTrang.Checked = true;
@@ -235,14 +236,15 @@ namespace GUI
 
         private void btnXemTatCa_Click(object sender, EventArgs e)
         {
-            SetState(CheDo.XEM);
-            dataTable = HopDongBUS.XemTatCa();
+            SetCheDo(CheDo.XEM);
+            dataTable = HopDongBUS.LoadTatCa();
             dgvHopDong.DataSource = dataTable;
             dgvHopDong.Columns["RFID"].Visible = false;
             chxTheoTinhTrang.Checked = true;
             cboTimKiemTheo.SelectedIndex = 0;
             cboTinhTrang.SelectedIndex = 0;
             txtTimKiem.Text = "";
+            dgvHopDong.Sort(dgvHopDong.Columns["Ngày lập"], ListSortDirection.Descending);
         }
 
         public override void SendRFID(string RFID)
@@ -256,9 +258,68 @@ namespace GUI
             MainForm.FormHienTai = MainForm.hopDongForm;
         }
 
-        private void label24_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (dgvHopDong.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn 1 hợp đồng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
+            {
+                if (HopDongBUS.Xoa(row.Cells[0].Value.ToString()))
+                    MessageBox.Show("Xóa hợp đồng mã số " + row.Cells[0].Value.ToString() + " thành công");
+                else
+                {
+                    MessageBox.Show("Xóa hợp đồng mã số " + row.Cells[0].Value.ToString() + " thành công", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
+            {
+                var report = new Report(row.Cells[0].Value.ToString());
+                report.ShowDialog();
+                return;
+            }
+        }
+        public void SetIDPhong(string IDPhong)
+        {
+            if (CheDoHienTai == CheDo.THEM)
+                txtIDPhong.Text = IDPhong;
+        }
+
+        private void btnXemSinhVien_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
+            {
+                Program.mainForm.btnSinhVien_Click(null, null);
+                MainForm.sinhVienForm.XemSinhVien(row.Cells[1].Value.ToString());
+                return;
+            }
+        }
+        
+        private void btnXemPhong_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
+            {
+                Program.mainForm.btnPhong_Click(null, null);
+                MainForm.phongForm.XemPhong(row.Cells[7].Value.ToString(), (row.Cells[1].Value.ToString()));
+                return;
+            }
+        }
+
+        private void btnChonPhong_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.btnPhong_Click(null, null);
+            MainForm.phongForm.SetChonPhong();
+        }
+
+        private void btnChonMSSV_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.btnSinhVien_Click(null, null);
         }
     }
 }

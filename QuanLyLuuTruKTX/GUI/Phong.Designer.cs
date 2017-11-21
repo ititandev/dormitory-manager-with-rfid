@@ -47,7 +47,11 @@
             this.numToiDa = new System.Windows.Forms.NumericUpDown();
             this.numHienTai = new System.Windows.Forms.NumericUpDown();
             this.btnHanhDong = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cboLoaiPhong = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboSoLuong = new System.Windows.Forms.ComboBox();
+            this.btnChonPhong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numToiDa)).BeginInit();
@@ -56,7 +60,8 @@
             // 
             // themMode
             // 
-            this.themMode.Location = new System.Drawing.Point(94, 116);
+            this.themMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.themMode.Location = new System.Drawing.Point(1457, 285);
             this.themMode.Name = "themMode";
             this.themMode.Size = new System.Drawing.Size(75, 23);
             this.themMode.TabIndex = 33;
@@ -66,7 +71,8 @@
             // 
             // suaMode
             // 
-            this.suaMode.Location = new System.Drawing.Point(166, 116);
+            this.suaMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.suaMode.Location = new System.Drawing.Point(1529, 285);
             this.suaMode.Name = "suaMode";
             this.suaMode.Size = new System.Drawing.Size(75, 23);
             this.suaMode.TabIndex = 32;
@@ -76,7 +82,8 @@
             // 
             // xemMode
             // 
-            this.xemMode.Location = new System.Drawing.Point(22, 116);
+            this.xemMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xemMode.Location = new System.Drawing.Point(1385, 285);
             this.xemMode.Name = "xemMode";
             this.xemMode.Size = new System.Drawing.Size(75, 23);
             this.xemMode.TabIndex = 31;
@@ -90,11 +97,11 @@
             this.dgvPhong.AllowUserToDeleteRows = false;
             this.dgvPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhong.Location = new System.Drawing.Point(283, 116);
+            this.dgvPhong.Location = new System.Drawing.Point(249, 52);
             this.dgvPhong.Name = "dgvPhong";
             this.dgvPhong.ReadOnly = true;
             this.dgvPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhong.Size = new System.Drawing.Size(501, 615);
+            this.dgvPhong.Size = new System.Drawing.Size(438, 704);
             this.dgvPhong.TabIndex = 34;
             this.dgvPhong.SelectionChanged += new System.EventHandler(this.dgvPhong_SelectionChanged);
             // 
@@ -102,20 +109,22 @@
             // 
             this.dgvSinhVien.AllowUserToAddRows = false;
             this.dgvSinhVien.AllowUserToDeleteRows = false;
+            this.dgvSinhVien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSinhVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSinhVien.Location = new System.Drawing.Point(810, 116);
+            this.dgvSinhVien.Location = new System.Drawing.Point(839, 52);
             this.dgvSinhVien.MultiSelect = false;
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.ReadOnly = true;
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSinhVien.Size = new System.Drawing.Size(506, 615);
+            this.dgvSinhVien.Size = new System.Drawing.Size(506, 704);
             this.dgvSinhVien.TabIndex = 35;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1272, 43);
+            this.button1.Location = new System.Drawing.Point(1559, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 36;
@@ -125,8 +134,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 200);
+            this.label1.Location = new System.Drawing.Point(1393, 369);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 37;
@@ -134,8 +144,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 231);
+            this.label2.Location = new System.Drawing.Point(1393, 400);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 38;
@@ -143,8 +154,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 267);
+            this.label3.Location = new System.Drawing.Point(1393, 436);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 39;
@@ -152,8 +164,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 310);
+            this.label4.Location = new System.Drawing.Point(1364, 479);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 40;
@@ -161,8 +174,9 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 344);
+            this.label5.Location = new System.Drawing.Point(1371, 513);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 41;
@@ -170,7 +184,8 @@
             // 
             // txtTinhTrang
             // 
-            this.txtTinhTrang.Location = new System.Drawing.Point(103, 376);
+            this.txtTinhTrang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTinhTrang.Location = new System.Drawing.Point(1466, 545);
             this.txtTinhTrang.Name = "txtTinhTrang";
             this.txtTinhTrang.Size = new System.Drawing.Size(162, 69);
             this.txtTinhTrang.TabIndex = 42;
@@ -178,8 +193,9 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1, 379);
+            this.label6.Location = new System.Drawing.Point(1364, 548);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 43;
@@ -187,28 +203,32 @@
             // 
             // txtIDPhong
             // 
-            this.txtIDPhong.Location = new System.Drawing.Point(103, 193);
+            this.txtIDPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIDPhong.Location = new System.Drawing.Point(1466, 362);
             this.txtIDPhong.Name = "txtIDPhong";
             this.txtIDPhong.Size = new System.Drawing.Size(100, 20);
             this.txtIDPhong.TabIndex = 44;
             // 
             // txtKhuNha
             // 
-            this.txtKhuNha.Location = new System.Drawing.Point(103, 232);
+            this.txtKhuNha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKhuNha.Location = new System.Drawing.Point(1466, 401);
             this.txtKhuNha.Name = "txtKhuNha";
             this.txtKhuNha.Size = new System.Drawing.Size(100, 20);
             this.txtKhuNha.TabIndex = 45;
             // 
             // txtSoPhong
             // 
-            this.txtSoPhong.Location = new System.Drawing.Point(103, 268);
+            this.txtSoPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSoPhong.Location = new System.Drawing.Point(1466, 437);
             this.txtSoPhong.Name = "txtSoPhong";
             this.txtSoPhong.Size = new System.Drawing.Size(100, 20);
             this.txtSoPhong.TabIndex = 46;
             // 
             // numToiDa
             // 
-            this.numToiDa.Location = new System.Drawing.Point(103, 343);
+            this.numToiDa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numToiDa.Location = new System.Drawing.Point(1466, 512);
             this.numToiDa.Maximum = new decimal(new int[] {
             12,
             0,
@@ -230,7 +250,8 @@
             // 
             // numHienTai
             // 
-            this.numHienTai.Location = new System.Drawing.Point(103, 309);
+            this.numHienTai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numHienTai.Location = new System.Drawing.Point(1466, 478);
             this.numHienTai.Maximum = new decimal(new int[] {
             12,
             0,
@@ -243,7 +264,8 @@
             // 
             // btnHanhDong
             // 
-            this.btnHanhDong.Location = new System.Drawing.Point(103, 475);
+            this.btnHanhDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHanhDong.Location = new System.Drawing.Point(1466, 644);
             this.btnHanhDong.Name = "btnHanhDong";
             this.btnHanhDong.Size = new System.Drawing.Size(75, 23);
             this.btnHanhDong.TabIndex = 51;
@@ -251,21 +273,70 @@
             this.btnHanhDong.UseVisualStyleBackColor = true;
             this.btnHanhDong.Click += new System.EventHandler(this.btnHanhDong_Click);
             // 
-            // button2
+            // cboLoaiPhong
             // 
-            this.button2.Location = new System.Drawing.Point(335, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "Xem tất cả";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cboLoaiPhong.FormattingEnabled = true;
+            this.cboLoaiPhong.Items.AddRange(new object[] {
+            "Tất cả",
+            "Phòng trống"});
+            this.cboLoaiPhong.Location = new System.Drawing.Point(48, 343);
+            this.cboLoaiPhong.Name = "cboLoaiPhong";
+            this.cboLoaiPhong.Size = new System.Drawing.Size(121, 21);
+            this.cboLoaiPhong.TabIndex = 52;
+            this.cboLoaiPhong.SelectedIndexChanged += new System.EventHandler(this.cboLoaiPhong_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(45, 316);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 53;
+            this.label7.Text = "Loại phòng";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(45, 421);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Số lượng";
+            // 
+            // cboSoLuong
+            // 
+            this.cboSoLuong.FormattingEnabled = true;
+            this.cboSoLuong.Items.AddRange(new object[] {
+            "Tất cả",
+            "Phòng 4",
+            "Phòng 6",
+            "Phòng 8"});
+            this.cboSoLuong.Location = new System.Drawing.Point(48, 437);
+            this.cboSoLuong.Name = "cboSoLuong";
+            this.cboSoLuong.Size = new System.Drawing.Size(121, 21);
+            this.cboSoLuong.TabIndex = 54;
+            this.cboSoLuong.SelectedIndexChanged += new System.EventHandler(this.cboSoLuong_SelectedIndexChanged);
+            // 
+            // btnChonPhong
+            // 
+            this.btnChonPhong.Location = new System.Drawing.Point(418, 772);
+            this.btnChonPhong.Name = "btnChonPhong";
+            this.btnChonPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnChonPhong.TabIndex = 57;
+            this.btnChonPhong.Text = "Chọn phòng";
+            this.btnChonPhong.UseVisualStyleBackColor = true;
+            this.btnChonPhong.Click += new System.EventHandler(this.btnChonPhong_Click);
             // 
             // Phong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 813);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1654, 887);
+            this.Controls.Add(this.btnChonPhong);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cboSoLuong);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cboLoaiPhong);
             this.Controls.Add(this.btnHanhDong);
             this.Controls.Add(this.numHienTai);
             this.Controls.Add(this.numToiDa);
@@ -320,6 +391,10 @@
         private System.Windows.Forms.NumericUpDown numToiDa;
         private System.Windows.Forms.NumericUpDown numHienTai;
         private System.Windows.Forms.Button btnHanhDong;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cboLoaiPhong;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboSoLuong;
+        private System.Windows.Forms.Button btnChonPhong;
     }
 }

@@ -14,10 +14,17 @@ namespace GUI
 {
     public partial class Report : Form
     {
-        public Report(object report)
+        public Report(string MaSo)
         {
             InitializeComponent();
-            crystalReportViewer1.ReportSource = report;
+
+            SqlDataReader dr = HopDongBUS.getHopDongDS();
+            DataSet.ReportDataSet reportDS = new DataSet.ReportDataSet();
+            reportDS.Tables["HopDongDS"].Load(dr);
+            RPT.rptHopDong rptHopDong = new RPT.rptHopDong();
+            rptHopDong.SetDataSource(reportDS);
+            rptHopDong.SetParameterValue("MaSo", MaSo);
+            crystalReportViewer1.ReportSource = rptHopDong;
         }
 
         private void Report_Load(object sender, EventArgs e)

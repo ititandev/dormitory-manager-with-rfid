@@ -17,9 +17,9 @@ namespace GUI
         DataTable dataTablePhong;
         DataTable dataTableSinhVien;
 
-        enum CheDo
+        private enum CheDo
         {
-            XEM, SUA, THEM
+            XEM, SUA, THEM, CHON_PHONG
         }
         private static CheDo CheDoHienTai { get; set; }
         public Phong()
@@ -29,8 +29,9 @@ namespace GUI
         private void Phong_Load(object sender, EventArgs e)
         {
             SetCheDo(CheDo.XEM);
-            LoadPhong();
-            LoadSinhVien();
+            LoadDuLieu();
+            cboLoaiPhong.SelectedIndex = 0;
+            cboSoLuong.SelectedIndex = 0;
         }
         private void Phong_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -61,6 +62,7 @@ namespace GUI
                 themMode.BackColor = Color.LightGray;
                 txtIDPhong.ReadOnly = txtKhuNha.ReadOnly = txtSoPhong.ReadOnly = txtTinhTrang.ReadOnly = true;
                 btnHanhDong.Hide();
+                btnChonPhong.Hide();
             }
             else if (CheDoHienTai == CheDo.THEM)
             {
@@ -75,6 +77,7 @@ namespace GUI
 
                 btnHanhDong.Text = "Thêm phòng";
                 btnHanhDong.Show();
+                btnChonPhong.Hide();
             }
             else if (CheDoHienTai == CheDo.SUA)
             {
@@ -85,18 +88,33 @@ namespace GUI
                 txtIDPhong.ReadOnly = txtKhuNha.ReadOnly = txtSoPhong.ReadOnly = txtTinhTrang.ReadOnly = false;
                 btnHanhDong.Text = "Cập nhật";
                 btnHanhDong.Show();
+                btnChonPhong.Hide();
+            }
+            else if (CheDoHienTai == CheDo.CHON_PHONG)
+            {
+                LoadDuLieu();
+                btnChonPhong.Show();
+                cboLoaiPhong.SelectedIndex = 1;
             }
         }
-        private void LoadPhong()
+        private void LoadDuLieu()
         {
             dataTablePhong = PhongBUS.LoadPhong();
             dataTablePhong.Columns[0].ColumnName = "Mã phòng";
             dataTablePhong.Columns[1].ColumnName = "Khu nhà";
             dataTablePhong.Columns[2].ColumnName = "Số phòng";
             dataTablePhong.Columns[3].ColumnName = "Số lượng hiện tại";
-            dataTablePhong.Columns[4].ColumnName = "Số lượng cho phép";
+            dataTablePhong.Columns[4].ColumnName = "Số lượng tối đa";
             dataTablePhong.Columns[5].ColumnName = "Tình trạng";
             dgvPhong.DataSource = dataTablePhong;
+
+            dataTableSinhVien = PhongBUS.LoadSinhVien();
+            dataTableSinhVien.Columns[0].ColumnName = "Mã phòng";
+            dataTableSinhVien.Columns[1].ColumnName = "MSSV";
+            dataTableSinhVien.Columns[2].ColumnName = "Họ tên";
+            dgvSinhVien.DataSource = dataTableSinhVien;
+            dgvSinhVien.Columns[3].Visible = false;
+            TimKiem();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -124,7 +142,7 @@ namespace GUI
                 try
                 {
                     if (dataTableSinhVien != null)
-                    dataTableSinhVien.DefaultView.RowFilter = $"[Mã phòng] = '{txtIDPhong.Text}'";
+                        dataTableSinhVien.DefaultView.RowFilter = $"[Mã phòng] = '{txtIDPhong.Text}'";
                 }
                 catch (Exception)
                 {
@@ -148,7 +166,7 @@ namespace GUI
                 if (PhongBUS.ThemPhongDTO(phongDTO))
                 {
                     MessageBox.Show("Thêm phòng " + phongDTO.IDPhong + " thành công");
-                    LoadPhong();
+                    LoadDuLieu();
                 }
                 else
                     MessageBox.Show("Thêm phòng " + phongDTO.IDPhong + " thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,24 +176,16 @@ namespace GUI
                 if (PhongBUS.SuaPhongDTO(phongDTO))
                 {
                     MessageBox.Show("Thêm phòng " + phongDTO.IDPhong + " thành công");
-                    LoadPhong();
+                    LoadDuLieu();
                 }
                 else
                     MessageBox.Show("Thêm phòng " + phongDTO.IDPhong + " thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void LoadSinhVien()
-        {
-            dataTableSinhVien = PhongBUS.LoadSinhVien();
-            dataTableSinhVien.Columns[0].ColumnName = "Mã phòng";
-            dataTableSinhVien.Columns[1].ColumnName = "MSSV";
-            dataTableSinhVien.Columns[2].ColumnName = "Họ tên";
-            dgvSinhVien.DataSource = dataTableSinhVien;
-            dgvSinhVien.Columns[3].Visible = false;
-        }
         public override void SendRFID(string RFID)
         {
             SetCheDo(CheDo.XEM);
+            LoadDuLieu();
             string IDPhong = PhongBUS.GetIDPhongFromRFID(RFID);
             if (IDPhong == String.Empty)
                 MessageBox.Show("Không tìm thấy SV này trong phòng nào", "Thông báo");
@@ -184,14 +194,73 @@ namespace GUI
                 if (dgvPhong.Rows[i].Cells["Mã phòng"].Value.ToString() == IDPhong)
                     dgvPhong.CurrentCell = this.dgvPhong["Mã phòng", i];
             }
-            dgvSinhVien.Columns["RFID"].Visible = true;
             for (int i = 0; i < dgvSinhVien.Rows.Count; i++)
             {
-                
+
                 if (dgvSinhVien.Rows[i].Cells["RFID"].Value.ToString() == RFID)
                     dgvSinhVien.CurrentCell = this.dgvSinhVien["RFID", i];
             }
-            dgvSinhVien.Columns["RFID"].Visible = false;
+        }
+
+        private void cboLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimKiem();
+        }
+
+        private void cboSoLuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimKiem();
+        }
+        private void TimKiem()
+        {
+            string filter = string.Empty;
+            if (cboLoaiPhong.SelectedIndex != 0)
+                filter = "([Số lượng hiện tại] < [Số lượng tối đa]) ";
+
+            if (cboSoLuong.SelectedIndex != 0)
+            {
+                if (filter != string.Empty)
+                    filter += "And ";
+                filter += "([Số lượng tối đa] = " + (cboSoLuong.SelectedIndex * 2 + 2).ToString() + ")";
+            }
+            dataTablePhong.DefaultView.RowFilter = filter;
+        }
+        public void XemPhong(string IDPhong, string MSSV)
+        {
+            LoadDuLieu();
+            for (int i = 0; i < dgvPhong.Rows.Count; i++)
+            {
+                if (dgvPhong.Rows[i].Cells["Mã phòng"].Value.ToString() == IDPhong)
+                    dgvPhong.CurrentCell = this.dgvPhong["Mã phòng", i];
+            }
+            for (int i = 0; i < dgvSinhVien.Rows.Count; i++)
+            {
+                if (dgvSinhVien.Rows[i].Cells["MSSV"].Value.ToString() == MSSV)
+                    dgvSinhVien.CurrentCell = this.dgvSinhVien["MSSV", i];
+            }
+        }
+
+        private void btnChonPhong_Click(object sender, EventArgs e)
+        {
+            if (dgvPhong.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một phòng phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int hienTai = Convert.ToInt32(dgvPhong.SelectedRows[0].Cells["Số lượng hiện tại"].Value);
+            int toiDa = Convert.ToInt32(dgvPhong.SelectedRows[0].Cells["Số lượng tối đa"].Value);
+            if (hienTai < toiDa)
+            {
+                MainForm.hopDongForm.SetIDPhong(dgvPhong.SelectedRows[0].Cells["Mã phòng"].Value.ToString());
+                Program.mainForm.btnHopDong_Click(null, null);
+            }
+            else
+                MessageBox.Show("Vui lòng chọn một phòng phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        internal void SetChonPhong()
+        {
+            SetCheDo(CheDo.CHON_PHONG);
         }
     }
 }

@@ -41,23 +41,6 @@ namespace DAO
                         "' WHERE IDPhong = '" + phongDTO.IDPhong + "'";
             return Data.ExecuteNonQuery(str);
         }
-
-        public DataTable TimKiem(string searchText)
-        {
-            string SoPhong = " SoPhong LIKE '%" + searchText + "%' ";
-            string KhuNha = " KhuNha LIKE '%" + searchText + "%' ";
-            string SoLuongChoPhep = " SoLuongChoPhep LIKE '%" + searchText + "%' ";
-            string TinhTrang = " TinhTrang LIKE '%" + searchText + "%' ";
-            string SoLuongHienTai = " SoLuongHienTai LIKE '%" + searchText + "%' ";
-            string IDPhong = " IDPhong LIKE '%" + searchText + "%' ";
-
-            string str = "SELECT * from Phong where " +
-                SoPhong + "OR" + KhuNha + "OR" + SoLuongChoPhep + "OR" +
-                TinhTrang + "OR" + SoLuongHienTai + "OR" + IDPhong;
-
-            return Data.ExecuteQuery(str);
-        }
-
         public static SqlDataReader GetIDPhongFromRFID(string RFID)
         {
             return Data.ExecuteReader(@"SELECT HopDong.IDPhong, RFID FROM HopDong 
@@ -86,27 +69,19 @@ namespace DAO
                 return null;
         }
 
-        public DataTable TimKiem(PhongDTO obj)
+        public static bool KiemTraPhong(string IDPhong)
         {
-            string SoPhong = obj.SoPhong != "" ? " SoPhong LIKE '%" + obj.SoPhong + "%' AND" : "";
-            string KhuNha = obj.KhuNha != "" ? " KhuNha LIKE '%" + obj.KhuNha + "%' AND" : "";
-            string SoLuongChoPhep = obj.SoLuongToiDa != -1 ? " SoLuongChoPhep LIKE '%" + obj.SoLuongToiDa + "%' AND" : "";
-            string TinhTrang = obj.TinhTrang != "" ? " TinhTrang LIKE '%" + obj.TinhTrang + "%' AND" : "";
-            string SoLuongHienTai = obj.SoLuongHienTai != -1 ? " SoLuongHienTai LIKE '%" + obj.SoLuongHienTai + "%' " : "";
-
-            string str = "SELECT * from Phong where " +
-                SoPhong + KhuNha + SoLuongChoPhep + TinhTrang + SoLuongHienTai;
-
-            return Data.ExecuteQuery(str);
-        }
-
-        public static int KiemTraPhong(string IDPhong)
-        {
-            SqlDataReader reader = Data.ExecuteReader("SELECT COUNT(*) FROM Phong WHERE SoLuongHienTai < SoLuongChoPhep AND IDPhong = '" + IDPhong + "'");
+            int SoLuongToiDa;
+            SqlDataReader reader = Data.ExecuteReader($"SELECT SoLuongToiDa FROM Phong WHERE IDPhong = '{IDPhong}'");
             if (reader.Read())
-                return Convert.ToInt32(reader[0]);
+                SoLuongToiDa = Convert.ToInt32(reader[0]);
             else
-                return 0;
+                return false;
+            reader = Data.ExecuteReader(@"SELECT COUNT(*) FROM HopDong
+                                        WHERE HopDong.IDPhong = '" + IDPhong + "' AND dbo.KiemTraThoiHan(HopDong.MSSV) = 1");
+            if (reader.Read() && Convert.ToInt32(reader[0]) < SoLuongToiDa)
+                return true;
+            return false;
         }
     }
 }

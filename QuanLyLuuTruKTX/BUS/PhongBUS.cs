@@ -37,10 +37,7 @@ namespace BUS
 
         public static bool KiemTraPhong(string IDPhong)
         {
-            if (PhongDAO.KiemTraPhong(IDPhong) == 1)
-                return true;
-            else
-                return false;
+            return PhongDAO.KiemTraPhong(IDPhong);
         }
 
         public static PhongDTO GetPhongDTO(string IDPhong)

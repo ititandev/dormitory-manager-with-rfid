@@ -14,9 +14,9 @@ namespace BUS
     public class HopDongBUS
     {
         HopDongDAO hopDongDAO = new HopDongDAO();
-        public static DataTable XemTatCa()
+        public static DataTable LoadTatCa()
         {
-            DataTable dataTable = HopDongDAO.ViewAll();
+            DataTable dataTable = HopDongDAO.LoadTatCa();
             dataTable.Columns[0].ColumnName = "Mã số";
             dataTable.Columns[1].ColumnName = "MSSV";
             dataTable.Columns[2].ColumnName = "Người lập";
@@ -35,8 +35,18 @@ namespace BUS
             HopDongDTO hopDongDTO = HopDongDAO.GetHopDongDTO(MaSo);
             return hopDongDTO;
         }
-        public static void AddHopDong(HopDongDTO hopDongDTO)
+        public static void ThemHopDongDTO(HopDongDTO hopDongDTO)
         {
+            if (Data.KiemTraRong(hopDongDTO.MSSV, hopDongDTO.MaNhanVien, hopDongDTO.IDPhong))
+            {
+                MessageBox.Show("Nhập thiếu thông tin hợp đồng, vui lòng nhập lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (hopDongDTO.GiaTienTongCong <= 0 || hopDongDTO.GiaTienDaNop > hopDongDTO.GiaTienTongCong)
+            {
+                MessageBox.Show("Nhập sai thông tin giá tiền, vui lòng kiểm tra lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (hopDongDTO.NgayLap >= hopDongDTO.NgayBatDau)
             {
                 MessageBox.Show("Ngày bắt đầu hợp đồng phải sau ngày lập hợp đồng", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -117,6 +127,13 @@ namespace BUS
             return dr;
         }
 
+        public static bool Xoa(string MaSo)
+        {
+            if (HopDongDAO.XoaHopDong(MaSo) == 1)
+                return true;
+            else
+                return false;
+        }
     }
 }
 

@@ -13,7 +13,7 @@ namespace BUS
     public static class SinhVienBUS
     {
         public static string HoTen = "Họ và tên";
-        public static string MaSo = "Mã số";
+        public static string MaSo = "MSSV";
         public static string NgaySinh = "Ngày sinh";
         public static string GioiTinh = "Giới tính";
         public static string CMND = "CMND";
@@ -90,9 +90,9 @@ namespace BUS
         /// </summary>
         /// <param name="MSSV"></param>
         /// <returns></returns>
-        public static bool KiemTraHopDongSV(string MSSV)
+        public static bool KiemTraSinhVien(string MSSV)
         {
-            if (SinhVienDAO.KiemTraSV(MSSV) > 0)
+            if (SinhVienDAO.KiemTraSinhVien(MSSV) > 0)
                 return true;
             else
                 return false;
