@@ -250,7 +250,6 @@ namespace GUI
         public override void SendRFID(string RFID)
         {
             dataTable.DefaultView.RowFilter = "[RFID] = '" + RFID + "'";
-
         }
 
         private void HopDong_Activated(object sender, EventArgs e)
@@ -287,10 +286,24 @@ namespace GUI
         }
         public void SetIDPhong(string IDPhong)
         {
-            if (CheDoHienTai == CheDo.THEM)
-                txtIDPhong.Text = IDPhong;
+            if (CheDoHienTai != CheDo.THEM)
+                SetCheDo(CheDo.THEM);
+            txtIDPhong.Text = IDPhong;
         }
-
+        public void SetMSSV(string MSSV)
+        {
+            if (CheDoHienTai != CheDo.THEM)
+                SetCheDo(CheDo.THEM);
+            txtMSSV.Text = MSSV;
+        }
+        public void XemHopDong(string MSSV)
+        {
+            SetCheDo(CheDo.XEM);
+            cboTimKiemTheo.SelectedIndex = 2;
+            chxTheoTinhTrang.Checked = true;
+            cboTinhTrang.SelectedIndex = 0;
+            txtTimKiem.Text = MSSV;
+        }
         private void btnXemSinhVien_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
@@ -300,7 +313,6 @@ namespace GUI
                 return;
             }
         }
-        
         private void btnXemPhong_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dgvHopDong.SelectedRows)
@@ -314,12 +326,13 @@ namespace GUI
         private void btnChonPhong_Click(object sender, EventArgs e)
         {
             Program.mainForm.btnPhong_Click(null, null);
-            MainForm.phongForm.SetChonPhong();
+            MainForm.phongForm.SetCheDo(Phong.CheDo.CHON_PHONG);
         }
 
         private void btnChonMSSV_Click(object sender, EventArgs e)
         {
             Program.mainForm.btnSinhVien_Click(null, null);
+            MainForm.sinhVienForm.SetCheDo(SinhVien.CheDo.CHON_SV);
         }
     }
 }

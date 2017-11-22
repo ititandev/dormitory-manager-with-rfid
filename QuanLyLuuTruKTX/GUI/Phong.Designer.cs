@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.themMode = new System.Windows.Forms.Button();
             this.suaMode = new System.Windows.Forms.Button();
             this.xemMode = new System.Windows.Forms.Button();
             this.dgvPhong = new System.Windows.Forms.DataGridView();
             this.dgvSinhVien = new System.Windows.Forms.DataGridView();
+            this.contextMenuStripSV = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xemHợpĐồngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,8 +56,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboSoLuong = new System.Windows.Forms.ComboBox();
             this.btnChonPhong = new System.Windows.Forms.Button();
+            this.btnXemHopDong = new System.Windows.Forms.Button();
+            this.btnXemSinhVien = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
+            this.contextMenuStripSV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numToiDa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHienTai)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +105,7 @@
             this.dgvPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhong.Location = new System.Drawing.Point(249, 52);
+            this.dgvPhong.MultiSelect = false;
             this.dgvPhong.Name = "dgvPhong";
             this.dgvPhong.ReadOnly = true;
             this.dgvPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -113,6 +121,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSinhVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSinhVien.ContextMenuStrip = this.contextMenuStripSV;
             this.dgvSinhVien.Location = new System.Drawing.Point(839, 52);
             this.dgvSinhVien.MultiSelect = false;
             this.dgvSinhVien.Name = "dgvSinhVien";
@@ -120,6 +129,28 @@
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSinhVien.Size = new System.Drawing.Size(506, 704);
             this.dgvSinhVien.TabIndex = 35;
+            // 
+            // contextMenuStripSV
+            // 
+            this.contextMenuStripSV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xemHợpĐồngToolStripMenuItem,
+            this.xemSinhViênToolStripMenuItem});
+            this.contextMenuStripSV.Name = "contextMenuStripSV";
+            this.contextMenuStripSV.Size = new System.Drawing.Size(154, 48);
+            // 
+            // xemHợpĐồngToolStripMenuItem
+            // 
+            this.xemHợpĐồngToolStripMenuItem.Name = "xemHợpĐồngToolStripMenuItem";
+            this.xemHợpĐồngToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.xemHợpĐồngToolStripMenuItem.Text = "Xem hợp đồng";
+            this.xemHợpĐồngToolStripMenuItem.Click += new System.EventHandler(this.btnXemHopDong_Click);
+            // 
+            // xemSinhViênToolStripMenuItem
+            // 
+            this.xemSinhViênToolStripMenuItem.Name = "xemSinhViênToolStripMenuItem";
+            this.xemSinhViênToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.xemSinhViênToolStripMenuItem.Text = "Xem sinh viên";
+            this.xemSinhViênToolStripMenuItem.Click += new System.EventHandler(this.btnXemSinhVien_Click);
             // 
             // button1
             // 
@@ -186,6 +217,7 @@
             // 
             this.txtTinhTrang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTinhTrang.Location = new System.Drawing.Point(1466, 545);
+            this.txtTinhTrang.MaxLength = 50;
             this.txtTinhTrang.Name = "txtTinhTrang";
             this.txtTinhTrang.Size = new System.Drawing.Size(162, 69);
             this.txtTinhTrang.TabIndex = 42;
@@ -205,6 +237,7 @@
             // 
             this.txtIDPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIDPhong.Location = new System.Drawing.Point(1466, 362);
+            this.txtIDPhong.MaxLength = 10;
             this.txtIDPhong.Name = "txtIDPhong";
             this.txtIDPhong.Size = new System.Drawing.Size(100, 20);
             this.txtIDPhong.TabIndex = 44;
@@ -213,6 +246,7 @@
             // 
             this.txtKhuNha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKhuNha.Location = new System.Drawing.Point(1466, 401);
+            this.txtKhuNha.MaxLength = 10;
             this.txtKhuNha.Name = "txtKhuNha";
             this.txtKhuNha.Size = new System.Drawing.Size(100, 20);
             this.txtKhuNha.TabIndex = 45;
@@ -221,6 +255,7 @@
             // 
             this.txtSoPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoPhong.Location = new System.Drawing.Point(1466, 437);
+            this.txtSoPhong.MaxLength = 9;
             this.txtSoPhong.Name = "txtSoPhong";
             this.txtSoPhong.Size = new System.Drawing.Size(100, 20);
             this.txtSoPhong.TabIndex = 46;
@@ -251,6 +286,7 @@
             // numHienTai
             // 
             this.numHienTai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numHienTai.Enabled = false;
             this.numHienTai.Location = new System.Drawing.Point(1466, 478);
             this.numHienTai.Maximum = new decimal(new int[] {
             12,
@@ -327,11 +363,33 @@
             this.btnChonPhong.UseVisualStyleBackColor = true;
             this.btnChonPhong.Click += new System.EventHandler(this.btnChonPhong_Click);
             // 
+            // btnXemHopDong
+            // 
+            this.btnXemHopDong.Location = new System.Drawing.Point(48, 508);
+            this.btnXemHopDong.Name = "btnXemHopDong";
+            this.btnXemHopDong.Size = new System.Drawing.Size(121, 23);
+            this.btnXemHopDong.TabIndex = 58;
+            this.btnXemHopDong.Text = "Xem hợp đồng";
+            this.btnXemHopDong.UseVisualStyleBackColor = true;
+            this.btnXemHopDong.Click += new System.EventHandler(this.btnXemHopDong_Click);
+            // 
+            // btnXemSinhVien
+            // 
+            this.btnXemSinhVien.Location = new System.Drawing.Point(48, 567);
+            this.btnXemSinhVien.Name = "btnXemSinhVien";
+            this.btnXemSinhVien.Size = new System.Drawing.Size(121, 23);
+            this.btnXemSinhVien.TabIndex = 59;
+            this.btnXemSinhVien.Text = "Xem sinh viên";
+            this.btnXemSinhVien.UseVisualStyleBackColor = true;
+            this.btnXemSinhVien.Click += new System.EventHandler(this.btnXemSinhVien_Click);
+            // 
             // Phong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1654, 887);
+            this.Controls.Add(this.btnXemSinhVien);
+            this.Controls.Add(this.btnXemHopDong);
             this.Controls.Add(this.btnChonPhong);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cboSoLuong);
@@ -363,6 +421,7 @@
             this.Load += new System.EventHandler(this.Phong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
+            this.contextMenuStripSV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numToiDa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHienTai)).EndInit();
             this.ResumeLayout(false);
@@ -396,5 +455,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboSoLuong;
         private System.Windows.Forms.Button btnChonPhong;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripSV;
+        private System.Windows.Forms.ToolStripMenuItem xemHợpĐồngToolStripMenuItem;
+        private System.Windows.Forms.Button btnXemHopDong;
+        private System.Windows.Forms.ToolStripMenuItem xemSinhViênToolStripMenuItem;
+        private System.Windows.Forms.Button btnXemSinhVien;
     }
 }

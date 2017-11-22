@@ -17,7 +17,7 @@ namespace GUI
         DataTable dataTablePhong;
         DataTable dataTableSinhVien;
 
-        private enum CheDo
+        public enum CheDo
         {
             XEM, SUA, THEM, CHON_PHONG
         }
@@ -52,7 +52,7 @@ namespace GUI
         {
             SetCheDo(CheDo.THEM);
         }
-        private void SetCheDo(CheDo cheDo)
+        public void SetCheDo(CheDo cheDo)
         {
             CheDoHienTai = cheDo;
             if (CheDoHienTai == CheDo.XEM)
@@ -129,27 +129,26 @@ namespace GUI
 
         private void dgvPhong_SelectionChanged(object sender, EventArgs e)
         {
-            if (CheDoHienTai == CheDo.THEM)
-                return;
-            foreach (DataGridViewRow row in dgvPhong.SelectedRows)
+            try
             {
-                txtIDPhong.Text = row.Cells[0].Value.ToString();
-                txtKhuNha.Text = row.Cells[1].Value.ToString();
-                txtSoPhong.Text = row.Cells[2].Value.ToString();
-                txtTinhTrang.Text = row.Cells[5].Value.ToString();
-                numHienTai.Value = Convert.ToInt32(row.Cells[3].Value);
-                numToiDa.Value = Convert.ToInt32(row.Cells[4].Value);
-                try
-                {
-                    if (dataTableSinhVien != null)
-                        dataTableSinhVien.DefaultView.RowFilter = $"[Mã phòng] = '{txtIDPhong.Text}'";
-                }
-                catch (Exception)
-                {
-                    return;
-                }
-
+                var selected = dgvPhong.SelectedRows;
+                if (dataTableSinhVien != null && selected.Count == 1)
+                    dataTableSinhVien.DefaultView.RowFilter = $"[Mã phòng] = '{selected[0].Cells[0].Value.ToString()}'";
             }
+            catch (Exception)
+            {
+                return;
+            }
+            if (CheDoHienTai != CheDo.THEM)
+                foreach (DataGridViewRow row in dgvPhong.SelectedRows)
+                {
+                    txtIDPhong.Text = row.Cells[0].Value.ToString();
+                    txtKhuNha.Text = row.Cells[1].Value.ToString();
+                    txtSoPhong.Text = row.Cells[2].Value.ToString();
+                    txtTinhTrang.Text = row.Cells[5].Value.ToString();
+                    numHienTai.Value = Convert.ToInt32(row.Cells[3].Value);
+                    numToiDa.Value = Convert.ToInt32(row.Cells[4].Value);
+                }
         }
 
         private void btnHanhDong_Click(object sender, EventArgs e)
@@ -239,7 +238,6 @@ namespace GUI
                     dgvSinhVien.CurrentCell = this.dgvSinhVien["MSSV", i];
             }
         }
-
         private void btnChonPhong_Click(object sender, EventArgs e)
         {
             if (dgvPhong.SelectedRows.Count != 1)
@@ -251,16 +249,33 @@ namespace GUI
             int toiDa = Convert.ToInt32(dgvPhong.SelectedRows[0].Cells["Số lượng tối đa"].Value);
             if (hienTai < toiDa)
             {
-                MainForm.hopDongForm.SetIDPhong(dgvPhong.SelectedRows[0].Cells["Mã phòng"].Value.ToString());
                 Program.mainForm.btnHopDong_Click(null, null);
+                MainForm.hopDongForm.SetIDPhong(dgvPhong.SelectedRows[0].Cells["Mã phòng"].Value.ToString());
+                SetCheDo(CheDo.XEM);
             }
             else
                 MessageBox.Show("Vui lòng chọn một phòng phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        internal void SetChonPhong()
+        private void btnXemHopDong_Click(object sender, EventArgs e)
         {
-            SetCheDo(CheDo.CHON_PHONG);
+            if (dgvSinhVien.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Program.mainForm.btnHopDong_Click(null, null);
+            MainForm.hopDongForm.XemHopDong(dgvSinhVien.SelectedRows[0].Cells["MSSV"].Value.ToString());
+        }
+
+        private void btnXemSinhVien_Click(object sender, EventArgs e)
+        {
+            if (dgvSinhVien.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Program.mainForm.btnSinhVien_Click(null, null);
+            MainForm.sinhVienForm.XemSinhVien(dgvSinhVien.SelectedRows[0].Cells["MSSV"].Value.ToString());
         }
     }
 }

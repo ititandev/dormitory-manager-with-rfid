@@ -21,7 +21,6 @@ namespace GUI
         public static DangNhap dangNhapForm;
         public static NhanVien nhanVienForm;
         public static Phong phongForm;
-        public static DienNuoc dienNuocForm;
         public static CaiDat caiDatForm = new CaiDat();
 
         public static KTXForm FormHienTai;
@@ -72,17 +71,6 @@ namespace GUI
             phongForm.WindowState = FormWindowState.Maximized;
             FormHienTai = phongForm;
         }
-
-        private void btnDienNuoc_Click(object sender, EventArgs e)
-        {
-            if (dienNuocForm == null)
-                dienNuocForm = new DienNuoc();
-            dienNuocForm.MdiParent = this;
-            dienNuocForm.Show();
-            dienNuocForm.WindowState = FormWindowState.Maximized;
-            FormHienTai = dienNuocForm;
-        }
-
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {

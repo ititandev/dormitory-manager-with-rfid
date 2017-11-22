@@ -83,18 +83,6 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="DienNuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DienNuoc.Designer.cs">
-      <DependentUpon>DienNuoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DotDienNuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DotDienNuoc.Designer.cs">
-      <DependentUpon>DotDienNuoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="HopDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,12 +115,6 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="RPT\rptDienNuoc.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptDienNuoc.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="RPT\rptHopDong.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,12 +132,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DienNuoc.resx">
-      <DependentUpon>DienNuoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DotDienNuoc.resx">
-      <DependentUpon>DotDienNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HopDong.resx">
       <DependentUpon>HopDong.cs</DependentUpon>
@@ -181,10 +157,6 @@
     </Compile>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RPT\rptDienNuoc.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDienNuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\rptHopDong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -248,6 +220,11 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\setting.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

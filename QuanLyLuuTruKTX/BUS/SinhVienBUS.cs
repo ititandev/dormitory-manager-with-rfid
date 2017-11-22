@@ -10,6 +10,9 @@ using DAO;
 using DTO;
 namespace BUS
 {
+    /// <summary>
+    /// Class xử lý nghiệp vụ của form SinhVien
+    /// </summary>
     public static class SinhVienBUS
     {
         public static string HoTen = "Họ và tên";
@@ -30,9 +33,9 @@ namespace BUS
         /// Xem tất cả Sinh viên từ cơ sở dữ liệu
         /// </summary>
         /// <returns></returns>
-        public static DataTable XemTatCa()
+        public static DataTable LoadSinhVien()
         {
-            DataTable dt = Data.ExecuteQuery("SELECT * FROM SinhVien");
+            DataTable dt = SinhVienDAO.LoadSinhVien();
             dt.Columns[0].ColumnName = MaSo;
             dt.Columns[1].ColumnName = HoTen;
             dt.Columns[2].ColumnName = NgaySinh;
@@ -48,6 +51,11 @@ namespace BUS
             dt.Columns[12].ColumnName = RFID;
             return dt;
         }
+        /// <summary>
+        /// Cập nhật thông tin sinh viên theo SinhVienDTO
+        /// </summary>
+        /// <param name="sv"></param>
+        /// <returns></returns>
         public static bool CapNhatSinhVien(SinhVienDTO sv)
         {
             if (SinhVienDAO.CapNhatSinhVien(sv) == 1)

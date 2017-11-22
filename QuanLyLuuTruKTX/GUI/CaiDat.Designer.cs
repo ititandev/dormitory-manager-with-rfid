@@ -238,6 +238,7 @@
             this.MaximumSize = new System.Drawing.Size(958, 336);
             this.MinimumSize = new System.Drawing.Size(958, 336);
             this.Name = "CaiDat";
+            this.ShowInTaskbar = false;
             this.Text = "CaiDat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CaiDat_FormClosing);
             this.groupBox1.ResumeLayout(false);

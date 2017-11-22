@@ -48,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboTimKiemTheo = new System.Windows.Forms.ComboBox();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xemHợpĐồngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnHanhDong = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnChonFile = new System.Windows.Forms.Button();
@@ -83,8 +85,9 @@
             this.xemMode = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnXemTatCa = new System.Windows.Forms.Button();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnChonSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
@@ -92,7 +95,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 17);
+            this.label3.Location = new System.Drawing.Point(257, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 13;
@@ -100,7 +103,7 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(294, 14);
+            this.txtTimKiem.Location = new System.Drawing.Point(300, 9);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(115, 20);
             this.txtTimKiem.TabIndex = 12;
@@ -141,6 +144,20 @@
             this.dgv.Size = new System.Drawing.Size(639, 717);
             this.dgv.TabIndex = 9;
             this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xemHợpĐồngToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(154, 26);
+            // 
+            // xemHợpĐồngToolStripMenuItem
+            // 
+            this.xemHợpĐồngToolStripMenuItem.Name = "xemHợpĐồngToolStripMenuItem";
+            this.xemHợpĐồngToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.xemHợpĐồngToolStripMenuItem.Text = "Xem hợp đồng";
+            this.xemHợpĐồngToolStripMenuItem.Click += new System.EventHandler(this.xemHợpĐồngToolStripMenuItem_Click);
             // 
             // btnHanhDong
             // 
@@ -225,6 +242,7 @@
             // txtRFID
             // 
             this.txtRFID.Location = new System.Drawing.Point(81, 439);
+            this.txtRFID.MaxLength = 12;
             this.txtRFID.Name = "txtRFID";
             this.txtRFID.Size = new System.Drawing.Size(73, 20);
             this.txtRFID.TabIndex = 8;
@@ -245,6 +263,7 @@
             "Nam",
             "Nữ"});
             this.cbGioiTinh.Location = new System.Drawing.Point(312, 285);
+            this.cbGioiTinh.MaxLength = 5;
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(100, 21);
             this.cbGioiTinh.TabIndex = 6;
@@ -270,6 +289,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(81, 364);
+            this.txtEmail.MaxLength = 75;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(171, 20);
             this.txtEmail.TabIndex = 4;
@@ -286,6 +306,7 @@
             // txtDienUutien
             // 
             this.txtDienUutien.Location = new System.Drawing.Point(82, 287);
+            this.txtDienUutien.MaxLength = 50;
             this.txtDienUutien.Name = "txtDienUutien";
             this.txtDienUutien.Size = new System.Drawing.Size(171, 20);
             this.txtDienUutien.TabIndex = 2;
@@ -302,6 +323,7 @@
             // txtQueQuan
             // 
             this.txtQueQuan.Location = new System.Drawing.Point(81, 390);
+            this.txtQueQuan.MaxLength = 50;
             this.txtQueQuan.Name = "txtQueQuan";
             this.txtQueQuan.Size = new System.Drawing.Size(330, 20);
             this.txtQueQuan.TabIndex = 2;
@@ -318,6 +340,7 @@
             // txtKhoa
             // 
             this.txtKhoa.Location = new System.Drawing.Point(81, 338);
+            this.txtKhoa.MaxLength = 30;
             this.txtKhoa.Name = "txtKhoa";
             this.txtKhoa.Size = new System.Drawing.Size(171, 20);
             this.txtKhoa.TabIndex = 2;
@@ -334,6 +357,7 @@
             // txtLop
             // 
             this.txtLop.Location = new System.Drawing.Point(313, 338);
+            this.txtLop.MaxLength = 10;
             this.txtLop.Name = "txtLop";
             this.txtLop.Size = new System.Drawing.Size(99, 20);
             this.txtLop.TabIndex = 2;
@@ -350,6 +374,7 @@
             // txtDT
             // 
             this.txtDT.Location = new System.Drawing.Point(313, 367);
+            this.txtDT.MaxLength = 12;
             this.txtDT.Name = "txtDT";
             this.txtDT.Size = new System.Drawing.Size(99, 20);
             this.txtDT.TabIndex = 2;
@@ -384,6 +409,7 @@
             // txtMSSV
             // 
             this.txtMSSV.Location = new System.Drawing.Point(313, 260);
+            this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(99, 20);
             this.txtMSSV.TabIndex = 2;
@@ -400,6 +426,7 @@
             // txtCMND
             // 
             this.txtCMND.Location = new System.Drawing.Point(82, 313);
+            this.txtCMND.MaxLength = 12;
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(171, 20);
             this.txtCMND.TabIndex = 2;
@@ -416,6 +443,7 @@
             // txtTen
             // 
             this.txtTen.Location = new System.Drawing.Point(82, 260);
+            this.txtTen.MaxLength = 50;
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(171, 20);
             this.txtTen.TabIndex = 2;
@@ -469,7 +497,7 @@
             // 
             // btnXemTatCa
             // 
-            this.btnXemTatCa.Location = new System.Drawing.Point(529, 12);
+            this.btnXemTatCa.Location = new System.Drawing.Point(510, 7);
             this.btnXemTatCa.Name = "btnXemTatCa";
             this.btnXemTatCa.Size = new System.Drawing.Size(75, 23);
             this.btnXemTatCa.TabIndex = 31;
@@ -477,16 +505,23 @@
             this.btnXemTatCa.UseVisualStyleBackColor = true;
             this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
-            // contextMenuStrip
+            // btnChonSV
             // 
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(61, 4);
+            this.btnChonSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChonSV.Location = new System.Drawing.Point(835, 617);
+            this.btnChonSV.Name = "btnChonSV";
+            this.btnChonSV.Size = new System.Drawing.Size(118, 23);
+            this.btnChonSV.TabIndex = 18;
+            this.btnChonSV.Text = "Chọn sinh viên";
+            this.btnChonSV.UseVisualStyleBackColor = true;
+            this.btnChonSV.Click += new System.EventHandler(this.btnChonSV_Click);
             // 
             // SinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 770);
+            this.Controls.Add(this.btnChonSV);
             this.Controls.Add(this.btnXemTatCa);
             this.Controls.Add(this.themMode);
             this.Controls.Add(this.dgv);
@@ -503,6 +538,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SinhVien_FormClosing);
             this.Load += new System.EventHandler(this.SinhVienView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
@@ -553,6 +589,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnXemTatCa;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.Button btnChonSV;
+        private System.Windows.Forms.ToolStripMenuItem xemHợpĐồngToolStripMenuItem;
     }
 
     

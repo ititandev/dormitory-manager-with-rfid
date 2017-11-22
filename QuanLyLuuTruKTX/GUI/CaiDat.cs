@@ -75,6 +75,9 @@ namespace GUI
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (txtDuongDan.Text.LastIndexOf("\\") != txtDuongDan.Text.Length - 1)
+                txtDuongDan.Text += "\\";
+
             HopDongBUS.ConnectString = txtConnectString.Text;
             Properties.Settings.Default.ThuMucAnh = txtDuongDan.Text;
             Properties.Settings.Default.Save();

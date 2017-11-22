@@ -52,6 +52,7 @@ namespace GUI
             this.xemMode = new System.Windows.Forms.Button();
             this.btnHopDong = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnChonMSSV = new System.Windows.Forms.Button();
             this.btnChonPhong = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.lblGioiTinh = new System.Windows.Forms.Label();
@@ -103,7 +104,7 @@ namespace GUI
             this.dgvHopDong = new System.Windows.Forms.DataGridView();
             this.btnXemSinhVien = new System.Windows.Forms.Button();
             this.btnXemPhong = new System.Windows.Forms.Button();
-            this.btnChonMSSV = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAnh)).BeginInit();
@@ -134,11 +135,14 @@ namespace GUI
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(16, 477);
+            this.btnIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnIn.Image = global::GUI.Properties.Resources.print;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(16, 633);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(229, 23);
+            this.btnIn.Size = new System.Drawing.Size(225, 42);
             this.btnIn.TabIndex = 45;
-            this.btnIn.Text = "In";
+            this.btnIn.Text = "In hợp đồng";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
@@ -356,6 +360,17 @@ namespace GUI
             this.panel1.Size = new System.Drawing.Size(354, 586);
             this.panel1.TabIndex = 22;
             // 
+            // btnChonMSSV
+            // 
+            this.btnChonMSSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChonMSSV.Location = new System.Drawing.Point(152, 42);
+            this.btnChonMSSV.Name = "btnChonMSSV";
+            this.btnChonMSSV.Size = new System.Drawing.Size(49, 23);
+            this.btnChonMSSV.TabIndex = 76;
+            this.btnChonMSSV.Text = "Chọn";
+            this.btnChonMSSV.UseVisualStyleBackColor = true;
+            this.btnChonMSSV.Click += new System.EventHandler(this.btnChonMSSV_Click);
+            // 
             // btnChonPhong
             // 
             this.btnChonPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -508,6 +523,7 @@ namespace GUI
             // 
             this.txtIDPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIDPhong.Location = new System.Drawing.Point(96, 356);
+            this.txtIDPhong.MaxLength = 10;
             this.txtIDPhong.Name = "txtIDPhong";
             this.txtIDPhong.Size = new System.Drawing.Size(85, 20);
             this.txtIDPhong.TabIndex = 61;
@@ -813,6 +829,7 @@ namespace GUI
             // 
             this.txtMSSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMSSV.Location = new System.Drawing.Point(54, 43);
+            this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(90, 20);
             this.txtMSSV.TabIndex = 24;
@@ -866,22 +883,21 @@ namespace GUI
             this.btnXemPhong.UseVisualStyleBackColor = true;
             this.btnXemPhong.Click += new System.EventHandler(this.btnXemPhong_Click);
             // 
-            // btnChonMSSV
+            // label22
             // 
-            this.btnChonMSSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChonMSSV.Location = new System.Drawing.Point(152, 42);
-            this.btnChonMSSV.Name = "btnChonMSSV";
-            this.btnChonMSSV.Size = new System.Drawing.Size(49, 23);
-            this.btnChonMSSV.TabIndex = 76;
-            this.btnChonMSSV.Text = "Chọn";
-            this.btnChonMSSV.UseVisualStyleBackColor = true;
-            this.btnChonMSSV.Click += new System.EventHandler(this.btnChonMSSV_Click);
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 93);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(73, 13);
+            this.label22.TabIndex = 48;
+            this.label22.Text = "Tìm kiếm theo";
             // 
             // HopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1307, 687);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.btnXemPhong);
             this.Controls.Add(this.btnXemSinhVien);
             this.Controls.Add(this.btnIn);
@@ -1003,6 +1019,7 @@ namespace GUI
 
                 btnHopDong.Hide();
                 btnChonPhong.Hide();
+                btnChonMSSV.Hide();
             }
             else if (state == CheDo.SUA)
             {
@@ -1018,6 +1035,8 @@ namespace GUI
                 dtpNgayBatDau.Enabled = false;
                 dtpNgayKetThuc.Enabled = false;
                 btnHopDong.Show();
+                btnChonMSSV.Hide();
+                btnChonPhong.Hide();
             }
             else if (state == CheDo.THEM)
             {
@@ -1050,9 +1069,12 @@ namespace GUI
                 txtGiaTienTongCong.Text = "0";
                 lblTinhTrang.Text = "Chưa tới thời hạn";
                 lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                dtpNgayBatDau.Value = DateTime.Now.AddDays(1);
+                dtpNgayKetThuc.Value = DateTime.Now.AddMonths(9);
                 lblNguoiLap.Text = NhanVienBUS.GetHoTen(MainForm.MaNhanVienHienTai);
                 btnHopDong.Text = "Thêm hợp đồng";
                 btnChonPhong.Show();
+                btnChonMSSV.Show();
                 btnHopDong.Show();
             }
         }
@@ -1065,5 +1087,6 @@ namespace GUI
         private Button btnXemPhong;
         private Button btnChonPhong;
         private Button btnChonMSSV;
+        private Label label22;
     }
 }

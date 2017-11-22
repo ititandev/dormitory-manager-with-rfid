@@ -17,9 +17,9 @@ namespace GUI
 {
     public partial class SinhVien : KTXForm
     {
-        enum CheDo
+        public enum CheDo
         {
-            XEM, SUA, THEM
+            XEM, SUA, THEM, CHON_SV
         }
         private string duongDanAnh;
         private static CheDo CheDoHienTai { get; set; }
@@ -58,7 +58,7 @@ namespace GUI
 
         private void SinhVienView_Load(object sender, EventArgs e)
         {
-            dgv.DataSource = SinhVienBUS.XemTatCa();
+            dgv.DataSource = SinhVienBUS.LoadSinhVien();
             dgv.Columns[Anh].Visible = false;
         }
         private void SinhVien_FormClosing(object sender, FormClosingEventArgs e)
@@ -102,7 +102,7 @@ namespace GUI
             SetCheDo(CheDo.THEM);
         }
 
-        private void SetCheDo(CheDo cheDo)
+        public void SetCheDo(CheDo cheDo)
         {
             CheDoHienTai = cheDo;
             if (cheDo == CheDo.XEM)
@@ -116,6 +116,7 @@ namespace GUI
                 btnChonFile.Hide();
                 btnChupAnh.Hide();
                 btnHanhDong.Hide();
+                btnChonFile.Hide();
             }
             else if (cheDo == CheDo.SUA)
             {
@@ -130,6 +131,7 @@ namespace GUI
                 DaChonAnh = false;
                 btnHanhDong.Show();
                 btnHanhDong.Text = "Cập nhật";
+                btnChonFile.Hide();
             }
             else if (cheDo == CheDo.THEM)
             {
@@ -145,6 +147,11 @@ namespace GUI
                 DuongDanAnh = null;
                 btnHanhDong.Show();
                 btnHanhDong.Text = "Thêm";
+                btnChonFile.Hide();
+            }
+            else if (cheDo == CheDo.CHON_SV)
+            {
+                btnChonSV.Show();
             }
         }
 
@@ -240,7 +247,8 @@ namespace GUI
         {
             Random rand = new Random();
             string fileName = "temp" + rand.Next() + ".jpg";
-            new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory())).ForEach(file => {
+            new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory())).ForEach(file =>
+            {
                 if (file.IndexOf("temp", StringComparison.OrdinalIgnoreCase) >= 0)
                     File.Delete(file);
             });
@@ -311,12 +319,12 @@ namespace GUI
             {
                 txtRFID.Text = RFID;
             }
-           
+
         }
 
         private void btnXemTatCa_Click(object sender, EventArgs e)
         {
-            dgv.DataSource = SinhVienBUS.XemTatCa();
+            dgv.DataSource = SinhVienBUS.LoadSinhVien();
             dgv.Columns[Anh].Visible = false;
             dgv.Refresh();
             dgv.Update();
@@ -328,8 +336,33 @@ namespace GUI
         }
         public void XemSinhVien(string MSSV)
         {
+            SetCheDo(CheDo.XEM);
             cboTimKiemTheo.SelectedIndex = 1;
             txtTimKiem.Text = MSSV;
         }
+
+        private void btnChonSV_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Program.mainForm.btnHopDong_Click(null, null);
+            MainForm.hopDongForm.SetMSSV(dgv.SelectedRows[0].Cells[MaSo].Value.ToString());
+            SetCheDo(CheDo.XEM);
+        }
+
+        private void xemHợpĐồngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Program.mainForm.btnHopDong_Click(null, null);
+            MainForm.hopDongForm.XemHopDong(dgv.SelectedRows[0].Cells["MSSV"].Value.ToString());
+        }
+        
     }
 }
