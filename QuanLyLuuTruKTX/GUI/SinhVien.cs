@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using BUS;
@@ -71,9 +66,12 @@ namespace GUI
             string value = txtTimKiem.Text;
             string filter = cboTimKiemTheo.Text;
             DataTable dt = (dgv.DataSource as DataTable);
-            if (dt != null)
+            try
             {
                 dt.DefaultView.RowFilter = $"[{filter}] LIKE '%{value}%'";
+            }
+            catch (Exception)
+            {
             }
         }
         private void btnXoa_Click(object sender, EventArgs e)
@@ -81,10 +79,13 @@ namespace GUI
             var row = dgv.SelectedRows;
             if (row.Count > 0)
             {
-                string key = row[0].Cells[MaSo].Value.ToString();
-                SinhVienBUS.XoaSinhVien(key);
-                btnXemTatCa_Click(null, null);
+                string MSSV = row[0].Cells[MaSo].Value.ToString();
+                if (SinhVienBUS.XoaSinhVien(MSSV))
+                    MessageBox.Show("Xóa thành công sinh viên " + MSSV);
+                else
+                    MessageBox.Show("Xóa thất bại sinh viên " + MSSV, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            btnXemTatCa_Click(null, null);
         }
 
         private void xemMode_Click(object sender, EventArgs e)
@@ -116,7 +117,7 @@ namespace GUI
                 btnChonFile.Hide();
                 btnChupAnh.Hide();
                 btnHanhDong.Hide();
-                btnChonFile.Hide();
+                btnChonSV.Show();
             }
             else if (cheDo == CheDo.SUA)
             {
@@ -131,7 +132,7 @@ namespace GUI
                 DaChonAnh = false;
                 btnHanhDong.Show();
                 btnHanhDong.Text = "Cập nhật";
-                btnChonFile.Hide();
+                btnChonSV.Hide();
             }
             else if (cheDo == CheDo.THEM)
             {
@@ -147,7 +148,7 @@ namespace GUI
                 DuongDanAnh = null;
                 btnHanhDong.Show();
                 btnHanhDong.Text = "Thêm";
-                btnChonFile.Hide();
+                btnChonSV.Hide();
             }
             else if (cheDo == CheDo.CHON_SV)
             {

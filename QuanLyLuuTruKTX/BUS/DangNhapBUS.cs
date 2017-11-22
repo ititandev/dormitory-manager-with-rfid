@@ -50,7 +50,7 @@ namespace BUS
             }
             return true;
         }
-        
+
         public static string GetMaNhanVien(TextBox txtTaiKhoan)
         {
             SqlDataReader reader = TaiKhoanDAO.GetMaNhanVien(txtTaiKhoan.Text);
@@ -76,6 +76,11 @@ namespace BUS
             }
             else
                 return false;
+        }
+
+        public static string GetHoTen(string maNhanVien)
+        {
+            return TaiKhoanDAO.GetHoTen(maNhanVien);
         }
     }
 }

@@ -18,13 +18,6 @@ namespace DTO
         public string SoDienThoai { get; set; }
         public string Email { get; set; }
         public string ChucVu { get; set; }
-
-        public HopDongDTO HopDongDTO
-        {
-            get => default(HopDongDTO);
-            set
-            {
-            }
-        }
+        
     }
 }

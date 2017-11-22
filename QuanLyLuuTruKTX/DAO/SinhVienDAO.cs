@@ -61,8 +61,19 @@ namespace DAO
             {
                 return null;
             }
-            
+
         }
+        /// <summary>
+        /// Xóa sinh viên theo MSSV
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <returns></returns>
+        public static int XoaSinhVien(string MSSV)
+        {
+            string query = ($"DELETE FROM SinhVien WHERE MSSV= '{MSSV}'");
+            return Data.ExecuteNonQuery(query);
+        }
+
         /// <summary>
         /// Load dữ liệu bảng sinh viên từ cơ sở dữ liệu
         /// </summary>

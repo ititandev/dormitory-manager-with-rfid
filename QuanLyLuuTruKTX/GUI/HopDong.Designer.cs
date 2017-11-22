@@ -1071,7 +1071,7 @@ namespace GUI
                 lblNgayLap.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 dtpNgayBatDau.Value = DateTime.Now.AddDays(1);
                 dtpNgayKetThuc.Value = DateTime.Now.AddMonths(9);
-                lblNguoiLap.Text = NhanVienBUS.GetHoTen(MainForm.MaNhanVienHienTai);
+                lblNguoiLap.Text = DangNhapBUS.GetHoTen(Program.mainForm.MaNhanVienHienTai);
                 btnHopDong.Text = "Thêm hợp đồng";
                 btnChonPhong.Show();
                 btnChonMSSV.Show();

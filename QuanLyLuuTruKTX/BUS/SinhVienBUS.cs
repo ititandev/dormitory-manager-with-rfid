@@ -69,10 +69,13 @@ namespace BUS
                 return false;
             }
         }
-        public static void XoaSinhVien(string key)
+        public static bool XoaSinhVien(string MSSV)
         {
-            string query = ($"DELETE FROM SinhVien WHERE MSSV={key}");
-            Data.ExecuteNonQuery(query);
+            if (SinhVienDAO.XoaSinhVien(MSSV) == 1)
+                return true;
+            else
+                return false;
+            
         }
 
         /// <summary>

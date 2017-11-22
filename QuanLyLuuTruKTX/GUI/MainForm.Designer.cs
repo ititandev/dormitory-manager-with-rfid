@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnPhong = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.btnNhanVien = new System.Windows.Forms.Button();
             this.btnSinhVien = new System.Windows.Forms.Button();
             this.btnHopDong = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnCaiDat = new System.Windows.Forms.Button();
+            this.lblNhanVienHienTai = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPhong
@@ -59,7 +59,7 @@
             this.btnDangNhap.AutoSize = true;
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangNhap.Location = new System.Drawing.Point(818, 0);
+            this.btnDangNhap.Location = new System.Drawing.Point(674, 0);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(120, 48);
             this.btnDangNhap.TabIndex = 14;
@@ -67,22 +67,6 @@
             this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDangNhap.UseVisualStyleBackColor = true;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-            // 
-            // btnNhanVien
-            // 
-            this.btnNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNhanVien.AutoSize = true;
-            this.btnNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.Image = global::GUI.Properties.Resources.staff;
-            this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNhanVien.Location = new System.Drawing.Point(700, 0);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(112, 48);
-            this.btnNhanVien.TabIndex = 8;
-            this.btnNhanVien.Text = "Nhân viên";
-            this.btnNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNhanVien.UseVisualStyleBackColor = true;
-            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
             // 
             // btnSinhVien
             // 
@@ -137,15 +121,25 @@
             this.btnCaiDat.UseVisualStyleBackColor = true;
             this.btnCaiDat.Click += new System.EventHandler(this.btnCaiDat_Click_1);
             // 
+            // lblNhanVienHienTai
+            // 
+            this.lblNhanVienHienTai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNhanVienHienTai.AutoSize = true;
+            this.lblNhanVienHienTai.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhanVienHienTai.Location = new System.Drawing.Point(873, 12);
+            this.lblNhanVienHienTai.Name = "lblNhanVienHienTai";
+            this.lblNhanVienHienTai.Size = new System.Drawing.Size(0, 21);
+            this.lblNhanVienHienTai.TabIndex = 20;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 691);
+            this.Controls.Add(this.lblNhanVienHienTai);
             this.Controls.Add(this.btnCaiDat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnPhong);
-            this.Controls.Add(this.btnNhanVien);
             this.Controls.Add(this.btnSinhVien);
             this.Controls.Add(this.btnHopDong);
             this.Controls.Add(this.menuStrip1);
@@ -155,6 +149,7 @@
             this.Name = "MainForm";
             this.Text = "Quản lý lưu trú KTX";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,10 +158,10 @@
         #endregion
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnSinhVien;
-        private System.Windows.Forms.Button btnNhanVien;
         private System.Windows.Forms.Button btnPhong;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnCaiDat;
+        private System.Windows.Forms.Label lblNhanVienHienTai;
     }
 }

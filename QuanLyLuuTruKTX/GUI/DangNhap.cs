@@ -27,7 +27,8 @@ namespace GUI
                 if (DangNhapBUS.DangNhap(txtTaiKhoan, txtMatKhau))
                 {
                     MessageBox.Show("Bạn đăng nhập thành công!", "Dang nhap");
-                    MainForm.MaNhanVienHienTai = DangNhapBUS.GetMaNhanVien(txtTaiKhoan);
+                    Program.mainForm.MaNhanVienHienTai = DangNhapBUS.GetMaNhanVien(txtTaiKhoan);
+                    MainForm.DaDangNhap = true;
                     txtTaiKhoan.Text = txtMatKhau.Text = "";
                     Hide();
                 }

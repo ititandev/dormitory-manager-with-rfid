@@ -76,5 +76,13 @@ namespace BUS
             else
                 return String.Empty;
         }
+
+        public static void XoaPhong(string IDPhong)
+        {
+            if (PhongDAO.XoaPhong(IDPhong))
+                MessageBox.Show("Xóa thành công phòng " + IDPhong);
+            else
+                MessageBox.Show("Xóa thất bại phòng " + IDPhong, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

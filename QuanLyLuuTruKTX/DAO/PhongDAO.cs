@@ -69,6 +69,15 @@ namespace DAO
                 return null;
         }
 
+        public static bool XoaPhong(string IDPhong)
+        {
+            string query = "DELETE FROM Phong WHERE IDPhong = '" + IDPhong + "'";
+            if (Data.ExecuteNonQuery(query) == 1)
+                return true;
+            else
+                return false;
+        }
+
         public static bool KiemTraPhong(string IDPhong)
         {
             int SoLuongToiDa;

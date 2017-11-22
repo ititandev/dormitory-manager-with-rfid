@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
@@ -276,6 +271,42 @@ namespace GUI
             }
             Program.mainForm.btnSinhVien_Click(null, null);
             MainForm.sinhVienForm.XemSinhVien(dgvSinhVien.SelectedRows[0].Cells["MSSV"].Value.ToString());
+        }
+
+        private void btnXemTatCa_Click(object sender, EventArgs e)
+        {
+            LoadDuLieu();
+            cboLoaiPhong.SelectedIndex = 0;
+            cboSoLuong.SelectedIndex = 0;
+        }
+
+        private void Phong_Resize(object sender, EventArgs e)
+        {
+            int start =220;
+            int width = this.Width -220 - 310;
+            dgvPhong.Width = Convert.ToInt32(0.5 * width);
+            dgvSinhVien.Left = start + dgvPhong.Width + 10;
+            dgvSinhVien.Width = width - dgvPhong.Width - 10;
+            dgvPhong.Height = this.Height - 120;
+            dgvSinhVien.Height = this.Height - 120;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvPhong.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Vui lòng chọn một phòng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int hienTai = Convert.ToInt32(dgvPhong.SelectedRows[0].Cells["Số lượng hiện tại"].Value);
+            int toiDa = Convert.ToInt32(dgvPhong.SelectedRows[0].Cells["Số lượng tối đa"].Value);
+            if (hienTai > 0)
+            {
+                MessageBox.Show("Chỉ cho phép xóa phòng trống, vui lòng chuyển hết sinh viên ra khỏi phòng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            PhongBUS.XoaPhong(dgvPhong.SelectedRows[0].Cells["Mã phòng"].Value.ToString());
+            LoadDuLieu();
         }
     }
 }

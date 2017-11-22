@@ -7,19 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
 
 namespace GUI
 {
     public partial class MainForm : Form
     {
-        public static string MaNhanVienHienTai { get; set; }
-        public static string ChucVuHienTai { get; set; }
-        public static bool Logined { get; set; }
+        string maNhanVienHienTai;
+        public string MaNhanVienHienTai
+        {
+            get
+            {
+                return maNhanVienHienTai;
+            }
+            set
+            {
+                maNhanVienHienTai = value;
+                lblNhanVienHienTai.Text = DangNhapBUS.GetHoTen(maNhanVienHienTai);
+            }
+        }
+        public static bool DaDangNhap { get; set; }
 
         public static HopDong hopDongForm;
         public static SinhVien sinhVienForm;
         public static DangNhap dangNhapForm;
-        public static NhanVien nhanVienForm;
         public static Phong phongForm;
         public static CaiDat caiDatForm = new CaiDat();
 
@@ -27,14 +38,18 @@ namespace GUI
         public MainForm()
         {
             InitializeComponent();
-            //btnHopDong_Click(null, null);
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            btnDangNhap_Click(dangNhapForm, null);
+            DaDangNhap = false;
         }
         public void btnHopDong_Click(object sender, EventArgs e)
         {
+            if (!DaDangNhap)
+            {
+                MessageBox.Show("Vui lòng đăng nhập trước khi sử dụng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (hopDongForm == null)
                 hopDongForm = new HopDong();
             hopDongForm.MdiParent = this;
@@ -45,6 +60,11 @@ namespace GUI
 
         public void btnSinhVien_Click(object sender, EventArgs e)
         {
+            if (!DaDangNhap)
+            {
+                MessageBox.Show("Vui lòng đăng nhập trước khi sử dụng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (sinhVienForm == null)
                 sinhVienForm = new SinhVien();
             sinhVienForm.MdiParent = this;
@@ -53,17 +73,13 @@ namespace GUI
             FormHienTai = sinhVienForm;
         }
 
-        private void btnNhanVien_Click(object sender, EventArgs e)
-        {
-            if (nhanVienForm == null)
-                nhanVienForm = new NhanVien();
-            nhanVienForm.MdiParent = this;
-            nhanVienForm.Show();
-            nhanVienForm.WindowState = FormWindowState.Maximized;
-        }
-
         public void btnPhong_Click(object sender, EventArgs e)
         {
+            if (!DaDangNhap)
+            {
+                MessageBox.Show("Vui lòng đăng nhập trước khi sử dụng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (phongForm == null)
                 phongForm = new Phong();
             phongForm.MdiParent = this;

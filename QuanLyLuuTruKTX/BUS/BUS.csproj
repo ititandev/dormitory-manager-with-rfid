@@ -49,10 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DangNhapBUS.cs" />
-    <Compile Include="DotDienNuocBUS.cs" />
-    <Compile Include="HoaDonDienNuocBUS.cs" />
     <Compile Include="HopDongBUS.cs" />
-    <Compile Include="NhanVienBUS.cs" />
     <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SinhVienBUS.cs" />
