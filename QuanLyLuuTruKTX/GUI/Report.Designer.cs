@@ -57,7 +57,6 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Report";
             this.Text = "Report";
-            this.Load += new System.EventHandler(this.Report_Load);
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet1)).EndInit();
             this.ResumeLayout(false);
 

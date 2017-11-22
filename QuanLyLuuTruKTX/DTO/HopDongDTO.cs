@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 
 namespace DTO
 {
+    /// <summary>
+    /// Class chứa thông tin đối tượng Hợp đồng
+    /// </summary>
     public class HopDongDTO
     {
         public int MaSo { get; set; }
@@ -21,12 +24,5 @@ namespace DTO
         public int GiaTienDaNop { get; set; }
         
         public static string[] TinhTrangHopDongString = new string[] { "Chưa tới thời hạn", "Trong thời hạn", "Hết thời hạn" };
-    }
-
-    public enum TinhTrangHopDong : byte
-    {
-        CHUA_TOI_THOI_HAN = 0,
-        TRONG_THOI_HAN = 1,
-        HET_THOI_HAN = 2
     }
 }

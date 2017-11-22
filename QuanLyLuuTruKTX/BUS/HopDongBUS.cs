@@ -11,12 +11,18 @@ using DTO;
 
 namespace BUS
 {
+    /// <summary>
+    /// Class xử lý nghiệp vụ của form Hợp dồng
+    /// </summary>
     public class HopDongBUS
     {
-        HopDongDAO hopDongDAO = new HopDongDAO();
-        public static DataTable LoadTatCa()
+        /// <summary>
+        /// Load tất cả hợp đồng từ cơ sở dữ liệu
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable LoadHopDong()
         {
-            DataTable dataTable = HopDongDAO.LoadTatCa();
+            DataTable dataTable = HopDongDAO.LoadHopDong();
             dataTable.Columns[0].ColumnName = "Mã số";
             dataTable.Columns[1].ColumnName = "MSSV";
             dataTable.Columns[2].ColumnName = "Người lập";
@@ -29,12 +35,20 @@ namespace BUS
             dataTable.Columns[9].ColumnName = "Tổng cộng";
             return dataTable;
         }
-
+        /// <summary>
+        /// Lấy HopDongDTO từ cơ sở dữ liệu theo mã số hợp đồng
+        /// </summary>
+        /// <param name="MaSo"></param>
+        /// <returns></returns>
         public static HopDongDTO GetHopDongDTO(string MaSo)
         {
             HopDongDTO hopDongDTO = HopDongDAO.GetHopDongDTO(MaSo);
             return hopDongDTO;
         }
+        /// <summary>
+        /// Thêm hợp đồng vào cơ sở dữ liệu bằng HopDongDTO
+        /// </summary>
+        /// <param name="hopDongDTO"></param>
         public static void ThemHopDongDTO(HopDongDTO hopDongDTO)
         {
             if (Data.KiemTraRong(hopDongDTO.MSSV, hopDongDTO.MaNhanVien, hopDongDTO.IDPhong))
@@ -63,7 +77,17 @@ namespace BUS
             else
                 MessageBox.Show("Thêm thất bại", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
+        /// <summary>
+        /// Tìm kiếm nâng cao từ các control trên form
+        /// </summary>
+        /// <param name="chxTheoTinhTrang"></param>
+        /// <param name="cboTinhTrang"></param>
+        /// <param name="chxTheoThoiHan"></param>
+        /// <param name="dtpNgayBatDauTimKiem"></param>
+        /// <param name="dtpNgayKetThucTimKiem"></param>
+        /// <param name="cboTimKiemTheo"></param>
+        /// <param name="txtTimKiem"></param>
+        /// <returns></returns>
         public static string TimKiem(RadioButton chxTheoTinhTrang, ComboBox cboTinhTrang, RadioButton chxTheoThoiHan,
                                     DateTimePicker dtpNgayBatDauTimKiem, DateTimePicker dtpNgayKetThucTimKiem, ComboBox cboTimKiemTheo, TextBox txtTimKiem)
         {
@@ -106,7 +130,9 @@ namespace BUS
             filter += " )";
             return filter;
         }
-
+        /// <summary>
+        /// Get, set connect string để kết nối cơ sở dữ liệu
+        /// </summary>
         public static string ConnectString
         {
             get
@@ -118,18 +144,36 @@ namespace BUS
                 Data.ConnectString = value;
             }
         }
-        public static SqlDataReader getHopDongDS()
+        /// <summary>
+        /// Get danh sách hợp đồng dùng để in hợp đồng
+        /// </summary>
+        /// <returns></returns>
+        public static SqlDataReader GetHopDong()
         {
             string query = "SELECT MaSo, HopDong.MSSV, NgayBatDau, NgayKetThuc, HoTen, NgaySinh, Khoa, CMND, SoDienThoai, Email, QueQuan FROM HopDong, SinhVien WHERE HopDong.MSSV=SinhVien.MSSV";
-            
-
             var dr = Data.ExecuteReader(query);
             return dr;
         }
-
+        /// <summary>
+        /// Xóa hợp đồng theo mã số hợp đồng
+        /// </summary>
+        /// <param name="MaSo"></param>
+        /// <returns></returns>
         public static bool Xoa(string MaSo)
         {
             if (HopDongDAO.XoaHopDong(MaSo) == 1)
+                return true;
+            else
+                return false;
+        }
+        /// <summary>
+        /// Kiểm tra sinh viên có hợp đồng trong thời hạn hay không
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <returns></returns>
+        public static bool KiemTraThoiHan(string MSSV)
+        {
+            if (HopDongDAO.KiemTraThoiHan(MSSV) == 1)
                 return true;
             else
                 return false;

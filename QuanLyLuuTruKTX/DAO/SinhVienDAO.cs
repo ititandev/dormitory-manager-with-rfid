@@ -83,6 +83,20 @@ namespace DAO
             return Data.ExecuteQuery("SELECT * FROM SinhVien");
         }
         /// <summary>
+        /// Kiểm tra thẻ RFID đã được sử dụng cho sinh viên nào chưa
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
+        public static bool KiemTraTrungRFID(string RFID)
+        {
+            SqlDataReader reader = Data.ExecuteReader("SELECT COUNT(*) FROM SinhVien WHERE RFID = '" + RFID + "'");
+            if (reader.Read() && Convert.ToInt32(reader[0]) == 1)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Thêm một sinh viên vào cơ sở dữ liệu sử dụng SinhVienDTO
         /// </summary>
         /// <param name="sv"></param>

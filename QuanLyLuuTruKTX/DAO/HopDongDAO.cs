@@ -9,9 +9,16 @@ using DTO;
 
 namespace DAO
 {
+    /// <summary>
+    /// Class truy xuất dữ liệu liên quan tới hợp đồng
+    /// </summary>
     public class HopDongDAO
     {
-        public static DataTable LoadTatCa()
+        /// <summary>
+        /// Load tất cả hợp đồng trong cơ sở dữ liệu kèm kiểm tra thời hạn
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable LoadHopDong()
         {
             return Data.ExecuteQuery(@"SELECT MaSo ,HopDong.MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
                                     case dbo.KiemTraThoiHan(HopDong.MSSV)
@@ -23,34 +30,11 @@ namespace DAO
                                     HopDong.MaNhanVien = NhanVien.MaNhanVien
                                     LEFT JOIN SinhVien ON HopDong.MSSV = SinhVien.MSSV");
         }
-
-        public static DataTable TimKiem(DateTime NgayBatDau, DateTime NgayKetThuc, DateTime NgayLap)
-        {
-            
-            String filter = @"SELECT MaSo ,MSSV ,NhanVien.HoTen,NgayLap ,NgayBatDau ,NgayKetThuc,
-                                    case dbo.KiemTraThoiHan(MSSV)
-	                                    WHEN 0 THEN N'Chưa tới thời hạn'
-	                                    WHEN 1 THEN N'Trong thời hạn'
-	                                    WHEN 2 THEN N'Hết thời hạn'
-	                                END AS ThoiHan, IDPhong, GiaTienTongCong, GiaTienDaNop
-                                    FROM dbo.HopDong LEFT JOIN NhanVien ON 
-                                    HopDong.MaNhanVien = NhanVien.MaNhanVien";
-
-            if (NgayBatDau != null)
-            {
-                filter += " WHERE NgayBatDau >= @NgayBatDau AND NgayKetThuc <= @NgayKetThuc";
-                return Data.ExecuteQuery(filter, new object[] { NgayBatDau, NgayKetThuc });
-            }
-
-            else if (NgayLap != null)
-            {
-                filter += " WHERE NgayLap = @NgayLap";
-                return Data.ExecuteQuery(filter, new object[] { NgayLap });
-            }
-            else
-                return Data.ExecuteQuery(filter);
-        }
-
+        /// <summary>
+        /// Get thông tin hợp đồng (HopDongDTO) theo Mã số hợp đồng
+        /// </summary>
+        /// <param name="MaSo"></param>
+        /// <returns></returns>
         public static HopDongDTO GetHopDongDTO(string MaSo)
         {
             SqlDataReader reader = Data.ExecuteReader("SELECT *, dbo.KiemTraThoiHan(MSSV) AS TinhTrang FROM HopDong WHERE MaSo = @MaSo", new string[] { MaSo });
@@ -76,7 +60,11 @@ namespace DAO
             else
                 return null;
         }
-
+        /// <summary>
+        /// Thêm hợp đồng mới vào cơ sở dữ liệu theo HopDongDTO
+        /// </summary>
+        /// <param name="hopDongDTO"></param>
+        /// <returns></returns>
         public static bool ThemHopDongDTO(HopDongDTO hopDongDTO)
         {
             string[] param = new string[] { "@MSSV", "@MaNhanVien", "@NgayLap", "@NgayBatDau", "@NgayKetThuc", "@IDPhong", "@GiaTienTongCong", "@GiaTienDaNop", "@ChuThich" };
@@ -104,10 +92,28 @@ namespace DAO
             else
                 return false;
         }
-
+        /// <summary>
+        /// Xóa hợp đồng trong cơ sở dữ liệu theo Mã số hợp đồng
+        /// </summary>
+        /// <param name="maSo"></param>
+        /// <returns></returns>
         public static int XoaHopDong(string maSo)
         {
             return Data.ExecuteNonQuery("DELETE FROM HopDong WHERE MaSo = '" + maSo + "'");
+        }
+        /// <summary>
+        /// Kiểm tra sinh viên có hợp đồng trong thời hạn hay không
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <returns></returns>
+        public static int KiemTraThoiHan(string MSSV)
+        {
+            string query = $"SELECT COUNT(*) FROM HopDong WHERE MSSV = '{MSSV}' AND dbo.KiemTraThoiHan(MSSV) = 1";
+            SqlDataReader reader =  Data.ExecuteReader(query);
+            if (reader.Read())
+                return Convert.ToInt32(reader[0]);
+            else
+                return 0;
         }
     }
 }

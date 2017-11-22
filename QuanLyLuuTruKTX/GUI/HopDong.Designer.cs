@@ -138,9 +138,9 @@ namespace GUI
             this.btnIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnIn.Image = global::GUI.Properties.Resources.print;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(16, 633);
+            this.btnIn.Location = new System.Drawing.Point(16, 512);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(225, 42);
+            this.btnIn.Size = new System.Drawing.Size(229, 42);
             this.btnIn.TabIndex = 45;
             this.btnIn.Text = "In hợp đồng";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -148,9 +148,11 @@ namespace GUI
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(16, 341);
+            this.btnXoa.Image = global::GUI.Properties.Resources.delete;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(16, 464);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(229, 23);
+            this.btnXoa.Size = new System.Drawing.Size(229, 42);
             this.btnXoa.TabIndex = 44;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -160,7 +162,7 @@ namespace GUI
             // 
             this.chxTheoTinhTrang.AutoSize = true;
             this.chxTheoTinhTrang.Checked = true;
-            this.chxTheoTinhTrang.Location = new System.Drawing.Point(21, 169);
+            this.chxTheoTinhTrang.Location = new System.Drawing.Point(21, 134);
             this.chxTheoTinhTrang.Name = "chxTheoTinhTrang";
             this.chxTheoTinhTrang.Size = new System.Drawing.Size(97, 17);
             this.chxTheoTinhTrang.TabIndex = 43;
@@ -171,7 +173,7 @@ namespace GUI
             // 
             // btnXemTatCa
             // 
-            this.btnXemTatCa.Location = new System.Drawing.Point(16, 290);
+            this.btnXemTatCa.Location = new System.Drawing.Point(16, 236);
             this.btnXemTatCa.Name = "btnXemTatCa";
             this.btnXemTatCa.Size = new System.Drawing.Size(229, 23);
             this.btnXemTatCa.TabIndex = 42;
@@ -182,7 +184,7 @@ namespace GUI
             // dtpNgayKetThucTimKiem
             // 
             this.dtpNgayKetThucTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayKetThucTimKiem.Location = new System.Drawing.Point(138, 230);
+            this.dtpNgayKetThucTimKiem.Location = new System.Drawing.Point(138, 195);
             this.dtpNgayKetThucTimKiem.Name = "dtpNgayKetThucTimKiem";
             this.dtpNgayKetThucTimKiem.Size = new System.Drawing.Size(107, 20);
             this.dtpNgayKetThucTimKiem.TabIndex = 40;
@@ -191,7 +193,7 @@ namespace GUI
             // dtpNgayBatDauTimKiem
             // 
             this.dtpNgayBatDauTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayBatDauTimKiem.Location = new System.Drawing.Point(138, 198);
+            this.dtpNgayBatDauTimKiem.Location = new System.Drawing.Point(138, 163);
             this.dtpNgayBatDauTimKiem.Name = "dtpNgayBatDauTimKiem";
             this.dtpNgayBatDauTimKiem.Size = new System.Drawing.Size(107, 20);
             this.dtpNgayBatDauTimKiem.TabIndex = 39;
@@ -202,7 +204,7 @@ namespace GUI
             this.chxTheoThoiHan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chxTheoThoiHan.AutoSize = true;
-            this.chxTheoThoiHan.Location = new System.Drawing.Point(21, 199);
+            this.chxTheoThoiHan.Location = new System.Drawing.Point(21, 164);
             this.chxTheoThoiHan.Name = "chxTheoThoiHan";
             this.chxTheoThoiHan.Size = new System.Drawing.Size(110, 17);
             this.chxTheoThoiHan.TabIndex = 37;
@@ -215,7 +217,7 @@ namespace GUI
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(106, 234);
+            this.label24.Location = new System.Drawing.Point(106, 199);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(26, 13);
             this.label24.TabIndex = 36;
@@ -231,7 +233,7 @@ namespace GUI
             "Người lập",
             "Ngày lập",
             "ID Phòng"});
-            this.cboTimKiemTheo.Location = new System.Drawing.Point(16, 120);
+            this.cboTimKiemTheo.Location = new System.Drawing.Point(16, 85);
             this.cboTimKiemTheo.Name = "cboTimKiemTheo";
             this.cboTimKiemTheo.Size = new System.Drawing.Size(97, 21);
             this.cboTimKiemTheo.TabIndex = 32;
@@ -245,7 +247,7 @@ namespace GUI
             "Chưa tới thời hạn",
             "Trong thời hạn",
             "Hết thời hạn"});
-            this.cboTinhTrang.Location = new System.Drawing.Point(124, 166);
+            this.cboTinhTrang.Location = new System.Drawing.Point(124, 131);
             this.cboTinhTrang.Name = "cboTinhTrang";
             this.cboTinhTrang.Size = new System.Drawing.Size(121, 21);
             this.cboTinhTrang.TabIndex = 30;
@@ -253,7 +255,7 @@ namespace GUI
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(119, 120);
+            this.txtTimKiem.Location = new System.Drawing.Point(119, 85);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(126, 20);
             this.txtTimKiem.TabIndex = 28;
@@ -858,6 +860,7 @@ namespace GUI
             this.dgvHopDong.Location = new System.Drawing.Point(259, 12);
             this.dgvHopDong.Name = "dgvHopDong";
             this.dgvHopDong.ReadOnly = true;
+            this.dgvHopDong.RowHeadersVisible = false;
             this.dgvHopDong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHopDong.Size = new System.Drawing.Size(666, 663);
             this.dgvHopDong.TabIndex = 0;
@@ -865,7 +868,7 @@ namespace GUI
             // 
             // btnXemSinhVien
             // 
-            this.btnXemSinhVien.Location = new System.Drawing.Point(16, 417);
+            this.btnXemSinhVien.Location = new System.Drawing.Point(16, 318);
             this.btnXemSinhVien.Name = "btnXemSinhVien";
             this.btnXemSinhVien.Size = new System.Drawing.Size(229, 23);
             this.btnXemSinhVien.TabIndex = 46;
@@ -875,7 +878,7 @@ namespace GUI
             // 
             // btnXemPhong
             // 
-            this.btnXemPhong.Location = new System.Drawing.Point(12, 441);
+            this.btnXemPhong.Location = new System.Drawing.Point(16, 347);
             this.btnXemPhong.Name = "btnXemPhong";
             this.btnXemPhong.Size = new System.Drawing.Size(229, 23);
             this.btnXemPhong.TabIndex = 47;
@@ -886,7 +889,7 @@ namespace GUI
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 93);
+            this.label22.Location = new System.Drawing.Point(13, 58);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 13);
             this.label22.TabIndex = 48;

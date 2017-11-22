@@ -10,6 +10,9 @@ using DTO;
 using static BUS.SinhVienBUS;
 namespace GUI
 {
+    /// <summary>
+    /// Class form quản lý thông tin sinh viên
+    /// </summary>
     public partial class SinhVien : KTXForm
     {
         public enum CheDo
@@ -174,7 +177,7 @@ namespace GUI
 
             if (CheDoHienTai == CheDo.THEM)
             {
-                if (!DaChonAnh || txtRFID.Text == String.Empty)
+                if (!DaChonAnh)
                 {
                     MessageBox.Show("Vui lòng chọn ảnh/RFID cho sinh viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -300,7 +303,7 @@ namespace GUI
                 txtRFID.Text = row.Cells[RFID].Value.ToString();
                 DuongDanAnh = MainForm.ThuMucAnh + row.Cells[Anh].Value.ToString();
 
-                if (SinhVienBUS.KiemTraSinhVien(txtMSSV.Text))
+                if (HopDongBUS.KiemTraThoiHan(txtMSSV.Text))
                     lblHopDongHopLe.Hide();
                 else
                     lblHopDongHopLe.Show();

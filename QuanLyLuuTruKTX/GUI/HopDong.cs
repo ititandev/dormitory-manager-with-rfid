@@ -8,6 +8,9 @@ using DTO;
 
 namespace GUI
 {
+    /// <summary>
+    /// Class form quản lý hợp đồng ký túc xá
+    /// </summary>
     public partial class HopDong : KTXForm
     {
         enum CheDo
@@ -126,6 +129,7 @@ namespace GUI
             hopDongDTO.ChuThich = txtChuThich.Text;
 
             HopDongBUS.ThemHopDongDTO(hopDongDTO);
+            btnXemTatCa_Click(null, null);
         }
 
         private void xemMode_Click(object sender, EventArgs e)
@@ -233,7 +237,7 @@ namespace GUI
         private void btnXemTatCa_Click(object sender, EventArgs e)
         {
             SetCheDo(CheDo.XEM);
-            dataTable = HopDongBUS.LoadTatCa();
+            dataTable = HopDongBUS.LoadHopDong();
             dgvHopDong.DataSource = dataTable;
             dgvHopDong.Columns["RFID"].Visible = false;
             chxTheoTinhTrang.Checked = true;

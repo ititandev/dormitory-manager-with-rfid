@@ -11,6 +11,9 @@ using BUS;
 
 namespace GUI
 {
+    /// <summary>
+    /// Class form giao diện chính
+    /// </summary>
     public partial class MainForm : Form
     {
         string maNhanVienHienTai;

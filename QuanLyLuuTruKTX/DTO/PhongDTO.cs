@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+    /// <summary>
+    /// Class chứa thông tin về đối tượng Phòng
+    /// </summary>
     public class PhongDTO
     {
         public string SoPhong { get; set; }

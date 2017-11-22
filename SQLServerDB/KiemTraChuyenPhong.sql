@@ -1,6 +1,6 @@
 CREATE FUNCTION [dbo].[KiemTraChuyenPhong]
 (
-	@idPhong nvarchar
+	@idPhong nvarchar(10)
 )
 RETURNS INT
 AS

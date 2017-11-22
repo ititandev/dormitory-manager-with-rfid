@@ -7,6 +7,9 @@ using DTO;
 
 namespace GUI
 {
+    /// <summary>
+    /// Class form quản lý phòng ở sinh viên
+    /// </summary>
     public partial class Phong : KTXForm
     {
         DataTable dataTablePhong;
@@ -57,7 +60,7 @@ namespace GUI
                 themMode.BackColor = Color.LightGray;
                 txtIDPhong.ReadOnly = txtKhuNha.ReadOnly = txtSoPhong.ReadOnly = txtTinhTrang.ReadOnly = true;
                 btnHanhDong.Hide();
-                btnChonPhong.Hide();
+                btnChonPhong.Show();
             }
             else if (CheDoHienTai == CheDo.THEM)
             {
@@ -190,9 +193,8 @@ namespace GUI
             }
             for (int i = 0; i < dgvSinhVien.Rows.Count; i++)
             {
-
                 if (dgvSinhVien.Rows[i].Cells["RFID"].Value.ToString() == RFID)
-                    dgvSinhVien.CurrentCell = this.dgvSinhVien["RFID", i];
+                    dgvSinhVien.CurrentCell = this.dgvSinhVien[0, i];
             }
         }
 
@@ -307,6 +309,11 @@ namespace GUI
             }
             PhongBUS.XoaPhong(dgvPhong.SelectedRows[0].Cells["Mã phòng"].Value.ToString());
             LoadDuLieu();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            (new ChuyenPhong()).Show();
         }
     }
 }

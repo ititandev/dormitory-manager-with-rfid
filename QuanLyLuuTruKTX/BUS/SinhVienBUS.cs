@@ -58,6 +58,17 @@ namespace BUS
         /// <returns></returns>
         public static bool CapNhatSinhVien(SinhVienDTO sv)
         {
+            bool test = Data.KiemTraRong(sv.HoTen, sv.MSSV, sv.GioiTinh, sv.CMND, sv.Lop, sv.SoDienThoai, sv.Khoa, sv.QueQuan, sv.Email);
+            if (test)
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (!Data.KiemTraRong(sv.RFID) && SinhVienDAO.KiemTraTrungRFID(sv.RFID))
+            {
+                MessageBox.Show("Thẻ đã bị trùng với một sinh viên khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (SinhVienDAO.CapNhatSinhVien(sv) == 1)
             {
                 MessageBox.Show("Cập nhật sinh viên '" + sv.HoTen + "' (" + sv.MSSV + ") thành công");
@@ -75,7 +86,7 @@ namespace BUS
                 return true;
             else
                 return false;
-            
+
         }
 
         /// <summary>
@@ -84,6 +95,17 @@ namespace BUS
         /// <param name="sv"></param>
         public static bool ThemSinhVien(SinhVienDTO sv)
         {
+            bool test = Data.KiemTraRong(sv.HoTen, sv.MSSV, sv.GioiTinh, sv.CMND, sv.Lop, sv.SoDienThoai, sv.Khoa, sv.QueQuan, sv.Email);
+            if (test)
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (!Data.KiemTraRong(sv.RFID) && SinhVienDAO.KiemTraTrungRFID(sv.RFID))
+            {
+                MessageBox.Show("Thẻ đã bị trùng với một sinh viên khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (SinhVienDAO.ThemSinhVien(sv) == 1)
             {
                 MessageBox.Show("Thêm sinh viên '" + sv.HoTen + "' (" + sv.MSSV + ") thành công");
@@ -97,7 +119,7 @@ namespace BUS
         }
 
         /// <summary>
-        /// Kiểm tra hợp đồng sinh viên theo MSSV có hợp lệ hay không
+        /// Kiểm tra sinh viên có hợp lệ hay không
         /// </summary>
         /// <param name="MSSV"></param>
         /// <returns></returns>
@@ -118,6 +140,19 @@ namespace BUS
         {
             return SinhVienDAO.GetSinhVienDTO(MSSV);
         }
-
+        /// <summary>
+        /// Chuyển sinh viên có MSSV tới phòng IDPhong
+        /// check là tùy chọn kiểm tra phòng quá số lượng hay không
+        /// </summary>
+        /// <param name="MSSV"></param>
+        /// <param name="idPhong"></param>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        public static int ChuyenPhong(string MSSV, string idPhong, bool check)
+        {
+            if (check)
+                return Data.ExecuteNonQuery($"IF dbo.KiemTraChuyenPhong('{ idPhong}')=1 UPDATE HopDong SET IDPhong='{idPhong}' WHERE MSSV='{MSSV}' AND dbo.KiemTraThoiHan('{MSSV}')=1");
+            return Data.ExecuteNonQuery($"UPDATE HopDong SET IDPhong='{idPhong}' WHERE MSSV='{MSSV}' AND dbo.KiemTraThoiHan('{MSSV}')=1");
+        }
     }
 }

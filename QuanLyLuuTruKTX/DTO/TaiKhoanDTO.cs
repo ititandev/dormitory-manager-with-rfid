@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+    /// <summary>
+    /// Class chứa thông tin đối tượng Tài khoản
+    /// </summary>
     public class TaiKhoanDTO
     {
         public string MaNhanVien { get; set; }

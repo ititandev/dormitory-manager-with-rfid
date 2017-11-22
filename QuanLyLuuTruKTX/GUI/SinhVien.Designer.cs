@@ -141,6 +141,7 @@
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(639, 717);
             this.dgv.TabIndex = 9;
@@ -203,7 +204,7 @@
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.txtTen);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Location = new System.Drawing.Point(669, 74);
+            this.panel2.Location = new System.Drawing.Point(669, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(415, 519);
             this.panel2.TabIndex = 9;
@@ -461,7 +462,7 @@
             // themMode
             // 
             this.themMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.themMode.Location = new System.Drawing.Point(835, 31);
+            this.themMode.Location = new System.Drawing.Point(794, 7);
             this.themMode.Name = "themMode";
             this.themMode.Size = new System.Drawing.Size(75, 23);
             this.themMode.TabIndex = 30;
@@ -472,7 +473,7 @@
             // suaMode
             // 
             this.suaMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.suaMode.Location = new System.Drawing.Point(907, 31);
+            this.suaMode.Location = new System.Drawing.Point(866, 7);
             this.suaMode.Name = "suaMode";
             this.suaMode.Size = new System.Drawing.Size(75, 23);
             this.suaMode.TabIndex = 29;
@@ -483,7 +484,7 @@
             // xemMode
             // 
             this.xemMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xemMode.Location = new System.Drawing.Point(763, 31);
+            this.xemMode.Location = new System.Drawing.Point(722, 7);
             this.xemMode.Name = "xemMode";
             this.xemMode.Size = new System.Drawing.Size(75, 23);
             this.xemMode.TabIndex = 28;
@@ -498,9 +499,9 @@
             // 
             // btnXemTatCa
             // 
-            this.btnXemTatCa.Location = new System.Drawing.Point(510, 7);
+            this.btnXemTatCa.Location = new System.Drawing.Point(495, 6);
             this.btnXemTatCa.Name = "btnXemTatCa";
-            this.btnXemTatCa.Size = new System.Drawing.Size(75, 23);
+            this.btnXemTatCa.Size = new System.Drawing.Size(106, 23);
             this.btnXemTatCa.TabIndex = 31;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
@@ -509,9 +510,11 @@
             // btnChonSV
             // 
             this.btnChonSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChonSV.Location = new System.Drawing.Point(812, 615);
+            this.btnChonSV.Image = global::GUI.Properties.Resources.tick;
+            this.btnChonSV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChonSV.Location = new System.Drawing.Point(780, 579);
             this.btnChonSV.Name = "btnChonSV";
-            this.btnChonSV.Size = new System.Drawing.Size(131, 48);
+            this.btnChonSV.Size = new System.Drawing.Size(201, 48);
             this.btnChonSV.TabIndex = 18;
             this.btnChonSV.Text = "Chọn làm hợp đồng";
             this.btnChonSV.UseVisualStyleBackColor = true;
@@ -519,7 +522,8 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(604, 7);
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXoa.Location = new System.Drawing.Point(973, 7);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(105, 23);
             this.btnXoa.TabIndex = 32;

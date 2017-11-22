@@ -63,6 +63,7 @@
             this.txtTaiKhoan.Size = new System.Drawing.Size(168, 20);
             this.txtTaiKhoan.TabIndex = 2;
             this.txtTaiKhoan.Text = "ititan";
+            this.txtTaiKhoan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTaiKhoan_KeyDown);
             // 
             // txtMatKhau
             // 
@@ -73,6 +74,7 @@
             this.txtMatKhau.Size = new System.Drawing.Size(168, 20);
             this.txtMatKhau.TabIndex = 3;
             this.txtMatKhau.Text = "ititan";
+            this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatKhau_KeyDown);
             // 
             // btnDangNhap
             // 
@@ -99,6 +101,7 @@
             this.Name = "DangNhap";
             this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DangNhap_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DangNhap_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -59,6 +59,7 @@
             this.btnXemSinhVien = new System.Windows.Forms.Button();
             this.btnXemTatCa = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             this.contextMenuStripSV.SuspendLayout();
@@ -111,6 +112,7 @@
             this.dgvPhong.MultiSelect = false;
             this.dgvPhong.Name = "dgvPhong";
             this.dgvPhong.ReadOnly = true;
+            this.dgvPhong.RowHeadersVisible = false;
             this.dgvPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPhong.Size = new System.Drawing.Size(462, 796);
             this.dgvPhong.TabIndex = 34;
@@ -129,6 +131,7 @@
             this.dgvSinhVien.MultiSelect = false;
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.ReadOnly = true;
+            this.dgvSinhVien.RowHeadersVisible = false;
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSinhVien.Size = new System.Drawing.Size(506, 796);
             this.dgvSinhVien.TabIndex = 35;
@@ -262,7 +265,7 @@
             0,
             0});
             this.numToiDa.Minimum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
@@ -270,7 +273,7 @@
             this.numToiDa.Size = new System.Drawing.Size(100, 20);
             this.numToiDa.TabIndex = 49;
             this.numToiDa.Value = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
             0});
@@ -307,16 +310,16 @@
             this.cboLoaiPhong.Items.AddRange(new object[] {
             "Tất cả",
             "Phòng trống"});
-            this.cboLoaiPhong.Location = new System.Drawing.Point(48, 343);
+            this.cboLoaiPhong.Location = new System.Drawing.Point(19, 55);
             this.cboLoaiPhong.Name = "cboLoaiPhong";
-            this.cboLoaiPhong.Size = new System.Drawing.Size(121, 21);
+            this.cboLoaiPhong.Size = new System.Drawing.Size(166, 21);
             this.cboLoaiPhong.TabIndex = 52;
             this.cboLoaiPhong.SelectedIndexChanged += new System.EventHandler(this.cboLoaiPhong_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(45, 316);
+            this.label7.Location = new System.Drawing.Point(16, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 53;
@@ -325,7 +328,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(45, 421);
+            this.label8.Location = new System.Drawing.Point(16, 94);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 55;
@@ -339,28 +342,30 @@
             "Phòng 4",
             "Phòng 6",
             "Phòng 8"});
-            this.cboSoLuong.Location = new System.Drawing.Point(48, 437);
+            this.cboSoLuong.Location = new System.Drawing.Point(19, 113);
             this.cboSoLuong.Name = "cboSoLuong";
-            this.cboSoLuong.Size = new System.Drawing.Size(121, 21);
+            this.cboSoLuong.Size = new System.Drawing.Size(166, 21);
             this.cboSoLuong.TabIndex = 54;
             this.cboSoLuong.SelectedIndexChanged += new System.EventHandler(this.cboSoLuong_SelectedIndexChanged);
             // 
             // btnChonPhong
             // 
             this.btnChonPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnChonPhong.Location = new System.Drawing.Point(372, 841);
+            this.btnChonPhong.Image = global::GUI.Properties.Resources.tick;
+            this.btnChonPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChonPhong.Location = new System.Drawing.Point(315, 841);
             this.btnChonPhong.Name = "btnChonPhong";
-            this.btnChonPhong.Size = new System.Drawing.Size(141, 34);
+            this.btnChonPhong.Size = new System.Drawing.Size(229, 34);
             this.btnChonPhong.TabIndex = 57;
-            this.btnChonPhong.Text = "Chọn phòng";
+            this.btnChonPhong.Text = "Chọn làm hợp đồng";
             this.btnChonPhong.UseVisualStyleBackColor = true;
             this.btnChonPhong.Click += new System.EventHandler(this.btnChonPhong_Click);
             // 
             // btnXemHopDong
             // 
-            this.btnXemHopDong.Location = new System.Drawing.Point(48, 508);
+            this.btnXemHopDong.Location = new System.Drawing.Point(19, 257);
             this.btnXemHopDong.Name = "btnXemHopDong";
-            this.btnXemHopDong.Size = new System.Drawing.Size(121, 23);
+            this.btnXemHopDong.Size = new System.Drawing.Size(166, 23);
             this.btnXemHopDong.TabIndex = 58;
             this.btnXemHopDong.Text = "Xem hợp đồng";
             this.btnXemHopDong.UseVisualStyleBackColor = true;
@@ -368,9 +373,9 @@
             // 
             // btnXemSinhVien
             // 
-            this.btnXemSinhVien.Location = new System.Drawing.Point(48, 567);
+            this.btnXemSinhVien.Location = new System.Drawing.Point(19, 295);
             this.btnXemSinhVien.Name = "btnXemSinhVien";
-            this.btnXemSinhVien.Size = new System.Drawing.Size(121, 23);
+            this.btnXemSinhVien.Size = new System.Drawing.Size(166, 23);
             this.btnXemSinhVien.TabIndex = 59;
             this.btnXemSinhVien.Text = "Xem sinh viên";
             this.btnXemSinhVien.UseVisualStyleBackColor = true;
@@ -378,9 +383,9 @@
             // 
             // btnXemTatCa
             // 
-            this.btnXemTatCa.Location = new System.Drawing.Point(48, 648);
+            this.btnXemTatCa.Location = new System.Drawing.Point(19, 154);
             this.btnXemTatCa.Name = "btnXemTatCa";
-            this.btnXemTatCa.Size = new System.Drawing.Size(121, 23);
+            this.btnXemTatCa.Size = new System.Drawing.Size(166, 23);
             this.btnXemTatCa.TabIndex = 60;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
@@ -388,19 +393,34 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(48, 707);
+            this.btnXoa.Image = global::GUI.Properties.Resources.delete;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(19, 377);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(121, 23);
+            this.btnXoa.Size = new System.Drawing.Size(166, 57);
             this.btnXoa.TabIndex = 61;
             this.btnXoa.Text = "Xóa phòng";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::GUI.Properties.Resources.swap;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(19, 453);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 55);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "Chuyển phòng";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Phong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1654, 887);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnXemTatCa);
             this.Controls.Add(this.btnXemSinhVien);
@@ -476,5 +496,6 @@
         private System.Windows.Forms.Button btnXemSinhVien;
         private System.Windows.Forms.Button btnXemTatCa;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button button1;
     }
 }

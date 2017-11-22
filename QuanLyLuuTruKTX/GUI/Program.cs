@@ -10,9 +10,12 @@ namespace GUI
 {
     public static class Program
     {
+        /// <summary>
+        /// Biến chứa đối tượng form chính
+        /// </summary>
         public static MainForm mainForm;
         /// <summary>
-        /// The main entry point for the application.
+        /// Điểm bắt đầu của chương trình
         /// </summary>
         [STAThread]
         static void Main()

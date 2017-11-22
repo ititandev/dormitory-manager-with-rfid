@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnPhong = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnSinhVien = new System.Windows.Forms.Button();
@@ -42,7 +41,7 @@
             // 
             this.btnPhong.AutoSize = true;
             this.btnPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnPhong.Image")));
+            this.btnPhong.Image = global::GUI.Properties.Resources.room;
             this.btnPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhong.Location = new System.Drawing.Point(236, 0);
             this.btnPhong.Name = "btnPhong";
@@ -58,10 +57,11 @@
             this.btnDangNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDangNhap.AutoSize = true;
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Image = global::GUI.Properties.Resources._lock;
             this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangNhap.Location = new System.Drawing.Point(674, 0);
+            this.btnDangNhap.Location = new System.Drawing.Point(670, 0);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(120, 48);
+            this.btnDangNhap.Size = new System.Drawing.Size(124, 48);
             this.btnDangNhap.TabIndex = 14;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -72,7 +72,7 @@
             // 
             this.btnSinhVien.AutoSize = true;
             this.btnSinhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSinhVien.Image = global::GUI.Properties.Resources.student;
+            this.btnSinhVien.Image = global::GUI.Properties.Resources.student1;
             this.btnSinhVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSinhVien.Location = new System.Drawing.Point(118, 0);
             this.btnSinhVien.Name = "btnSinhVien";
@@ -87,7 +87,7 @@
             // 
             this.btnHopDong.AutoSize = true;
             this.btnHopDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHopDong.Image = global::GUI.Properties.Resources.contract;
+            this.btnHopDong.Image = global::GUI.Properties.Resources.hopdong;
             this.btnHopDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHopDong.Location = new System.Drawing.Point(0, 0);
             this.btnHopDong.Name = "btnHopDong";
@@ -125,8 +125,9 @@
             // 
             this.lblNhanVienHienTai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNhanVienHienTai.AutoSize = true;
+            this.lblNhanVienHienTai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.lblNhanVienHienTai.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhanVienHienTai.Location = new System.Drawing.Point(873, 12);
+            this.lblNhanVienHienTai.Location = new System.Drawing.Point(803, 12);
             this.lblNhanVienHienTai.Name = "lblNhanVienHienTai";
             this.lblNhanVienHienTai.Size = new System.Drawing.Size(0, 21);
             this.lblNhanVienHienTai.TabIndex = 20;

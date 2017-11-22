@@ -15,6 +15,9 @@ using System.Runtime.InteropServices;
 
 namespace GUI
 {
+    /// <summary>
+    /// Class form cài đặt phần mềm (RFID, cơ sở dữ liệu)
+    /// </summary>
     public partial class CaiDat : Form
     {
         public CaiDat()
@@ -26,6 +29,7 @@ namespace GUI
         
         private IntPtr hMenu;
 
+        #region Hide exit button
         [DllImport("user32.dll")]
         private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
@@ -35,7 +39,7 @@ namespace GUI
         {
             EnableMenuItem(hMenu, 0xf060, 0x01);
         }
-        
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -46,8 +50,8 @@ namespace GUI
             base.OnResize(e);
             EnableMenuItem(hMenu, 0xf060, 0x01);
         }
-
-
+        #endregion
+        
 
         #region CaiDat
         private void CaiDat_FormClosing(object sender, FormClosingEventArgs e)

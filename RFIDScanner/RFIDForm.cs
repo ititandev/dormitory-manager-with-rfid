@@ -5,7 +5,6 @@ using System.IO.Ports;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using Microsoft.VisualBasic;
-using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
 
@@ -29,13 +28,15 @@ namespace RFIDScanner
         private void RFIDForm_Load(object sender, EventArgs e)
         {
             btnRefresh_Click(0, null);
+            lblMssv.Text = "";
+            lblName.Text = "";
+            lblTrongThoiHan.Hide();
         }
         private void SetTextCom(string text)
         {
             match = regexFindLast.Match(allIDCard);
             if (match.Success && (match.Value != currentIDCard || allIDCard.LastIndexOf(currentIDCard) != currentIndex))
             {
-                
                 currentIDCard = match.Value;
                 lblRFID.Text = currentIDCard;
                 if (allIDCard.Length > 100)
@@ -64,15 +65,25 @@ namespace RFIDScanner
             SqlDataReader reader = ExecuteReader($"SELECT MSSV, HoTen, Anh FROM SinhVien WHERE RFID = '{card}'");
             if (reader.Read())
             {
+                lblMssv.ForeColor = Color.Black;
+                lblName.ForeColor = Color.Black;
                 lblMssv.Text = Convert.ToString(reader["MSSV"]);
                 lblName.Text = Convert.ToString(reader["HoTen"]);
                 picAvatar.Image = Image.FromFile(Properties.Settings.Default.ImageSource + "\\"
                                     + Convert.ToString(reader["Anh"]));
+                
+                string query = $"SELECT COUNT(*) FROM HopDong WHERE MSSV = '{lblMssv.Text}' AND dbo.KiemTraThoiHan(MSSV) = 1";
+                reader = ExecuteReader(query);
+                if (reader.Read() && Convert.ToInt32(reader[0]) == 1)
+                    lblTrongThoiHan.Hide();
+                else
+                    lblTrongThoiHan.Show();
             }
             else
             {
-                lblMssv.Text = "None";
-                lblName.Text = "None";
+                lblMssv.ForeColor = Color.Red;
+                lblMssv.Text = "Không tìm thấy";
+                lblName.Text = "";
                 picAvatar.Image = null;
             }
         }
@@ -222,6 +233,11 @@ namespace RFIDScanner
         private void button1_Click_1(object sender, EventArgs e)
         {
             UpdateInfo();
+        }
+
+        private void picAvatar_SizeChanged(object sender, EventArgs e)
+        {
+            this.picAvatar.Size = new System.Drawing.Size(picAvatar.Size.Height/4*3, picAvatar.Size.Height);
         }
     }
 }

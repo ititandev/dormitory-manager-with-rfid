@@ -95,9 +95,11 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(345, 257);
+            this.btnLuu.Image = global::GUI.Properties.Resources.save;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(276, 247);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Size = new System.Drawing.Size(140, 46);
             this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -182,15 +184,17 @@
             this.lblRFID.AutoSize = true;
             this.lblRFID.Location = new System.Drawing.Point(765, 39);
             this.lblRFID.Name = "lblRFID";
-            this.lblRFID.Size = new System.Drawing.Size(32, 13);
+            this.lblRFID.Size = new System.Drawing.Size(71, 13);
             this.lblRFID.TabIndex = 26;
-            this.lblRFID.Text = "RFID";
+            this.lblRFID.Text = "RFID Hiện tại";
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(568, 257);
+            this.btnThoat.Image = global::GUI.Properties.Resources.delete;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(519, 247);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Size = new System.Drawing.Size(129, 46);
             this.btnThoat.TabIndex = 27;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -239,7 +243,7 @@
             this.MinimumSize = new System.Drawing.Size(958, 336);
             this.Name = "CaiDat";
             this.ShowInTaskbar = false;
-            this.Text = "CaiDat";
+            this.Text = "Cài đặt";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CaiDat_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

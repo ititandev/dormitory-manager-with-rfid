@@ -11,10 +11,18 @@ using DTO;
 
 namespace BUS
 {
+    /// <summary>
+    /// Class xử lý nghiệp vụ của form Đăng nhập
+    /// </summary>
     public class DangNhapBUS
     {
         private TaiKhoanDAO tkdao = new TaiKhoanDAO();
-
+        /// <summary>
+        /// Kiểm tra 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         public static bool KiemTra(TextBox user, TextBox pass)
         {
             if (user.Text != "")
@@ -50,7 +58,11 @@ namespace BUS
             }
             return true;
         }
-
+        /// <summary>
+        /// Get mã nhân viên theo tên đăng nhập
+        /// </summary>
+        /// <param name="txtTaiKhoan"></param>
+        /// <returns></returns>
         public static string GetMaNhanVien(TextBox txtTaiKhoan)
         {
             SqlDataReader reader = TaiKhoanDAO.GetMaNhanVien(txtTaiKhoan.Text);
@@ -59,7 +71,12 @@ namespace BUS
             else
                 return null;
         }
-
+        /// <summary>
+        /// Kiểm tra thông tin đăng nhập
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         public static bool DangNhap(TextBox user, TextBox pass)
         {
             TaiKhoanDTO tkdto = new TaiKhoanDTO();
@@ -77,7 +94,11 @@ namespace BUS
             else
                 return false;
         }
-
+        /// <summary>
+        /// Get họ tên của nhân viên theo mã nhân viên
+        /// </summary>
+        /// <param name="maNhanVien"></param>
+        /// <returns></returns>
         public static string GetHoTen(string maNhanVien)
         {
             return TaiKhoanDAO.GetHoTen(maNhanVien);

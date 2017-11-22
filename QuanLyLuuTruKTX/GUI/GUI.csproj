@@ -66,6 +66,12 @@
     <Compile Include="CaiDat.Designer.cs">
       <DependentUpon>CaiDat.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChuyenPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChuyenPhong.Designer.cs">
+      <DependentUpon>ChuyenPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ReportDataSet.cs">
       <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Compile>
@@ -219,6 +225,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\student.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hopdong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\swap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

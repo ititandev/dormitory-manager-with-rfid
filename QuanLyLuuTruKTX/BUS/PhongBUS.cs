@@ -11,35 +11,76 @@ using System.Data.SqlClient;
 
 namespace BUS
 {
+    /// <summary>
+    /// Class xử lý nghiệp vụ của form phòng
+    /// </summary>
     public class PhongBUS
     {
-        PhongDAO phongDAO = new PhongDAO();
+        /// <summary>
+        /// Load thông tin phòng trong cơ sở dữ liệu
+        /// </summary>
+        /// <returns></returns>
         public static DataTable LoadPhong()
         {
             return PhongDAO.LoadPhong();
         }
-
+        /// <summary>
+        /// Load thông tin sinh viên theo mã số phòng
+        /// </summary>
+        /// <param name="maphong"></param>
+        /// <returns></returns>
+        public static DataTable LoadSinhVien(string maphong)
+        {
+            return PhongDAO.LoadSinhVien(maphong);
+        }
+        /// <summary>
+        /// Thêm phòng mới vào cơ sở dữ liệu
+        /// </summary>
+        /// <param name="phongDTO"></param>
+        /// <returns></returns>
         public static bool ThemPhongDTO(PhongDTO phongDTO)
         {
+            if (Data.KiemTraRong(phongDTO.IDPhong, phongDTO.KhuNha, phongDTO.SoPhong))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (PhongDAO.ThemPhong(phongDTO) == 1)
                 return true;
             else
                 return false;
         }
-
+        /// <summary>
+        /// Sửa thông tin phòng trong cơ sở dữ liệu
+        /// </summary>
+        /// <param name="phongDTO"></param>
+        /// <returns></returns>
         public static bool SuaPhongDTO(PhongDTO phongDTO)
         {
+            if (Data.KiemTraRong(phongDTO.IDPhong, phongDTO.KhuNha, phongDTO.SoPhong))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (PhongDAO.SuaPhongDTO(phongDTO) == 1)
                 return true;
             else
                 return false;
         }
-
+        /// <summary>
+        /// Kiểm tra một phòng trống hay không
+        /// </summary>
+        /// <param name="IDPhong"></param>
+        /// <returns></returns>
         public static bool KiemTraPhong(string IDPhong)
         {
             return PhongDAO.KiemTraPhong(IDPhong);
         }
-
+        /// <summary>
+        /// Lấy thông tin chi tiết về một phòng
+        /// </summary>
+        /// <param name="IDPhong"></param>
+        /// <returns></returns>
         public static PhongDTO GetPhongDTO(string IDPhong)
         {
             SqlDataReader reader = PhongDAO.GetPhongDTO(IDPhong);
@@ -57,17 +98,19 @@ namespace BUS
                 return phongDTO;
             }
         }
-
-        public static void TimKiem()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Load thông tin sinh viên theo phòng
+        /// </summary>
+        /// <returns></returns>
         public static DataTable LoadSinhVien()
         {
             return PhongDAO.LoadSinhVien();
         }
-
+        /// <summary>
+        /// Get Mã phòng của sinh viên có mã thẻ RFID truyền vào
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
         public static string GetIDPhongFromRFID(string RFID)
         {
             SqlDataReader reader = PhongDAO.GetIDPhongFromRFID(RFID);
@@ -76,7 +119,10 @@ namespace BUS
             else
                 return String.Empty;
         }
-
+        /// <summary>
+        /// Xóa một phòng
+        /// </summary>
+        /// <param name="IDPhong"></param>
         public static void XoaPhong(string IDPhong)
         {
             if (PhongDAO.XoaPhong(IDPhong))

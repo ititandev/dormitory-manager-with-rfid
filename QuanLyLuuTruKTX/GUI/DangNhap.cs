@@ -11,6 +11,9 @@ using BUS;
 
 namespace GUI
 {
+    /// <summary>
+    /// Class form đăng nhập khi bắt đầu sử dụng phần mềm
+    /// </summary>
     public partial class DangNhap : Form
     {
         private DangNhapBUS dangNhapBUS = new DangNhapBUS();
@@ -40,6 +43,24 @@ namespace GUI
         private void DangNhap_FormClosing(object sender, FormClosingEventArgs e)
         {
             MainForm.dangNhapForm = null;
+        }
+
+        private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnDangNhap.PerformClick();
+        }
+
+        private void txtTaiKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnDangNhap.PerformClick();
+        }
+
+        private void DangNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnDangNhap.PerformClick();
         }
     }
 }
