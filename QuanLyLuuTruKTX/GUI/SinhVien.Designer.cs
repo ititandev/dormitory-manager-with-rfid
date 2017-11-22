@@ -121,6 +121,7 @@
             // 
             // cboTimKiemTheo
             // 
+            this.cboTimKiemTheo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTimKiemTheo.FormattingEnabled = true;
             this.cboTimKiemTheo.Location = new System.Drawing.Point(90, 9);
             this.cboTimKiemTheo.Name = "cboTimKiemTheo";

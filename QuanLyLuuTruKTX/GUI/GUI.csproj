@@ -130,6 +130,9 @@
     <EmbeddedResource Include="CaiDat.resx">
       <DependentUpon>CaiDat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChuyenPhong.resx">
+      <DependentUpon>ChuyenPhong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>

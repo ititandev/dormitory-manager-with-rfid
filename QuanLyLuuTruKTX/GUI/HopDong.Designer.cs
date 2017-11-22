@@ -225,6 +225,7 @@ namespace GUI
             // 
             // cboTimKiemTheo
             // 
+            this.cboTimKiemTheo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTimKiemTheo.FormattingEnabled = true;
             this.cboTimKiemTheo.Items.AddRange(new object[] {
             "Tất cả",

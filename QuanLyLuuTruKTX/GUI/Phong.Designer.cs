@@ -306,6 +306,7 @@
             // 
             // cboLoaiPhong
             // 
+            this.cboLoaiPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiPhong.FormattingEnabled = true;
             this.cboLoaiPhong.Items.AddRange(new object[] {
             "Tất cả",
@@ -336,6 +337,7 @@
             // 
             // cboSoLuong
             // 
+            this.cboSoLuong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSoLuong.FormattingEnabled = true;
             this.cboSoLuong.Items.AddRange(new object[] {
             "Tất cả",

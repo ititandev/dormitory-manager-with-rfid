@@ -61,8 +61,7 @@
             this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(168, 20);
-            this.txtTaiKhoan.TabIndex = 2;
-            this.txtTaiKhoan.Text = "ititan";
+            this.txtTaiKhoan.TabIndex = 1;
             this.txtTaiKhoan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTaiKhoan_KeyDown);
             // 
             // txtMatKhau
@@ -72,8 +71,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(168, 20);
-            this.txtMatKhau.TabIndex = 3;
-            this.txtMatKhau.Text = "ititan";
+            this.txtMatKhau.TabIndex = 2;
             this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatKhau_KeyDown);
             // 
             // btnDangNhap
@@ -82,7 +80,7 @@
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(86, 26);
-            this.btnDangNhap.TabIndex = 4;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);

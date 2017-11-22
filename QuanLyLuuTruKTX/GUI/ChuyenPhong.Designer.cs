@@ -87,26 +87,27 @@
             // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(447, 428);
+            this.btnCommit.Location = new System.Drawing.Point(356, 437);
             this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(75, 23);
+            this.btnCommit.Size = new System.Drawing.Size(151, 43);
             this.btnCommit.TabIndex = 6;
-            this.btnCommit.Text = "Commit";
+            this.btnCommit.Text = "Áp dụng chuyển phòng";
             this.btnCommit.UseVisualStyleBackColor = true;
             this.btnCommit.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(544, 428);
+            this.btnRefresh.Location = new System.Drawing.Point(544, 437);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(90, 43);
             this.btnRefresh.TabIndex = 7;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Tải lại";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // cboSource
             // 
+            this.cboSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSource.FormattingEnabled = true;
             this.cboSource.Location = new System.Drawing.Point(146, 23);
             this.cboSource.Name = "cboSource";
@@ -116,8 +117,9 @@
             // 
             // cboDes
             // 
+            this.cboDes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDes.FormattingEnabled = true;
-            this.cboDes.Location = new System.Drawing.Point(710, 13);
+            this.cboDes.Location = new System.Drawing.Point(713, 25);
             this.cboDes.Name = "cboDes";
             this.cboDes.Size = new System.Drawing.Size(121, 21);
             this.cboDes.TabIndex = 9;
@@ -135,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(624, 16);
+            this.label2.Location = new System.Drawing.Point(627, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 11;
@@ -144,7 +146,7 @@
             // cbEmptyRoom
             // 
             this.cbEmptyRoom.AutoSize = true;
-            this.cbEmptyRoom.Location = new System.Drawing.Point(855, 15);
+            this.cbEmptyRoom.Location = new System.Drawing.Point(858, 27);
             this.cbEmptyRoom.Name = "cbEmptyRoom";
             this.cbEmptyRoom.Size = new System.Drawing.Size(124, 17);
             this.cbEmptyRoom.TabIndex = 12;
@@ -152,11 +154,11 @@
             this.cbEmptyRoom.UseVisualStyleBackColor = true;
             this.cbEmptyRoom.CheckedChanged += new System.EventHandler(this.cbEmptyRoom_CheckedChanged);
             // 
-            // Chuyen
+            // ChuyenPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 472);
+            this.ClientSize = new System.Drawing.Size(1044, 490);
             this.Controls.Add(this.cbEmptyRoom);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -168,7 +170,8 @@
             this.Controls.Add(this.btnQua);
             this.Controls.Add(this.dgvDes);
             this.Controls.Add(this.dgvSource);
-            this.Name = "Chuyen";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "ChuyenPhong";
             this.Text = "Chuyen";
             this.Load += new System.EventHandler(this.Chuyen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSource)).EndInit();
