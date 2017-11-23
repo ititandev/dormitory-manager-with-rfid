@@ -83,6 +83,7 @@ namespace RFIDScanner
             {
                 lblMssv.ForeColor = Color.Red;
                 lblMssv.Text = "Không tìm thấy";
+                lblTrongThoiHan.Hide();
                 lblName.Text = "";
                 picAvatar.Image = null;
             }

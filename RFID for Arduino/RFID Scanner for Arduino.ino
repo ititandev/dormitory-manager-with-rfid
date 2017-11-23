@@ -4,7 +4,6 @@
   const int LED2 = 3; // LED xanh
   /*
   Ket noi voi Arduino Uno hoac Mega
-  ----------------------------------------------------- Nicola Coppola
   * Pin layout should be as follows:
   * Signal     Pin              Pin               Pin
   *            Arduino Uno      Arduino Mega      MFRC522 board

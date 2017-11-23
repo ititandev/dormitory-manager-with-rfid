@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnPhong = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnSinhVien = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@
             this.btnPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPhong.Image = global::GUI.Properties.Resources.room;
             this.btnPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPhong.Location = new System.Drawing.Point(236, 0);
+            this.btnPhong.Location = new System.Drawing.Point(240, 0);
             this.btnPhong.Name = "btnPhong";
             this.btnPhong.Size = new System.Drawing.Size(103, 48);
             this.btnPhong.TabIndex = 10;
@@ -74,7 +75,7 @@
             this.btnSinhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSinhVien.Image = global::GUI.Properties.Resources.student1;
             this.btnSinhVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSinhVien.Location = new System.Drawing.Point(118, 0);
+            this.btnSinhVien.Location = new System.Drawing.Point(120, 0);
             this.btnSinhVien.Name = "btnSinhVien";
             this.btnSinhVien.Size = new System.Drawing.Size(122, 48);
             this.btnSinhVien.TabIndex = 6;
@@ -112,7 +113,7 @@
             this.btnCaiDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCaiDat.Image = global::GUI.Properties.Resources.settings;
             this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaiDat.Location = new System.Drawing.Point(338, 0);
+            this.btnCaiDat.Location = new System.Drawing.Point(341, 0);
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.Size = new System.Drawing.Size(103, 48);
             this.btnCaiDat.TabIndex = 18;
@@ -144,6 +145,7 @@
             this.Controls.Add(this.btnSinhVien);
             this.Controls.Add(this.btnHopDong);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1000, 723);

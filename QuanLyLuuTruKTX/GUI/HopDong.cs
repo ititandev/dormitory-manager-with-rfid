@@ -129,7 +129,7 @@ namespace GUI
             hopDongDTO.ChuThich = txtChuThich.Text;
 
             HopDongBUS.ThemHopDongDTO(hopDongDTO);
-            btnXemTatCa_Click(null, null);
+            
         }
 
         private void xemMode_Click(object sender, EventArgs e)
