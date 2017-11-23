@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GUI.CaiDat" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="GUI.CaiDat.SetTextCallbackCom" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CaiDat.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AiSAAEAEAmgQCBCAQAHgQHBCQhCAAAAAAiACMgAgkBI=</HashCode>
+      <FileName>CaiDat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.ChuyenPhong" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABkAAEGAQGxCQAACUAAQiAAAgBAAaAEAAEAAAQAA=</HashCode>
+      <FileName>ChuyenPhong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.DangNhap" Collapsed="true">
+    <Position X="1" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAACACAAABAAQACAgAACQEAACAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DangNhap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.HopDong" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/1QNAADCHiGAirARAYGQ5coi8cQCAIQAZCJIwwIC2Do=</HashCode>
+      <FileName>HopDong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.KTXForm" Collapsed="true">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>KTXForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.MainForm" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAFAAAMICAgAgAAAACAMABKARGACAIAAAAQAAYAAAA=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.Phong" Collapsed="true">
+    <Position X="6.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAEAQAiGIijYBIQKAxAACEQAJREhEYEBgACAgAAs=</HashCode>
+      <FileName>Phong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.Report" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAEABACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Report.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI.SinhVien" Collapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="GUI.KTXForm" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="5.688" Y="6" />
+        <Point X="5.688" Y="5.918" />
+        <Point X="5.708" Y="5.918" />
+        <Point X="5.708" Y="5.75" />
+        <Point X="6.177" Y="5.75" />
+        <Point X="6.177" Y="4.203" />
+        <Point X="4.25" Y="4.203" />
+        <Point X="4.25" Y="3.441" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>8wAAIAJQgyGAiDIQAwCwxQhDEQBAJIAAIAiBARRpAAs=</HashCode>
+      <FileName>SinhVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

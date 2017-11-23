@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTO.HopDongDTO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAGAAoAQAAACAAAAAAAAAABAAFAQCAAAAAA=</HashCode>
+      <FileName>HopDongDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.PhongDTO">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBAAAAAAgAAAAAAAEAAQAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>PhongDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.SinhVienDTO">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAQAACAAAAAYAAQBAAAAAAgAAAEAEBAAAAAAIAI=</HashCode>
+      <FileName>SinhVienDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.TaiKhoanDTO">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>TaiKhoanDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
