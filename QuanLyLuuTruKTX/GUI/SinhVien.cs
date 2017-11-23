@@ -328,6 +328,7 @@ namespace GUI
 
         private void btnXemTatCa_Click(object sender, EventArgs e)
         {
+            txtTimKiem.Text = "";
             dgv.DataSource = SinhVienBUS.LoadSinhVien();
             dgv.Columns[Anh].Visible = false;
             dgv.Refresh();

@@ -61,6 +61,7 @@ namespace GUI
                 txtIDPhong.ReadOnly = txtKhuNha.ReadOnly = txtSoPhong.ReadOnly = txtTinhTrang.ReadOnly = true;
                 btnHanhDong.Hide();
                 btnChonPhong.Show();
+                dgvPhong_SelectionChanged(dgvPhong, null);
             }
             else if (CheDoHienTai == CheDo.THEM)
             {
@@ -87,12 +88,14 @@ namespace GUI
                 btnHanhDong.Text = "Cập nhật";
                 btnHanhDong.Show();
                 btnChonPhong.Hide();
+                dgvPhong_SelectionChanged(dgvPhong, null);
             }
             else if (CheDoHienTai == CheDo.CHON_PHONG)
             {
                 LoadDuLieu();
                 btnChonPhong.Show();
                 cboLoaiPhong.SelectedIndex = 1;
+                dgvPhong_SelectionChanged(dgvPhong, null);
             }
         }
         private void LoadDuLieu()

@@ -1,1 +1,0 @@
-﻿SELECT dbo.DotDienNuoc.MaDot, SoPhong, KhuNha, ChiSoDienDau, ChiSoDienCuoi, ChiSoNuocDau, ChiSoNuocCuoi, DonGiaDien, DonGiaNuoc, NgayBatDau, NgayKetThuc FROM DotDienNuoc, HoaDonDienNuoc, Phong WHERE DotDienNuoc.MaDot=HoaDonDienNuoc.MaDot AND HoaDonDienNuoc.IDPhong=Phong.IDPhong
