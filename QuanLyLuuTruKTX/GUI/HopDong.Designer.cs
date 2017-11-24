@@ -298,9 +298,9 @@ namespace GUI
             // btnHopDong
             // 
             this.btnHopDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHopDong.Location = new System.Drawing.Point(1087, 633);
+            this.btnHopDong.Location = new System.Drawing.Point(1082, 633);
             this.btnHopDong.Name = "btnHopDong";
-            this.btnHopDong.Size = new System.Drawing.Size(75, 23);
+            this.btnHopDong.Size = new System.Drawing.Size(124, 23);
             this.btnHopDong.TabIndex = 24;
             this.btnHopDong.Text = "Thêm hợp đồng mới";
             this.btnHopDong.UseVisualStyleBackColor = true;
